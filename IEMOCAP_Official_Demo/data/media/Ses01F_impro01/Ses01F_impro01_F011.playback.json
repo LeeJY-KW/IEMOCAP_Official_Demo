@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "status": "complete",
+  "prepared_at": "2026-11-11T08:07:47.140433+00:00",
+  "utterance_id": "Ses01F_impro01_F011",
+  "utterance": {
+    "id": "Ses01F_impro01_F011",
+    "text": "Yes but my wallet was stolen, I don't have anything.  I don't have any credit cards, I don't have my ID.  Don't you have things on file here?",
+    "start": 72.45,
+    "end": 82.26,
+    "speaker": 0,
+    "held_out_fold": 1
+  },
+  "sources": {
+    "mp4": {
+      "path": "Ses01F_impro01_F011.mp4",
+      "bytes": 1073505,
+      "sha256": "5435e97b416e93a80a9f34d7b7b1806fdeda8a5350df4bb2c8d1b7da668662a2"
+    },
+    "wav": {
+      "path": "Ses01F_impro01_F011.wav",
+      "bytes": 313964,
+      "sha256": "a748856303a26d3fea0071c84057d09d5283e4999fa697f2a935a898002af44e"
+    },
+    "media_manifest": {
+      "path": "manifest.json",
+      "bytes": 91527,
+      "sha256": "0c63188ab5c488620c2399fcf48e4b97aecdb5ff46f15cc1820d45b107e4b66f"
+    }
+  },
+  "outputs": {
+    "webm": {
+      "path": "Ses01F_impro01_F011.webm",
+      "bytes": 1154691,
+      "sha256": "8d00f191e5f26eaac3c6d6b798ee6d866446f3ddb8e033ae8c7b91eadec39f14"
+    },
+    "html": {
+      "path": "Ses01F_impro01_F011.playback.html",
+      "bytes": 1540400,
+      "sha256": "6d26854aa8f4ff5a9e7016701054ac03f6efe4913d842fad4000f6b7e60d0f5d"
+    }
+  },
+  "conversion_args": [
+    "/home/neuroai-server05/PycharmProjects/Heterogeneous_graph_paper/.venv/lib/python3.12/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2",
+    "-hide_banner",
+    "-nostdin",
+    "-loglevel",
+    "error",
+    "-y",
+    "-threads",
+    "2",
+    "-i",
+    "/home/neuroai-server05/PycharmProjects/감성_감정/공인인증/IEMOCAP_Official_Demo/data/media/Ses01F_impro01/Ses01F_impro01_F011.mp4",
+    "-threads",
+    "2",
+    "-i",
+    "/home/neuroai-server05/PycharmProjects/감성_감정/공인인증/IEMOCAP_Official_Demo/data/media/Ses01F_impro01/Ses01F_impro01_F011.wav",
+    "-map",
+    "0:v:0",
+    "-map",
+    "1:a:0",
+    "-c:v",
+    "libvpx",
+    "-threads:v",
+    "2",
+    "-filter_threads",
+    "1",
+    "-pix_fmt",
+    "yuv420p",
+    "-deadline",
+    "good",
+    "-cpu-used",
+    "2",
+    "-b:v",
+    "1M",
+    "-crf",
+    "10",
+    "-c:a",
+    "libvorbis",
+    "-threads:a",
+    "1",
+    "-q:a",
+    "4",
+    "-shortest",
+    "/home/neuroai-server05/PycharmProjects/감성_감정/공인인증/IEMOCAP_Official_Demo/data/media/Ses01F_impro01/.Ses01F_impro01_F011.playback-u2xc9p4y/Ses01F_impro01_F011.webm"
+  ],
+  "ffmpeg_version": "ffmpeg version 7.0.2-static https://johnvansickle.com/ffmpeg/  Copyright (c) 2000-2024 the FFmpeg developers",
+  "validation": {
+    "full_decode_passed": true,
+    "video_codec": "vp8",
+    "audio_codec": "vorbis",
+    "expected_seconds": 9.81,
+    "reported_seconds": 9.83,
+    "duration_tolerance_seconds": 0.1713667000333667
+  }
+}

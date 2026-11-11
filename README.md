@@ -6,12 +6,12 @@
 
 ## 먼저 볼 자료
 
-- **[설명·코드·실행 결과가 포함된 노트북](IEMOCAP_Official_Demo/results/notebook_preprocessing_long_20261111/현장시연_실행완료.ipynb)** — GitHub에서 셀별 설명과 실제 출력 확인
+- **[설명·코드·실행 결과가 포함된 노트북](IEMOCAP_Official_Demo/results/notebook_playback_utf8_20261111/현장시연_실행완료.ipynb)** — GitHub에서 셀별 설명과 실제 출력 확인
 - [새로 실행할 현장 노트북](IEMOCAP_Official_Demo/현장시연.ipynb)
 - [상세 실행 안내](IEMOCAP_Official_Demo/README.md)
-- [5겹 교차검증 결과 요약](IEMOCAP_Official_Demo/results/notebook_preprocessing_long_20261111/summary.txt)
-- [실제 Jupyter 커널 실행 검증](IEMOCAP_Official_Demo/results/notebook_preprocessing_long_20261111/notebook_execution_audit.json)
-- [독립 채점 검증](IEMOCAP_Official_Demo/results/notebook_preprocessing_long_20261111/independent_audit.json)
+- [5겹 교차검증 결과 요약](IEMOCAP_Official_Demo/results/notebook_playback_utf8_20261111/summary.txt)
+- [실제 Jupyter 커널 실행 검증](IEMOCAP_Official_Demo/results/notebook_playback_utf8_20261111/notebook_execution_audit.json)
+- [독립 채점 검증](IEMOCAP_Official_Demo/results/notebook_playback_utf8_20261111/independent_audit.json)
 
 노트북은 **목적 → 함수·인자·반환값 → 실행 코드 → 결과 확인** 순서의 64개 셀(실행 코드 31개)로 구성함. 원문·음성·영상, 전처리 과정, 정답 비교표와 성능 그래프를 같은 흐름에서 확인함.
 
@@ -44,6 +44,8 @@ python run_demo.py verify
 
 Jupyter 또는 IDE에서 이 Python 환경을 커널로 선택하고 `현장시연.ipynb`를 위에서부터 실행함. 실행 완료본의 임시 경로는 검증 당시 기록이며, 다시 실행하면 현재 패키지의 `results/notebook_...`에 새 결과가 생성됨. 학습·개발·시험 분리와 모델 설정은 고정되어 있음.
 
+Windows에서도 JSON과 원본 코드 텍스트를 UTF-8로 읽도록 인코딩을 명시함. 기존 버전에서 `UnicodeDecodeError`가 발생했다면 먼저 패키지에 최신 `현장시연.ipynb`와 `video_playback.py`가 반영됐는지 확인함. 이후 Jupyter 커널을 재시작하고 맨 위 셀부터 전체 실행함.
+
 터미널에서 전체 평가를 바로 실행할 수도 있음.
 
 ```bash
@@ -57,9 +59,11 @@ python audit_demo.py results/site_run_01
 
 2-4~2-12절의 미디어·전처리 예시는 약 9.81초 길이의 `Ses01F_impro01_F011`을 사용함. 같은 발화의 원문·음성·영상과 전처리 과정을 순서대로 확인함. 노트북을 위에서부터 실행하면 됨.
 
+2-6절은 `<video src>`에 WebM 데이터를 직접 포함한 HTML 플레이어로 재생함. 기존 MP4와 원본 WAV는 그대로 보존함. [별도 재생 HTML](IEMOCAP_Official_Demo/data/media/Ses01F_impro01/Ses01F_impro01_F011.playback.html)을 내려받은 패키지에서 브라우저로 열어 재생할 수도 있음. `video_playback.py`가 WebM·HTML의 사전 준비와 실행 시 원본·재생 파일의 해시 검사를 담당함. 현장에서는 기존 `requirements.txt` 환경과 준비된 파일을 사용함.
+
 | 포함 폴더 | 내용 | 용량 |
 |---|---|---:|
-| `IEMOCAP_Official_Demo/data/media/Ses01F_impro01` | 원본 WAV 30개, 동일 발화 구간의 H.264/AAC MP4 30개, 원문·시각·해시 목록 | 약 17.1 MiB |
+| `IEMOCAP_Official_Demo/data/media/Ses01F_impro01` | 원본 WAV 30개, H.264/AAC MP4 30개, 예시 WebM·재생 HTML 및 해시 목록 | WAV·MP4 묶음 약 17.1 MiB |
 | `IEMOCAP_Official_Demo/data/preprocessing/Ses01F_impro01` | 중간 출력 NPZ 30개, 원본 RGB PNG 90개, 토크나이저·추출기 설정·검증 기록 | 약 64.0 MiB |
 
 현장에서는 원본 음성 읽기·모노화·16 kHz 처리, librosa 운율 계산, tokenizers 토큰화, 원본 RGB 프레임의 크기 조절·중앙 자르기·정규화, 특징 집계와 학습 통계 정규화를 실제 실행함. WavLM·RoBERTa·ResNet18 순전파의 중간 출력은 준비 단계에서 정확한 고정 가중치와 설정으로 CUDA에서 계산해 저장한 자료를 사용함. 2-12절에는 원본 `make_extractor` 전체 코드를 표시함.
@@ -105,8 +109,8 @@ k번 세션은 그 세션을 학습·개발에서 제외한 k번 폴드 가중�
 | 각성도 CCC | 0.684792 ± 0.017355 |
 | 평균 CCC | 0.717703 ± 0.022541 |
 
-한 대화의 설명용 추론과 전체 평가 예측의 일치를 확인했으며, 전체 저장 예측을 별도로 재채점함. 실행 시의 검사와 근거는 `results/notebook_preprocessing_long_20261111`에 있음.
+한 대화의 설명용 추론과 전체 평가 예측의 일치를 확인했으며, 전체 저장 예측을 별도로 재채점함. 실행 시의 검사와 근거는 `results/notebook_playback_utf8_20261111`에 있음.
 
 ## 결과 확인
 
-`results/notebook_preprocessing_long_20261111/현장시연_설명과결과.html`은 설명과 코드·출력을 함께 읽는 미리보기임. 노트북에는 정답·예측 비교표의 처음 12행, 대화 전체의 V/A 시계열 그래프, 전체 CSV의 처음 10행을 표시함. `report.html`은 전체 발화의 정답·예측을 검색하는 화면임. HTML 파일은 저장소를 내려받은 뒤 브라우저에서 열어 확인함.
+`results/notebook_playback_utf8_20261111/현장시연_설명과결과.html`은 설명과 코드·출력을 함께 읽는 미리보기임. 노트북에는 정답·예측 비교표의 처음 12행, 대화 전체의 V/A 시계열 그래프, 전체 CSV의 처음 10행을 표시함. `report.html`은 전체 발화의 정답·예측을 검색하는 화면임. HTML 파일은 저장소를 내려받은 뒤 브라우저에서 열어 확인함.

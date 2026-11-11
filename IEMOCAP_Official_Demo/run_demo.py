@@ -180,7 +180,7 @@ def verify(audit_normalizers=False):
             require(sha(folder / 'selection.json') == gate['selection_hashes'][str(number)], 'Selection lock changed')
             require(sha(ROOT / 'weights' / task / f'fold{number}/best.pt') == lock['checkpoint_sha256'], 'Checkpoint hash mismatch')
             require(lock['identity'] == digest(dict(protocol=protocol, fold=fold)) and lock['fold'] == number and not lock['test_loaded_during_training'], 'Invalid checkpoint identity')
-            history = [json.loads(line) for line in (folder / 'history.jsonl').read_text().splitlines()]
+            history = [json.loads(line) for line in (folder / 'history.jsonl').read_text(encoding='utf-8').splitlines()]
             require([x['epoch'] for x in history] == list(range(1, 51)) and lock['epochs_completed'] == 50, 'Incomplete training evidence')
             # history가 에포크 오름차순이므로 동점이면 max가 먼저 등장한 에포크를 선택함.
             best = max(history, key=lambda x: x['dev_score'])

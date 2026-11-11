@@ -31,6 +31,8 @@ python audit_demo.py results/site_run_01
 
 노트북 사용 시 `python -m pip install -r requirements.txt`로 라이브러리를 준비하고, Jupyter 또는 IDE의 노트북 편집기에서 해당 Python 환경을 커널로 선택함. `현장시연.ipynb`는 64개 셀(실행 코드 31개)로 구성했으며, 각 단계에 목적·사용 함수·인자·반환값·확인할 결과를 작성함. 위에서부터 `Shift+Enter`로 실행함.
 
+Windows에서도 JSON과 원본 코드 텍스트를 UTF-8로 읽도록 인코딩을 명시함. 기존 버전에서 `UnicodeDecodeError`가 발생했다면 먼저 패키지에 최신 `현장시연.ipynb`와 `video_playback.py`가 반영됐는지 확인함. 이후 Jupyter 커널을 재시작하고 맨 위 셀부터 전체 실행함.
+
 노트북 진행 순서는 **실행 준비 → 데이터와 원본 정답 → 예시 발화의 음성·영상 재생 → 전처리 과정 확인 → 5겹 교차검증 분리와 가중치 → 한 대화의 모델 로딩·정규화·추론 → 전체 5겹 교차검증 평가 → 지표와 그래프 → 독립 검증·결과 보존**임. 한 대화의 추론 과정은 노트북 안에서 실제 연산 코드로 보여주며, 전체 평가는 같은 `run_demo.run()`을 호출함. 정답 비교표의 처음 12행과 대화 전체의 V/A 시계열 그래프가 코드 셀 아래에 표시됨. 결과 CSV는 처음 10행을 미리 보여줌.
 
 노트북의 자동 저장으로 바뀌는 출력·실행 번호·편집기 메타데이터는 허용함. 코드와 설명 셀의 순서·내용은 `notebook_source_sha256`으로 검사하고 가중치·특징·주석 등 나머지 전달 파일은 기존 SHA256으로 검사함. 소스 수정이 필요한 경우 전달 준비 단계에서 해시 목록을 다시 생성함. HTML 보고서는 브라우저에서 파일을 직접 열어 확인할 수 있음.
@@ -39,9 +41,11 @@ python audit_demo.py results/site_run_01
 
 2-4~2-12절의 미디어·전처리 예시는 약 9.81초 길이의 `Ses01F_impro01_F011` 발화로 고정함. 같은 발화의 원문·원본 음성·동일 구간 영상과 전처리 과정을 순서대로 확인함. 노트북을 위에서부터 실행하고, 음성과 영상은 재생 버튼을 눌러 확인함.
 
+2-6절은 `<video src>`에 WebM 데이터를 직접 포함한 HTML 플레이어로 재생함. 기존 MP4와 원본 WAV는 그대로 보존함. [별도 재생 HTML](data/media/Ses01F_impro01/Ses01F_impro01_F011.playback.html)을 브라우저에서 열어 같은 영상을 재생할 수도 있음. `video_playback.py`는 방문 전에 WebM·HTML을 준비하고 현장 실행 시 원본과 재생 파일의 해시를 검사함. 현장에서는 기존 `requirements.txt` 환경과 준비된 파일을 사용함.
+
 | 노트북 절 | 현장에서 실행·확인하는 내용 |
 |---|---|
-| 2-4~2-6 | 예시 발화의 원문, 원본 WAV 재생, 같은 발화 구간의 MP4 재생 |
+| 2-4~2-6 | 예시 발화의 원문, 원본 WAV 재생, 같은 발화 구간의 WebM 임베드 재생 |
 | 2-7~2-8 | 전체 전처리 흐름, 원본 음성 읽기·모노화·16 kHz 처리, WavLM 입력과 파형 |
 | 2-9 | 원본 음성에서 librosa로 운율 16차원 통계를 실제 계산 |
 | 2-10 | 저장된 원래 토크나이저로 실제 토큰화하고 토큰 ID·특수 토큰·입력 순서를 표시 |
@@ -55,7 +59,7 @@ WavLM·RoBERTa·ResNet18의 순전파는 준비 단계에서 정확한 고정 �
 
 | 준비 폴더 | 포함 자료 | 용량 |
 |---|---|---:|
-| `data/media/Ses01F_impro01` | 원본 WAV 30개, 같은 발화의 H.264/AAC MP4 30개, 원문·시각·해시 목록 | 약 17.1 MiB |
+| `data/media/Ses01F_impro01` | 원본 WAV 30개, H.264/AAC MP4 30개, 예시 WebM·재생 HTML 및 해시 목록 | WAV·MP4 묶음 약 17.1 MiB |
 | `data/preprocessing/Ses01F_impro01` | 중간 출력 NPZ 30개, 원본 RGB PNG 90개, 토크나이저·추출기 설정·검증 기록 | 약 64.0 MiB |
 
 이 두 폴더를 포함한 전체 패키지와 현장 Python 환경을 준비하면, 현장에서 재생·전처리 확인·감정 모델 추론을 이어서 실행할 수 있음.
@@ -112,6 +116,7 @@ WavLM·RoBERTa·ResNet18의 순전파는 준비 단계에서 정확한 고정 �
 | `data/features`, `data/annotations`, `data/*_dataset.json` | 고정 특징, 원본 주석, 원본 평가 정의 |
 | `data/media`, `data/preprocessing` | 예시 원본 음성·재생 영상, 전처리 중간 출력·프레임·설정 |
 | `prepare_media.py`, `prepare_preprocessing.py` | 방문 전 재생 자료와 전처리 자료를 생성하는 준비 코드 |
+| `video_playback.py` | WebM·별도 재생 HTML 사전 준비와 실행 시 파일 해시 검사 |
 | `requirements.txt`, `requirements-preprocessing.txt` | 현장 실행 환경과 자료 재생성용 별도 환경 |
 | `evidence/` | 평가 설정, 모델 선택 기록, 학습 이력, 원본 코드 사본, 과거 예측 및 복사 출처 |
 | `PACKAGE_MANIFEST.json` | 전달 파일별 SHA256·크기. 결과 폴더는 대상 제외 |
@@ -137,10 +142,10 @@ python prepare_preprocessing.py --iemocap-root <root> --device cuda
 
 ## 최신 실행 결과
 
-- [설명과 실행 결과가 포함된 노트북](results/notebook_preprocessing_long_20261111/현장시연_실행완료.ipynb)
-- [원문·미디어·전처리·평가 결과 HTML](results/notebook_preprocessing_long_20261111/현장시연_설명과결과.html)
-- [실제 Jupyter 커널 실행 검증](results/notebook_preprocessing_long_20261111/notebook_execution_audit.json)
-- [독립 채점 검증](results/notebook_preprocessing_long_20261111/independent_audit.json)
+- [설명과 실행 결과가 포함된 노트북](results/notebook_playback_utf8_20261111/현장시연_실행완료.ipynb)
+- [원문·미디어·전처리·평가 결과 HTML](results/notebook_playback_utf8_20261111/현장시연_설명과결과.html)
+- [실제 Jupyter 커널 실행 검증](results/notebook_playback_utf8_20261111/notebook_execution_audit.json)
+- [독립 채점 검증](results/notebook_playback_utf8_20261111/independent_audit.json)
 
 ## 시험 설명에 사용할 문구
 

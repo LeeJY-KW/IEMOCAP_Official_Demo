@@ -19,6 +19,8 @@ IEMOCAP_Official_Demo/results/*
 !IEMOCAP_Official_Demo/results/notebook_preprocessing00_20261111/**
 !IEMOCAP_Official_Demo/results/notebook_preprocessing_long_20261111/
 !IEMOCAP_Official_Demo/results/notebook_preprocessing_long_20261111/**
+!IEMOCAP_Official_Demo/results/notebook_playback_utf8_20261111/
+!IEMOCAP_Official_Demo/results/notebook_playback_utf8_20261111/**
 
 # 공인시험 Word 문서는 로컬에서 관리함.
 *.docx
