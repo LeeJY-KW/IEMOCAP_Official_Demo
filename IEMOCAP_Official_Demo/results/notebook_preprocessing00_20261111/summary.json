@@ -16,7 +16,7 @@
     "numpy": "1.23.5",
     "executable": "/home/neuroai-server05/PycharmProjects/ICASSP_Hetero/.venv-emotionheart/bin/python"
   },
-  "package_manifest_sha256": "7407235904eefd38b7761d21cf4c71029a11d5193531a4942cd8c45f6989adfb",
+  "package_manifest_sha256": "1eebb08678d0b3f38dd98d69b33270468494f104cea768e66cbbe96fc289620d",
   "tasks": {
     "classification": {
       "folds": [
@@ -639,6 +639,6 @@
       "scored_utterances": 10035
     }
   },
-  "inference_seconds": 8.71145683992654,
-  "completed_at": "2026-11-11T16:28:12.359843+09:00"
+  "inference_seconds": 8.52652108320035,
+  "completed_at": "2026-11-11T16:34:15.288591+09:00"
 }

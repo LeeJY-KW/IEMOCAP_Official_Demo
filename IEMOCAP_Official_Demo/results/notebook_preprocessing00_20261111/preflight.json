@@ -1,7 +1,7 @@
 {
   "passed": true,
-  "checked_at": "2026-11-11T16:28:03.644287+09:00",
-  "package_manifest_sha256": "7407235904eefd38b7761d21cf4c71029a11d5193531a4942cd8c45f6989adfb",
+  "checked_at": "2026-11-11T16:34:06.757646+09:00",
+  "package_manifest_sha256": "1eebb08678d0b3f38dd98d69b33270468494f104cea768e66cbbe96fc289620d",
   "files_checked": 574,
   "folds_checked": 10,
   "annotations_checked": 10039,
@@ -148,5 +148,5 @@
       "checkpoint_sha256": "7e52100282134ab12e175dcf025d2cca9c03f98faa47254b762e9b0b1907a47d"
     }
   ],
-  "seconds": 3.0140749050769955
+  "seconds": 3.078158479882404
 }
