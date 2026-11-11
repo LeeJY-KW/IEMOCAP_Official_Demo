@@ -7517,8 +7517,8 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="IEMOCAP-%EC%9D%B4%EC%82%B0%C2%B7%EC%97%B0%EC%86%8D-%EA%B0%90%EC%A0%95-%EC%9D%B8%EC%8B%9D-%ED%8F%89%EA%B0%80">IEMOCAP 이산·연속 감정 인식 평가<a class="anchor-link" href="#IEMOCAP-%EC%9D%B4%EC%82%B0%C2%B7%EC%97%B0%EC%86%8D-%EA%B0%90%EC%A0%95-%EC%9D%B8%EC%8B%9D-%ED%8F%89%EA%B0%80">¶</a></h1><h2 id="%ED%95%99%EC%8A%B5-%EC%99%84%EB%A3%8C-%EB%AA%A8%EB%8D%B8%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-5-fold-%ED%98%84%EC%9E%A5-%EC%8B%9C%EC%97%B0">학습 완료 모델을 이용한 5-fold 현장 시연<a class="anchor-link" href="#%ED%95%99%EC%8A%B5-%EC%99%84%EB%A3%8C-%EB%AA%A8%EB%8D%B8%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-5-fold-%ED%98%84%EC%9E%A5-%EC%8B%9C%EC%97%B0">¶</a></h2><p><strong>목적:</strong> 이산 감정 클래스 및 Valence/Arousal 예측을 IEMOCAP의 원본 사람 주석(Ground Truth)과 비교한다.
-각 fold에서 학습·개발에 사용하지 않은 세션만 해당 fold의 가중치로 추론한다.</p>
+<h1 id="IEMOCAP-%EC%9D%B4%EC%82%B0%C2%B7%EC%97%B0%EC%86%8D-%EA%B0%90%EC%A0%95-%EC%9D%B8%EC%8B%9D-%ED%8F%89%EA%B0%80">IEMOCAP 이산·연속 감정 인식 평가<a class="anchor-link" href="#IEMOCAP-%EC%9D%B4%EC%82%B0%C2%B7%EC%97%B0%EC%86%8D-%EA%B0%90%EC%A0%95-%EC%9D%B8%EC%8B%9D-%ED%8F%89%EA%B0%80">¶</a></h1><h2 id="%ED%95%99%EC%8A%B5-%EC%99%84%EB%A3%8C-%EB%AA%A8%EB%8D%B8%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-5%EA%B2%B9-%EA%B5%90%EC%B0%A8%EA%B2%80%EC%A6%9D-%ED%98%84%EC%9E%A5-%EC%8B%9C%EC%97%B0">학습 완료 모델을 이용한 5겹 교차검증 현장 시연<a class="anchor-link" href="#%ED%95%99%EC%8A%B5-%EC%99%84%EB%A3%8C-%EB%AA%A8%EB%8D%B8%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-5%EA%B2%B9-%EA%B5%90%EC%B0%A8%EA%B2%80%EC%A6%9D-%ED%98%84%EC%9E%A5-%EC%8B%9C%EC%97%B0">¶</a></h2><p><strong>목적:</strong> 이산 감정 클래스 및 정서가·각성도 예측을 IEMOCAP의 원본 사람 주석(정답)과 비교한다.
+각 폴드에서 학습·개발에 사용하지 않은 세션만 해당 폴드의 가중치로 추론한다.</p>
 <p>기존 갈망 과제 노트북처럼 <strong>단계 설명 → 함수와 입력·출력 → 코드 실행 → 결과 확인</strong> 순서로 구성했다.
 코드 셀을 위에서부터 <code>Shift+Enter</code>로 실행한다. 표·그래프는 해당 셀 아래에서 확인한다.</p>
 <table>
@@ -7538,20 +7538,20 @@ a.anchor-link {
 <td>특징 차원, 감정 라벨, V/A 원본 주석, 채점 대상</td>
 </tr>
 <tr>
-<td>3. 5-fold 평가 조건</td>
+<td>3. 5겹 교차검증 평가 조건</td>
 <td>학습·개발·시험 세션과 가중치 선택 기록</td>
 </tr>
 <tr>
 <td>4. 한 대화 추론</td>
-<td>모델 로딩 → 저장 통계로 정규화 → 실제 forward → 정답 비교</td>
+<td>모델 로딩 → 저장 통계로 정규화 → 실제 순전파 → 정답 비교</td>
 </tr>
 <tr>
-<td>5. 전체 5-fold 평가</td>
-<td>10개 가중치 추론, fold별 점수, 평균±표본SD</td>
+<td>5. 전체 5겹 교차검증 평가</td>
+<td>10개 가중치 추론, 폴드별 점수, 평균±표본표준편차</td>
 </tr>
 <tr>
 <td>6. 결과 시각화</td>
-<td>fold별 성능, 한 대화의 V/A 정답·예측</td>
+<td>폴드별 성능, 한 대화의 V/A 정답·예측</td>
 </tr>
 <tr>
 <td>7. 독립 검증과 결과 보존</td>
@@ -7565,6 +7565,59 @@ a.anchor-link {
 <p><strong>실행 환경:</strong> Python 3.10, 패키지 폴더 전체, <code>requirements.txt</code>의 패키지가 필요하다.
 방문 전에 <code>python -m pip install -r requirements.txt</code>로 준비하고 그 Python 환경을 노트북 커널로 선택한다.
 CPU 4스레드가 기본이다. 실행 중 오류가 발생하면 다음 셀로 넘어가지 말고 오류를 해결한 뒤 해당 단계부터 다시 실행한다.</p>
+<p><strong>용어 안내</strong></p>
+<p>설명에서는 아래 한국어 표현을 사용한다. 코드의 변수·함수 이름과 저장된 결과의 항목명은 원래 표기를 유지한다.</p>
+<table>
+<thead>
+<tr>
+<th>설명에서 사용하는 말</th>
+<th>코드·결과의 영문 표기</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>정답</td>
+<td><code>Ground Truth</code></td>
+<td>IEMOCAP에 포함된 사람 주석</td>
+</tr>
+<tr>
+<td>정서가</td>
+<td><code>Valence</code></td>
+<td>감정의 긍정·부정 정도</td>
+</tr>
+<tr>
+<td>각성도</td>
+<td><code>Arousal</code></td>
+<td>정서적 활성 정도</td>
+</tr>
+<tr>
+<td>정확도</td>
+<td><code>Accuracy</code></td>
+<td>채점 대상 중 예측이 정답과 일치한 비율</td>
+</tr>
+<tr>
+<td>가중 F1</td>
+<td><code>Weighted F1</code></td>
+<td>클래스별 정답 표본 수를 반영한 F1</td>
+</tr>
+<tr>
+<td>폴드</td>
+<td><code>Fold</code></td>
+<td>교차검증에서 학습·개발·시험 자료를 나누는 한 구성</td>
+</tr>
+<tr>
+<td>세션</td>
+<td><code>Session</code></td>
+<td>IEMOCAP의 녹화 회차 구분</td>
+</tr>
+<tr>
+<td>에포크</td>
+<td><code>epoch</code></td>
+<td>학습 자료 전체를 한 번 사용하는 학습 반복 단위</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -7630,10 +7683,10 @@ torch: 2.7.1+cu118 | numpy: 1.23.5
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="1-2.-%ED%8C%A8%ED%82%A4%EC%A7%80-%EA%B2%BD%EB%A1%9C%EC%99%80-%ED%91%9C-%EC%B6%9C%EB%A0%A5-%ED%95%A8%EC%88%98">1-2. 패키지 경로와 표 출력 함수<a class="anchor-link" href="#1-2.-%ED%8C%A8%ED%82%A4%EC%A7%80-%EA%B2%BD%EB%A1%9C%EC%99%80-%ED%91%9C-%EC%B6%9C%EB%A0%A5-%ED%95%A8%EC%88%98">¶</a></h2><p>노트북이 있는 <code>IEMOCAP_Official_Demo</code> 폴더에서 실행한다. 프로젝트 폴더나 <code>공인인증</code> 폴더에서 시작한 경우도 자동으로 찾는다.
 <code>run_demo.py</code>는 전체 추론, <code>audit_demo.py</code>는 별도 구현을 이용한 결과 검증 코드다.</p>
-<h3 id="Function-show_table">Function <code>show_table</code><a class="anchor-link" href="#Function-show_table">¶</a></h3><ul>
+<h3 id="%ED%95%A8%EC%88%98-show_table">함수 <code>show_table</code><a class="anchor-link" href="#%ED%95%A8%EC%88%98-show_table">¶</a></h3><ul>
 <li><strong>기능:</strong> 딕셔너리 목록을 노트북 HTML 표로 표시한다.</li>
-<li><strong>Args:</strong> <code>rows</code> — 행 목록, <code>columns</code> — 표시할 열 목록(생략하면 첫 행의 열 사용), <code>limit</code> — 표시 행 수.</li>
-<li><strong>Returns:</strong> 반환값 없이 표를 셀 아래에 표시한다. 숫자·문자열을 HTML 이스케이프해 표시한다.</li>
+<li><strong>입력 인자:</strong> <code>rows</code> — 행 목록, <code>columns</code> — 표시할 열 목록(생략하면 첫 행의 열 사용), <code>limit</code> — 표시 행 수.</li>
+<li><strong>반환값:</strong> 반환값 없이 표를 셀 아래에 표시한다. 숫자·문자열을 HTML 이스케이프해 표시한다.</li>
 </ul>
 <p><strong>확인:</strong> 패키지 경로와 7개 감정의 클래스 번호가 출력된다. 클래스 순서는 변경하지 않는다.</p>
 </div>
@@ -7706,12 +7759,12 @@ torch: 2.7.1+cu118 | numpy: 1.23.5
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1-3.-%ED%8F%89%EA%B0%80-%ED%8C%8C%EC%9D%BC-%EC%82%AC%EC%A0%84-%EA%B2%80%EC%82%AC">1-3. 평가 파일 사전 검사<a class="anchor-link" href="#1-3.-%ED%8F%89%EA%B0%80-%ED%8C%8C%EC%9D%BC-%EC%82%AC%EC%A0%84-%EA%B2%80%EC%82%AC">¶</a></h2><h3 id="Function-demo.verify">Function <code>demo.verify</code><a class="anchor-link" href="#Function-demo.verify">¶</a></h3><ul>
-<li><strong>기능:</strong> 가중치·특징·원본 주석의 해시, fold 분리, 개발셋 기반 모델 선택과 정답 정렬을 검사한다.</li>
-<li><strong>Args:</strong> <code>audit_normalizers=False</code> — 기본은 저장된 train 정규화 통계를 검증한다. <code>True</code>는 train 특징으로 통계를 읽기 전용 재검산한다.</li>
-<li><strong>Returns:</strong> <code>verification</code>(검사 결과), <code>datasets</code>(과제별 정답 정의), <code>protocols</code>(fold와 모델 설정), <code>original</code>(원본 발화 정보).</li>
+<h2 id="1-3.-%ED%8F%89%EA%B0%80-%ED%8C%8C%EC%9D%BC-%EC%82%AC%EC%A0%84-%EA%B2%80%EC%82%AC">1-3. 평가 파일 사전 검사<a class="anchor-link" href="#1-3.-%ED%8F%89%EA%B0%80-%ED%8C%8C%EC%9D%BC-%EC%82%AC%EC%A0%84-%EA%B2%80%EC%82%AC">¶</a></h2><h3 id="%ED%95%A8%EC%88%98-demo.verify">함수 <code>demo.verify</code><a class="anchor-link" href="#%ED%95%A8%EC%88%98-demo.verify">¶</a></h3><ul>
+<li><strong>기능:</strong> 가중치·특징·원본 주석의 해시, 폴드 분리, 개발 자료를 기준으로 한 모델 선택과 정답 정렬을 검사한다.</li>
+<li><strong>입력 인자:</strong> <code>audit_normalizers=False</code> — 기본은 저장된 학습 자료의 정규화 통계를 검증한다. <code>True</code>는 학습 자료 특징으로 통계를 읽기 전용 재검산한다.</li>
+<li><strong>반환값:</strong> <code>verification</code>(검사 결과), <code>datasets</code>(과제별 정답 정의), <code>protocols</code>(폴드와 모델 설정), <code>original</code>(원본 발화 정보).</li>
 </ul>
-<p><strong>확인:</strong> <code>passed=True</code>, 체크포인트 10개, 원본 주석 10,039개가 표시된다. 실패하면 추론을 진행하지 않는다.
+<p><strong>확인:</strong> <code>passed=True</code>, 모델 저장 파일 10개, 원본 주석 10,039개가 표시된다. 실패하면 추론을 진행하지 않는다.
 노트북 실행 결과·셀 번호의 자동 저장은 허용하고 코드·설명 셀 변경은 검사한다.</p>
 </div>
 </div>
@@ -7752,7 +7805,7 @@ torch: 2.7.1+cu118 | numpy: 1.23.5
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="2.-%ED%8F%89%EA%B0%80-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%99%80-Ground-Truth-%EC%A4%80%EB%B9%84">2. 평가 데이터와 Ground Truth 준비<a class="anchor-link" href="#2.-%ED%8F%89%EA%B0%80-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%99%80-Ground-Truth-%EC%A4%80%EB%B9%84">¶</a></h1><h2 id="2-1.-%EB%A9%80%ED%8B%B0%EB%AA%A8%EB%8B%AC-%ED%8A%B9%EC%A7%95-%EA%B5%AC%EC%84%B1-%ED%99%95%EC%9D%B8">2-1. 멀티모달 특징 구성 확인<a class="anchor-link" href="#2-1.-%EB%A9%80%ED%8B%B0%EB%AA%A8%EB%8B%AC-%ED%8A%B9%EC%A7%95-%EA%B5%AC%EC%84%B1-%ED%99%95%EC%9D%B8">¶</a></h2><p>151대화, 10,039발화의 특징 캐시를 사용한다. 각 대화의 모든 발화는 문맥으로 유지하며 서로 다른 대화를 연결하지 않는다.</p>
+<h1 id="2.-%ED%8F%89%EA%B0%80-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%99%80-%EC%A0%95%EB%8B%B5-%EC%A4%80%EB%B9%84">2. 평가 데이터와 정답 준비<a class="anchor-link" href="#2.-%ED%8F%89%EA%B0%80-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%99%80-%EC%A0%95%EB%8B%B5-%EC%A4%80%EB%B9%84">¶</a></h1><h2 id="2-1.-%EB%A9%80%ED%8B%B0%EB%AA%A8%EB%8B%AC-%ED%8A%B9%EC%A7%95-%EA%B5%AC%EC%84%B1-%ED%99%95%EC%9D%B8">2-1. 멀티모달 특징 구성 확인<a class="anchor-link" href="#2-1.-%EB%A9%80%ED%8B%B0%EB%AA%A8%EB%8B%AC-%ED%8A%B9%EC%A7%95-%EA%B5%AC%EC%84%B1-%ED%99%95%EC%9D%B8">¶</a></h2><p>151개 대화, 10,039개 발화의 특징 캐시를 사용한다. 각 대화의 모든 발화는 문맥으로 유지하며 서로 다른 대화를 연결하지 않는다.</p>
 <table>
 <thead>
 <tr>
@@ -7828,10 +7881,10 @@ torch: 2.7.1+cu118 | numpy: 1.23.5
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="2-2.-%EC%9B%90%EB%B3%B8-%EC%A0%95%EB%8B%B5-%EC%A3%BC%EC%84%9D-%EC%9D%BD%EA%B8%B0">2-2. 원본 정답 주석 읽기<a class="anchor-link" href="#2-2.-%EC%9B%90%EB%B3%B8-%EC%A0%95%EB%8B%B5-%EC%A3%BC%EC%84%9D-%EC%9D%BD%EA%B8%B0">¶</a></h2><p>Ground Truth는 모델 예측이 아니라 <strong>IEMOCAP에 포함된 사람 주석</strong>이다.
+<h2 id="2-2.-%EC%9B%90%EB%B3%B8-%EC%A0%95%EB%8B%B5-%EC%A3%BC%EC%84%9D-%EC%9D%BD%EA%B8%B0">2-2. 원본 정답 주석 읽기<a class="anchor-link" href="#2-2.-%EC%9B%90%EB%B3%B8-%EC%A0%95%EB%8B%B5-%EC%A3%BC%EC%84%9D-%EC%9D%BD%EA%B8%B0">¶</a></h2><p>정답은 모델 예측이 아니라 <strong>IEMOCAP에 포함된 사람 주석</strong>이다.
 원본 주석 헤더의 <code>[시작 - 종료] 발화ID 감정 [Valence, Activation, Dominance]</code> 중 감정과 앞 두 수치를 사용한다.
-Activation은 이 평가에서 Arousal로 표기한다. Dominance는 이번 채점 대상이 아니다.</p>
-<p><strong>실행 내용:</strong> Fold 1의 첫 번째 시험 대화를 예시로 고정하고 원본 헤더와 평가 정의를 나란히 출력한다.
+원본의 활성도(<code>Activation</code>)는 이 평가에서 각성도로 표기한다. 지배성은 이번 채점 대상이 아니다.</p>
+<p><strong>실행 내용:</strong> 1번 폴드의 첫 번째 시험 대화를 예시로 고정하고 원본 헤더와 평가 정의를 나란히 출력한다.
 예시는 예측 정답 여부를 보기 전에 정하므로 성공 사례를 선별하지 않는다.</p>
 <p><strong>확인:</strong> 발화 ID와 원본 감정·V/A가 평가 정의에 일치해야 한다. 캐시의 과거 6분류 <code>labels</code> 필드는 사용하지 않는다.</p>
 </div>
@@ -7908,7 +7961,7 @@ Activation은 이 평가에서 Arousal로 표기한다. Dominance는 이번 채�
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="2-3.-%EC%9D%B4%EC%82%B0%C2%B7%EC%97%B0%EC%86%8D-%EA%B0%90%EC%A0%95%EC%9D%98-%EC%B1%84%EC%A0%90-%EB%8C%80%EC%83%81-%ED%99%95%EC%9D%B8">2-3. 이산·연속 감정의 채점 대상 확인<a class="anchor-link" href="#2-3.-%EC%9D%B4%EC%82%B0%C2%B7%EC%97%B0%EC%86%8D-%EA%B0%90%EC%A0%95%EC%9D%98-%EC%B1%84%EC%A0%90-%EB%8C%80%EC%83%81-%ED%99%95%EC%9D%B8">¶</a></h2><ul>
 <li><strong>분류:</strong> <code>hap/sad/ang/fea/sur/dis/neu</code> 4,639개만 채점한다. 그 밖의 원본 감정은 <code>-100</code>으로 표시하여 채점에서 제외하고 대화 문맥은 유지한다.</li>
-<li><strong>회귀:</strong> 원본 V/A의 두 값이 모두 1~5인 10,035쌍만 채점한다. Valence 5.5인 4발화는 원값을 보존하고 두 차원 모두 제외한다.</li>
+<li><strong>회귀:</strong> 원본 V/A의 두 값이 모두 1~5인 10,035쌍만 채점한다. 정서가 5.5인 4개 발화는 원값을 보존하고 두 차원 모두 제외한다.</li>
 <li><strong>주의:</strong> 범주 라벨을 V/A 값으로 변환하지 않는다. 혐오 정답은 전체 2개로 표본이 매우 적다.</li>
 </ul>
 <p><strong>확인:</strong> 클래스별 표본 수 합계 4,639, 유효 V/A 10,035, 범위 밖 V/A 4가 출력된다.</p>
@@ -7969,11 +8022,11 @@ Activation은 이 평가에서 Arousal로 표기한다. Dominance는 이번 채�
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="3.-5-fold-%ED%8F%89%EA%B0%80-%EC%A1%B0%EA%B1%B4-%ED%99%95%EC%9D%B8">3. 5-fold 평가 조건 확인<a class="anchor-link" href="#3.-5-fold-%ED%8F%89%EA%B0%80-%EC%A1%B0%EA%B1%B4-%ED%99%95%EC%9D%B8">¶</a></h1><h2 id="3-1.-%ED%95%99%EC%8A%B5%C2%B7%EA%B0%9C%EB%B0%9C%C2%B7%EC%8B%9C%ED%97%98-%EC%84%B8%EC%85%98-%EA%B5%AC%EB%B6%84">3-1. 학습·개발·시험 세션 구분<a class="anchor-link" href="#3-1.-%ED%95%99%EC%8A%B5%C2%B7%EA%B0%9C%EB%B0%9C%C2%B7%EC%8B%9C%ED%97%98-%EC%84%B8%EC%85%98-%EA%B5%AC%EB%B6%84">¶</a></h2><p>Fold k는 Session k를 시험, 다음 순환 세션을 개발, 나머지 3개 세션을 학습에 사용했다.
+<h1 id="3.-5%EA%B2%B9-%EA%B5%90%EC%B0%A8%EA%B2%80%EC%A6%9D-%ED%8F%89%EA%B0%80-%EC%A1%B0%EA%B1%B4-%ED%99%95%EC%9D%B8">3. 5겹 교차검증 평가 조건 확인<a class="anchor-link" href="#3.-5%EA%B2%B9-%EA%B5%90%EC%B0%A8%EA%B2%80%EC%A6%9D-%ED%8F%89%EA%B0%80-%EC%A1%B0%EA%B1%B4-%ED%99%95%EC%9D%B8">¶</a></h1><h2 id="3-1.-%ED%95%99%EC%8A%B5%C2%B7%EA%B0%9C%EB%B0%9C%C2%B7%EC%8B%9C%ED%97%98-%EC%84%B8%EC%85%98-%EA%B5%AC%EB%B6%84">3-1. 학습·개발·시험 세션 구분<a class="anchor-link" href="#3-1.-%ED%95%99%EC%8A%B5%C2%B7%EA%B0%9C%EB%B0%9C%C2%B7%EC%8B%9C%ED%97%98-%EC%84%B8%EC%85%98-%EA%B5%AC%EB%B6%84">¶</a></h2><p>k번 폴드는 k번 세션을 시험, 다음 순환 세션을 개발, 나머지 3개 세션을 학습에 사용했다.
 개발 세션은 가중치 선택에 사용했으므로 현장 시험 데이터에 포함하지 않는다.</p>
-<p><strong>실행 내용:</strong> 기존 동결 프로토콜에서 분리표를 읽고 세 집합이 겹치지 않는지 확인한다.</p>
-<p>한 발화가 다른 fold의 학습에는 등장할 수 있지만 <strong>그 발화를 예측하는 Fold k 모델의 학습·개발에는 등장하지 않는다.</strong>
-5개 모델을 앙상블하지 않는다. 전체 OOF(out-of-fold) 결과에서 각 발화는 과제별로 한 번만 채점 대상이 된다.</p>
+<p><strong>실행 내용:</strong> 기존에 확정한 평가 설정에서 분리표를 읽고 세 집합이 겹치지 않는지 확인한다.</p>
+<p>한 발화가 다른 폴드의 학습에는 등장할 수 있지만 <strong>그 발화를 예측하는 k번 폴드 모델의 학습·개발에는 등장하지 않는다.</strong>
+5개 모델을 앙상블하지 않는다. OOF(전체 폴드의 시험 예측) 결과에서 각 발화는 과제별로 한 번만 채점 대상이 된다.</p>
 </div>
 </div>
 </div>
@@ -8017,9 +8070,9 @@ Activation은 이 평가에서 Arousal로 표기한다. Dominance는 이번 채�
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3-2.-%ED%95%99%EC%8A%B5-%EC%99%84%EB%A3%8C-%EA%B0%80%EC%A4%91%EC%B9%98%EC%99%80-%EC%84%A0%ED%83%9D-%EA%B8%B0%EB%A1%9D-%ED%99%95%EC%9D%B8">3-2. 학습 완료 가중치와 선택 기록 확인<a class="anchor-link" href="#3-2.-%ED%95%99%EC%8A%B5-%EC%99%84%EB%A3%8C-%EA%B0%80%EC%A4%91%EC%B9%98%EC%99%80-%EC%84%A0%ED%83%9D-%EA%B8%B0%EB%A1%9D-%ED%99%95%EC%9D%B8">¶</a></h2><p>각 과제의 fold별 <code>best.pt</code>를 사용한다. 분류는 개발 Weighted F1, 회귀는 개발 평균 CCC가 처음 최대가 된 epoch의 가중치다.
-50 epoch 학습과 모델 선택은 이미 완료되어 있다. 아래 코드는 기록만 읽는다.</p>
-<p><strong>확인:</strong> 분류 5개·회귀 5개, 총 10개 행과 선택 epoch가 출력된다. SHA256은 읽기 쉽도록 앞 16자리만 표시하며 사전 검사에서는 전체 해시를 대조했다.</p>
+<h2 id="3-2.-%ED%95%99%EC%8A%B5-%EC%99%84%EB%A3%8C-%EA%B0%80%EC%A4%91%EC%B9%98%EC%99%80-%EC%84%A0%ED%83%9D-%EA%B8%B0%EB%A1%9D-%ED%99%95%EC%9D%B8">3-2. 학습 완료 가중치와 선택 기록 확인<a class="anchor-link" href="#3-2.-%ED%95%99%EC%8A%B5-%EC%99%84%EB%A3%8C-%EA%B0%80%EC%A4%91%EC%B9%98%EC%99%80-%EC%84%A0%ED%83%9D-%EA%B8%B0%EB%A1%9D-%ED%99%95%EC%9D%B8">¶</a></h2><p>각 과제의 폴드별 <code>best.pt</code>를 사용한다. 분류는 개발 자료의 가중 F1, 회귀는 개발 자료의 평균 CCC가 처음으로 최댓값을 기록한 에포크의 가중치다.
+50에포크 학습과 모델 선택은 이미 완료되어 있다. 아래 코드는 기록만 읽는다.</p>
+<p><strong>확인:</strong> 분류 5개·회귀 5개, 총 10개 행과 선택 에포크가 출력된다. SHA256은 읽기 쉽도록 앞 16자리만 표시하며 사전 검사에서는 전체 해시를 대조했다.</p>
 </div>
 </div>
 </div>
@@ -8063,10 +8116,10 @@ Activation은 이 평가에서 Arousal로 표기한다. Dominance는 이번 채�
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="4.-%EC%98%88%EC%8B%9C-%EB%8C%80%ED%99%94%EB%A1%9C-%EC%B6%94%EB%A1%A0-%EA%B3%BC%EC%A0%95-%ED%99%95%EC%9D%B8">4. 예시 대화로 추론 과정 확인<a class="anchor-link" href="#4.-%EC%98%88%EC%8B%9C-%EB%8C%80%ED%99%94%EB%A1%9C-%EC%B6%94%EB%A1%A0-%EA%B3%BC%EC%A0%95-%ED%99%95%EC%9D%B8">¶</a></h1><h2 id="4-1.-%ED%95%99%EC%8A%B5%EC%97%90-%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EC%9D%80-%EC%8B%9C%ED%97%98-%ED%8A%B9%EC%A7%95-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">4-1. 학습에 사용하지 않은 시험 특징 불러오기<a class="anchor-link" href="#4-1.-%ED%95%99%EC%8A%B5%EC%97%90-%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EC%9D%80-%EC%8B%9C%ED%97%98-%ED%8A%B9%EC%A7%95-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a></h2><h3 id="Function-load_test_features">Function <code>load_test_features</code><a class="anchor-link" href="#Function-load_test_features">¶</a></h3><ul>
-<li><strong>기능:</strong> 지정한 fold의 test 대화인지 확인하고 그 대화의 특징과 구조 정보만 읽는다.</li>
-<li><strong>Args:</strong> <code>dialogue_id</code> — 대화 ID, <code>fold_number</code> — 1~5의 가중치 번호.</li>
-<li><strong>Returns:</strong> <code>features</code> — 음성·운율·텍스트·영상 배열, <code>structure</code> — 화자·순서·시간, <code>ids</code> — 발화 ID 배열.</li>
+<h1 id="4.-%EC%98%88%EC%8B%9C-%EB%8C%80%ED%99%94%EB%A1%9C-%EC%B6%94%EB%A1%A0-%EA%B3%BC%EC%A0%95-%ED%99%95%EC%9D%B8">4. 예시 대화로 추론 과정 확인<a class="anchor-link" href="#4.-%EC%98%88%EC%8B%9C-%EB%8C%80%ED%99%94%EB%A1%9C-%EC%B6%94%EB%A1%A0-%EA%B3%BC%EC%A0%95-%ED%99%95%EC%9D%B8">¶</a></h1><h2 id="4-1.-%ED%95%99%EC%8A%B5%EC%97%90-%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EC%9D%80-%EC%8B%9C%ED%97%98-%ED%8A%B9%EC%A7%95-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">4-1. 학습에 사용하지 않은 시험 특징 불러오기<a class="anchor-link" href="#4-1.-%ED%95%99%EC%8A%B5%EC%97%90-%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EC%9D%80-%EC%8B%9C%ED%97%98-%ED%8A%B9%EC%A7%95-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a></h2><h3 id="%ED%95%A8%EC%88%98-load_test_features">함수 <code>load_test_features</code><a class="anchor-link" href="#%ED%95%A8%EC%88%98-load_test_features">¶</a></h3><ul>
+<li><strong>기능:</strong> 지정한 폴드의 시험 대화인지 확인하고 그 대화의 특징과 구조 정보만 읽는다.</li>
+<li><strong>입력 인자:</strong> <code>dialogue_id</code> — 대화 ID, <code>fold_number</code> — 1~5의 가중치 번호.</li>
+<li><strong>반환값:</strong> <code>features</code> — 음성·운율·텍스트·영상 배열, <code>structure</code> — 화자·순서·시간, <code>ids</code> — 발화 ID 배열.</li>
 </ul>
 <p><strong>확인:</strong> 모든 특징의 첫 번째 차원(발화 수)이 같고, 정답 라벨이 입력 딕셔너리에 없다.</p>
 </div>
@@ -8118,12 +8171,12 @@ Activation은 이 평가에서 Arousal로 표기한다. Dominance는 이번 채�
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4-2.-%EC%A0%80%EC%9E%A5%EB%90%9C-%EB%AA%A8%EB%8D%B8-%EA%B0%80%EC%A4%91%EC%B9%98-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">4-2. 저장된 모델 가중치 불러오기<a class="anchor-link" href="#4-2.-%EC%A0%80%EC%9E%A5%EB%90%9C-%EB%AA%A8%EB%8D%B8-%EA%B0%80%EC%A4%91%EC%B9%98-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a></h2><h3 id="Function-load_frozen_model">Function <code>load_frozen_model</code><a class="anchor-link" href="#Function-load_frozen_model">¶</a></h3><ul>
-<li><strong>기능:</strong> 해당 과제·fold의 checkpoint를 읽고 같은 구조의 모델에 가중치를 로딩한다.</li>
-<li><strong>Args:</strong> <code>task</code> — <code>classification</code> 또는 <code>va</code>, <code>fold_number</code> — 대응 시험 세션 번호.</li>
-<li><strong>Returns:</strong> <code>model</code> — 평가 모드 모델, <code>normalizer</code> — 해당 학습 fold에서 계산해 저장한 평균·표준편차.</li>
+<h2 id="4-2.-%EC%A0%80%EC%9E%A5%EB%90%9C-%EB%AA%A8%EB%8D%B8-%EA%B0%80%EC%A4%91%EC%B9%98-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">4-2. 저장된 모델 가중치 불러오기<a class="anchor-link" href="#4-2.-%EC%A0%80%EC%9E%A5%EB%90%9C-%EB%AA%A8%EB%8D%B8-%EA%B0%80%EC%A4%91%EC%B9%98-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0">¶</a></h2><h3 id="%ED%95%A8%EC%88%98-load_frozen_model">함수 <code>load_frozen_model</code><a class="anchor-link" href="#%ED%95%A8%EC%88%98-load_frozen_model">¶</a></h3><ul>
+<li><strong>기능:</strong> 해당 과제·폴드의 모델 저장 파일을 읽고 같은 구조의 모델에 가중치를 로딩한다.</li>
+<li><strong>입력 인자:</strong> <code>task</code> — <code>classification</code> 또는 <code>va</code>, <code>fold_number</code> — 대응 시험 세션 번호.</li>
+<li><strong>반환값:</strong> <code>model</code> — 평가 모드 모델, <code>normalizer</code> — 해당 학습 폴드에서 계산해 저장한 평균·표준편차.</li>
 </ul>
-<p><code>model.eval()</code>은 Dropout을 평가 모드로 전환하고 <code>requires_grad_(False)</code>는 기울기 계산을 끈다.
+<p><code>model.eval()</code>은 드롭아웃을 평가 모드로 전환하고 <code>requires_grad_(False)</code>는 기울기 계산을 끈다.
 모델 생성 직후 <code>load_state_dict(..., strict=True)</code>로 학습 완료 가중치를 모두 로딩한다. 새 가중치로 학습하지 않는다.</p>
 <p><strong>확인:</strong> 분류와 회귀 모델이 로딩되고 각각 <code>training=False</code>가 출력된다.</p>
 </div>
@@ -8178,10 +8231,10 @@ va training: False
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4-3.-%ED%95%99%EC%8A%B5-%EB%95%8C-%EC%A0%80%EC%9E%A5%ED%95%9C-%ED%86%B5%EA%B3%84%EB%A1%9C-%EC%9E%85%EB%A0%A5-%EC%A0%95%EA%B7%9C%ED%99%94">4-3. 학습 때 저장한 통계로 입력 정규화<a class="anchor-link" href="#4-3.-%ED%95%99%EC%8A%B5-%EB%95%8C-%EC%A0%80%EC%9E%A5%ED%95%9C-%ED%86%B5%EA%B3%84%EB%A1%9C-%EC%9E%85%EB%A0%A5-%EC%A0%95%EA%B7%9C%ED%99%94">¶</a></h2><h3 id="Function-prepare_inputs">Function <code>prepare_inputs</code><a class="anchor-link" href="#Function-prepare_inputs">¶</a></h3><ul>
-<li><strong>기능:</strong> 각 특징에 <code>(x − train 평균) / train 표준편차</code>를 적용하고 torch Tensor로 변환한다.</li>
-<li><strong>Args:</strong> <code>features</code>, <code>structure</code> — 4-1의 입력, <code>normalizer</code> — 4-2에서 읽은 해당 모델의 통계.</li>
-<li><strong>Returns:</strong> <code>batch</code> — 모델에 전달할 특징·화자·순서·시간만 포함한 딕셔너리.</li>
+<h2 id="4-3.-%ED%95%99%EC%8A%B5-%EB%95%8C-%EC%A0%80%EC%9E%A5%ED%95%9C-%ED%86%B5%EA%B3%84%EB%A1%9C-%EC%9E%85%EB%A0%A5-%EC%A0%95%EA%B7%9C%ED%99%94">4-3. 학습 때 저장한 통계로 입력 정규화<a class="anchor-link" href="#4-3.-%ED%95%99%EC%8A%B5-%EB%95%8C-%EC%A0%80%EC%9E%A5%ED%95%9C-%ED%86%B5%EA%B3%84%EB%A1%9C-%EC%9E%85%EB%A0%A5-%EC%A0%95%EA%B7%9C%ED%99%94">¶</a></h2><h3 id="%ED%95%A8%EC%88%98-prepare_inputs">함수 <code>prepare_inputs</code><a class="anchor-link" href="#%ED%95%A8%EC%88%98-prepare_inputs">¶</a></h3><ul>
+<li><strong>기능:</strong> 각 특징에 <code>(x − 학습 자료의 평균) / 학습 자료의 표준편차</code>를 적용하고 PyTorch 텐서로 변환한다.</li>
+<li><strong>입력 인자:</strong> <code>features</code>, <code>structure</code> — 4-1의 입력, <code>normalizer</code> — 4-2에서 읽은 해당 모델의 통계.</li>
+<li><strong>반환값:</strong> <code>batch</code> — 모델에 전달할 특징·화자·순서·시간만 포함한 딕셔너리.</li>
 </ul>
 <p>시험 데이터에서 평균·표준편차를 다시 추정하지 않는다. 정답은 추론 완료 후 비교에만 사용한다.</p>
 </div>
@@ -8230,12 +8283,12 @@ va training: False
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4-4.-%EC%9D%B4%EC%82%B0%C2%B7%EC%97%B0%EC%86%8D-%EA%B0%90%EC%A0%95-%EC%8B%A4%EC%A0%9C-%EC%B6%94%EB%A1%A0">4-4. 이산·연속 감정 실제 추론<a class="anchor-link" href="#4-4.-%EC%9D%B4%EC%82%B0%C2%B7%EC%97%B0%EC%86%8D-%EA%B0%90%EC%A0%95-%EC%8B%A4%EC%A0%9C-%EC%B6%94%EB%A1%A0">¶</a></h2><h3 id="Function-predict_dialogue">Function <code>predict_dialogue</code><a class="anchor-link" href="#Function-predict_dialogue">¶</a></h3><ul>
+<h2 id="4-4.-%EC%9D%B4%EC%82%B0%C2%B7%EC%97%B0%EC%86%8D-%EA%B0%90%EC%A0%95-%EC%8B%A4%EC%A0%9C-%EC%B6%94%EB%A1%A0">4-4. 이산·연속 감정 실제 추론<a class="anchor-link" href="#4-4.-%EC%9D%B4%EC%82%B0%C2%B7%EC%97%B0%EC%86%8D-%EA%B0%90%EC%A0%95-%EC%8B%A4%EC%A0%9C-%EC%B6%94%EB%A1%A0">¶</a></h2><h3 id="%ED%95%A8%EC%88%98-predict_dialogue">함수 <code>predict_dialogue</code><a class="anchor-link" href="#%ED%95%A8%EC%88%98-predict_dialogue">¶</a></h3><ul>
 <li><strong>기능:</strong> <code>model(batch)</code>로 대화 전체를 추론한다.</li>
-<li><strong>Args:</strong> <code>model</code> — 로딩한 모델, <code>batch</code> — 정규화 입력, <code>task</code> — 과제 구분.</li>
-<li><strong>Returns:</strong> 분류는 <code>[발화 수, 7]</code> 확률, 회귀는 <code>[발화 수, 2]</code> V/A 예측.</li>
+<li><strong>입력 인자:</strong> <code>model</code> — 로딩한 모델, <code>batch</code> — 정규화 입력, <code>task</code> — 과제 구분.</li>
+<li><strong>반환값:</strong> 분류는 <code>[발화 수, 7]</code> 확률, 회귀는 <code>[발화 수, 2]</code> V/A 예측.</li>
 </ul>
-<p>분류는 Softmax 후 가장 큰 확률의 클래스를 선택한다. 회귀는 학습 시 정의한 <code>3 + 2×tanh(raw)</code>로 1~5 범위의 값을 얻는다.
+<p>분류는 소프트맥스 후 가장 큰 확률의 클래스를 선택한다. 회귀는 학습 시 정의한 <code>3 + 2×tanh(raw)</code>로 1~5 범위의 값을 얻는다.
 <code>torch.inference_mode()</code> 안에서 계산하므로 역전파·최적화 단계는 없다.</p>
 </div>
 </div>
@@ -8290,7 +8343,7 @@ V/A 예측 크기: (30, 2)
 <h2 id="4-5.-%EC%98%88%EC%8B%9C-%EB%B0%9C%ED%99%94%EC%9D%98-%EC%98%88%EC%B8%A1%EA%B3%BC-%EC%A0%95%EB%8B%B5-%EB%B9%84%EA%B5%90">4-5. 예시 발화의 예측과 정답 비교<a class="anchor-link" href="#4-5.-%EC%98%88%EC%8B%9C-%EB%B0%9C%ED%99%94%EC%9D%98-%EC%98%88%EC%B8%A1%EA%B3%BC-%EC%A0%95%EB%8B%B5-%EB%B9%84%EA%B5%90">¶</a></h2><p><strong>실행 내용:</strong> 동일 발화 ID를 기준으로 원본 감정·예측 클래스, 실제 V/A·예측 V/A를 한 표에 연결한다.
 분류·회귀 채점 포함 여부도 함께 표시한다. 화면에는 대화 순서의 첫 12개 발화를 보여준다.</p>
 <p><strong>확인:</strong> 원본 <code>xxx/fru/exc/oth</code>가 다른 감정으로 재라벨링되지 않고 분류 채점에서 제외되는지 확인한다.
-이 예시 표는 추론 동작 설명용이며 전체 5-fold 대표 점수는 다음 단계에서 계산한다.</p>
+이 예시 표는 추론 동작 설명용이며 전체 5겹 교차검증 대표 점수는 다음 단계에서 계산한다.</p>
 </div>
 </div>
 </div>
@@ -8345,13 +8398,13 @@ V/A 예측 크기: (30, 2)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="5.-%EC%A0%84%EC%B2%B4-5-fold-%ED%8F%89%EA%B0%80">5. 전체 5-fold 평가<a class="anchor-link" href="#5.-%EC%A0%84%EC%B2%B4-5-fold-%ED%8F%89%EA%B0%80">¶</a></h1><h2 id="5-1.-%ED%95%99%EC%8A%B5-%EC%99%84%EB%A3%8C-10%EA%B0%9C-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%A0%84%EC%B2%B4-%EC%8B%9C%ED%97%98-%EC%84%B8%EC%85%98-%EC%B6%94%EB%A1%A0">5-1. 학습 완료 10개 모델로 전체 시험 세션 추론<a class="anchor-link" href="#5-1.-%ED%95%99%EC%8A%B5-%EC%99%84%EB%A3%8C-10%EA%B0%9C-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%A0%84%EC%B2%B4-%EC%8B%9C%ED%97%98-%EC%84%B8%EC%85%98-%EC%B6%94%EB%A1%A0">¶</a></h2><h3 id="Function-demo.run">Function <code>demo.run</code><a class="anchor-link" href="#Function-demo.run">¶</a></h3><ul>
-<li><strong>기능:</strong> 4단계에서 살펴본 가중치 로딩·정규화·추론을 과제별 5개 fold에 적용하고 결과를 저장한다.</li>
-<li><strong>Args:</strong> <code>output</code> — 새 결과 폴더, <code>device</code> — <code>cpu</code>, <code>threads</code> — CPU 스레드 수 4.</li>
-<li><strong>Returns:</strong> 결과 폴더 경로. 폴더에 fold별 예측, OOF 예측, 지표, 정답 비교표, HTML 보고서를 생성한다.</li>
+<h1 id="5.-%EC%A0%84%EC%B2%B4-5%EA%B2%B9-%EA%B5%90%EC%B0%A8%EA%B2%80%EC%A6%9D-%ED%8F%89%EA%B0%80">5. 전체 5겹 교차검증 평가<a class="anchor-link" href="#5.-%EC%A0%84%EC%B2%B4-5%EA%B2%B9-%EA%B5%90%EC%B0%A8%EA%B2%80%EC%A6%9D-%ED%8F%89%EA%B0%80">¶</a></h1><h2 id="5-1.-%ED%95%99%EC%8A%B5-%EC%99%84%EB%A3%8C-10%EA%B0%9C-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%A0%84%EC%B2%B4-%EC%8B%9C%ED%97%98-%EC%84%B8%EC%85%98-%EC%B6%94%EB%A1%A0">5-1. 학습 완료 10개 모델로 전체 시험 세션 추론<a class="anchor-link" href="#5-1.-%ED%95%99%EC%8A%B5-%EC%99%84%EB%A3%8C-10%EA%B0%9C-%EB%AA%A8%EB%8D%B8%EB%A1%9C-%EC%A0%84%EC%B2%B4-%EC%8B%9C%ED%97%98-%EC%84%B8%EC%85%98-%EC%B6%94%EB%A1%A0">¶</a></h2><h3 id="%ED%95%A8%EC%88%98-demo.run">함수 <code>demo.run</code><a class="anchor-link" href="#%ED%95%A8%EC%88%98-demo.run">¶</a></h3><ul>
+<li><strong>기능:</strong> 4단계에서 살펴본 가중치 로딩·정규화·추론을 과제별 5개 폴드에 적용하고 결과를 저장한다.</li>
+<li><strong>입력 인자:</strong> <code>output</code> — 새 결과 폴더, <code>device</code> — <code>cpu</code>, <code>threads</code> — CPU 스레드 수 4.</li>
+<li><strong>반환값:</strong> 결과 폴더 경로. 폴더에 폴드별 예측, OOF 예측, 지표, 정답 비교표, HTML 보고서를 생성한다.</li>
 </ul>
-<p>내부 순서는 <strong>과제 선택 → Fold k 가중치 로딩 → Session k의 대화별 추론 → 정답 비교 → 5-fold 집계</strong>다.
-현장에서 5-fold 학습을 다시 하는 과정이 아니다. 저장된 과거 예측을 답으로 출력하지 않고 실제 <code>forward()</code>를 실행한다.</p>
+<p>내부 순서는 <strong>과제 선택 → k번 폴드 가중치 로딩 → k번 세션의 대화별 추론 → 정답 비교 → 5겹 교차검증 집계</strong>다.
+현장에서 5겹 교차검증 학습을 다시 하는 과정이 아니다. 저장된 과거 예측을 답으로 출력하지 않고 실제 <code>forward()</code>를 실행한다.</p>
 <p><strong>확인:</strong> 분류 5줄·회귀 5줄의 진행 결과와 최종 요약이 출력된다. 재실행마다 새 폴더를 만들므로 이전 결과를 덮어쓰지 않는다.</p>
 </div>
 </div>
@@ -8485,9 +8538,9 @@ Results: /tmp/iemocap_notebook_nspiyo1w/IEMOCAP_Official_Demo/results/notebook_2
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="5-2.-Fold%EB%B3%84-%EC%84%B1%EB%8A%A5-%ED%99%95%EC%9D%B8">5-2. Fold별 성능 확인<a class="anchor-link" href="#5-2.-Fold%EB%B3%84-%EC%84%B1%EB%8A%A5-%ED%99%95%EC%9D%B8">¶</a></h2><p>이산 감정은 Accuracy·Weighted F1, 연속 감정은 CCC-Valence·CCC-Arousal·두 차원의 평균 CCC를 표시한다.
-각 fold의 분류·회귀 채점 표본 수를 같이 확인한다. 분류와 회귀의 점수를 합쳐 새로운 혼합 지표를 만들지 않는다.</p>
-<p><strong>확인:</strong> Fold 1~5의 5개 행, 분류 채점 수 합계 4,639, V/A 채점 수 합계 10,035다.</p>
+<h2 id="5-2.-%ED%8F%B4%EB%93%9C%EB%B3%84-%EC%84%B1%EB%8A%A5-%ED%99%95%EC%9D%B8">5-2. 폴드별 성능 확인<a class="anchor-link" href="#5-2.-%ED%8F%B4%EB%93%9C%EB%B3%84-%EC%84%B1%EB%8A%A5-%ED%99%95%EC%9D%B8">¶</a></h2><p>이산 감정은 정확도·가중 F1, 연속 감정은 정서가 CCC·각성도 CCC·두 차원의 평균 CCC를 표시한다.
+각 폴드의 분류·회귀 채점 표본 수를 같이 확인한다. 분류와 회귀의 점수를 합쳐 새로운 혼합 지표를 만들지 않는다.</p>
+<p><strong>확인:</strong> 1~5번 폴드의 5개 행, 분류 채점 수 합계 4,639, V/A 채점 수 합계 10,035다.</p>
 </div>
 </div>
 </div>
@@ -8532,19 +8585,19 @@ Results: /tmp/iemocap_notebook_nspiyo1w/IEMOCAP_Official_Demo/results/notebook_2
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="5-3.-%EC%A7%80%ED%91%9C-%EA%B3%84%EC%82%B0-%EC%9B%90%EB%A6%AC%EC%99%80-%EB%8F%85%EB%A6%BD-%EC%9E%AC%EA%B3%84%EC%82%B0">5-3. 지표 계산 원리와 독립 재계산<a class="anchor-link" href="#5-3.-%EC%A7%80%ED%91%9C-%EA%B3%84%EC%82%B0-%EC%9B%90%EB%A6%AC%EC%99%80-%EB%8F%85%EB%A6%BD-%EC%9E%AC%EA%B3%84%EC%82%B0">¶</a></h2><p>분류의 Weighted F1은 클래스별 F1에 정답 표본 비율을 곱해 더한다.</p>
+<h2 id="5-3.-%EC%A7%80%ED%91%9C-%EA%B3%84%EC%82%B0-%EC%9B%90%EB%A6%AC%EC%99%80-%EB%8F%85%EB%A6%BD-%EC%9E%AC%EA%B3%84%EC%82%B0">5-3. 지표 계산 원리와 독립 재계산<a class="anchor-link" href="#5-3.-%EC%A7%80%ED%91%9C-%EA%B3%84%EC%82%B0-%EC%9B%90%EB%A6%AC%EC%99%80-%EB%8F%85%EB%A6%BD-%EC%9E%AC%EA%B3%84%EC%82%B0">¶</a></h2><p>분류의 가중 F1은 클래스별 F1에 정답 표본 비율을 곱해 더한다.</p>
 <p>[
 F1_{weighted}=\sum_{c=1}^{7}\frac{n_c}{N}\frac{2TP_c}{2TP_c+FP_c+FN_c}
 ]</p>
-<p>연속 감정은 Valence와 Arousal 각각 다음 CCC를 구한 후 평균한다. 분산·공분산은 모집단 정의(<code>ddof=0</code>)를 사용한다.</p>
+<p>연속 감정은 정서가와 각성도 각각 다음 CCC를 구한 후 평균한다. 분산·공분산은 모집단 정의(<code>ddof=0</code>)를 사용한다.</p>
 <p>[
 CCC(y,p)=\frac{2\operatorname{cov}(y,p)}{\operatorname{var}(y)+\operatorname{var}(p)+(\bar y-\bar p)^2}
 ]</p>
-<h3 id="Function-calculate_ccc">Function <code>calculate_ccc</code><a class="anchor-link" href="#Function-calculate_ccc">¶</a></h3><ul>
-<li><strong>Args:</strong> <code>truth</code>, <code>prediction</code> — 유효 표본의 한 차원 정답·예측 배열.</li>
-<li><strong>Returns:</strong> float64로 재계산한 CCC. 분모가 0인 퇴화 입력은 오류로 중단한다.</li>
+<h3 id="%ED%95%A8%EC%88%98-calculate_ccc">함수 <code>calculate_ccc</code><a class="anchor-link" href="#%ED%95%A8%EC%88%98-calculate_ccc">¶</a></h3><ul>
+<li><strong>입력 인자:</strong> <code>truth</code>, <code>prediction</code> — 유효 표본의 한 차원 정답·예측 배열.</li>
+<li><strong>반환값:</strong> 64비트 부동소수점으로 재계산한 CCC. 분모가 0인 퇴화 입력은 오류로 중단한다.</li>
 </ul>
-<p><strong>실행 내용:</strong> 방금 저장한 fold별 예측을 읽어 sklearn 분류 지표 및 위 CCC 식으로 재계산한다.
+<p><strong>실행 내용:</strong> 방금 저장한 폴드별 예측을 읽어 sklearn 분류 지표 및 위 CCC 식으로 재계산한다.
 원래 계산된 지표와 오차 <code>1e-10</code> 이내인지 확인한다. 이 오차는 동일한 저장 예측의 채점 구현 비교용이다.</p>
 </div>
 </div>
@@ -8607,9 +8660,9 @@ CCC(y,p)=\frac{2\operatorname{cov}(y,p)}{\operatorname{var}(y)+\operatorname{var
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="5-4.-5-fold-%ED%8F%89%EA%B7%A0%EA%B3%BC-%ED%91%9C%EB%B3%B8%ED%91%9C%EC%A4%80%ED%8E%B8%EC%B0%A8">5-4. 5-fold 평균과 표본표준편차<a class="anchor-link" href="#5-4.-5-fold-%ED%8F%89%EA%B7%A0%EA%B3%BC-%ED%91%9C%EB%B3%B8%ED%91%9C%EC%A4%80%ED%8E%B8%EC%B0%A8">¶</a></h2><p>대표 결과는 **5개 fold 지표의 산술평균 ± 표본SD(<code>ddof=1</code>)**다.
-전체 OOF 예측을 한꺼번에 합친 점수는 표본 가중이 달라 별도 보조 값으로 저장하며 이 표와 혼동하지 않는다.</p>
-<p><strong>확인:</strong> 5개 대표 지표가 표시된다. Accuracy와 Weighted F1은 0~1 값이며 백분율 표기는 100을 곱한다.</p>
+<h2 id="5-4.-5%EA%B2%B9-%EA%B5%90%EC%B0%A8%EA%B2%80%EC%A6%9D-%ED%8F%89%EA%B7%A0%EA%B3%BC-%ED%91%9C%EB%B3%B8%ED%91%9C%EC%A4%80%ED%8E%B8%EC%B0%A8">5-4. 5겹 교차검증 평균과 표본표준편차<a class="anchor-link" href="#5-4.-5%EA%B2%B9-%EA%B5%90%EC%B0%A8%EA%B2%80%EC%A6%9D-%ED%8F%89%EA%B7%A0%EA%B3%BC-%ED%91%9C%EB%B3%B8%ED%91%9C%EC%A4%80%ED%8E%B8%EC%B0%A8">¶</a></h2><p>대표 결과는 **5개 폴드 지표의 산술평균 ± 표본표준편차(<code>ddof=1</code>)**다.
+전체 OOF 예측을 한꺼번에 합친 점수는 표본 수에 따른 가중치가 달라 별도 보조 지표로 저장하며 이 표와 혼동하지 않는다.</p>
+<p><strong>확인:</strong> 5개 대표 지표가 표시된다. 정확도와 가중 F1은 0~1 값이며 백분율 표기는 100을 곱한다.</p>
 </div>
 </div>
 </div>
@@ -8655,8 +8708,8 @@ CCC(y,p)=\frac{2\operatorname{cov}(y,p)}{\operatorname{var}(y)+\operatorname{var
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="6.-%EA%B2%B0%EA%B3%BC-%EC%8B%9C%EA%B0%81%ED%99%94">6. 결과 시각화<a class="anchor-link" href="#6.-%EA%B2%B0%EA%B3%BC-%EC%8B%9C%EA%B0%81%ED%99%94">¶</a></h1><h2 id="6-1.-Fold%EB%B3%84-%EB%B6%84%EB%A5%98%C2%B7%ED%9A%8C%EA%B7%80-%EC%84%B1%EB%8A%A5">6-1. Fold별 분류·회귀 성능<a class="anchor-link" href="#6-1.-Fold%EB%B3%84-%EB%B6%84%EB%A5%98%C2%B7%ED%9A%8C%EA%B7%80-%EC%84%B1%EB%8A%A5">¶</a></h2><p>왼쪽은 Accuracy·Weighted F1, 오른쪽은 CCC-V·CCC-A·평균 CCC다.
-방금 계산한 5개 fold 값을 그대로 그린다. 가로축은 학습 epoch가 아니라 <strong>시험 fold 번호</strong>다.
+<h1 id="6.-%EA%B2%B0%EA%B3%BC-%EC%8B%9C%EA%B0%81%ED%99%94">6. 결과 시각화<a class="anchor-link" href="#6.-%EA%B2%B0%EA%B3%BC-%EC%8B%9C%EA%B0%81%ED%99%94">¶</a></h1><h2 id="6-1.-%ED%8F%B4%EB%93%9C%EB%B3%84-%EB%B6%84%EB%A5%98%C2%B7%ED%9A%8C%EA%B7%80-%EC%84%B1%EB%8A%A5">6-1. 폴드별 분류·회귀 성능<a class="anchor-link" href="#6-1.-%ED%8F%B4%EB%93%9C%EB%B3%84-%EB%B6%84%EB%A5%98%C2%B7%ED%9A%8C%EA%B7%80-%EC%84%B1%EB%8A%A5">¶</a></h2><p>왼쪽은 정확도·가중 F1, 오른쪽은 CCC-V·CCC-A·평균 CCC다.
+방금 계산한 5개 폴드 값을 그대로 그린다. 가로축은 학습 에포크가 아니라 <strong>시험 폴드 번호</strong>다.
 matplotlib 기본 색상·스타일을 사용하고 평활화하지 않는다. PNG와 PDF를 결과 폴더에 저장한다.</p>
 </div>
 </div>
@@ -8709,7 +8762,7 @@ matplotlib 기본 색상·스타일을 사용하고 평활화하지 않는다. P
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="6-2.-%EC%98%88%EC%8B%9C-%EB%8C%80%ED%99%94%EC%9D%98-Valence/Arousal-%EC%A0%95%EB%8B%B5%C2%B7%EC%98%88%EC%B8%A1">6-2. 예시 대화의 Valence/Arousal 정답·예측<a class="anchor-link" href="#6-2.-%EC%98%88%EC%8B%9C-%EB%8C%80%ED%99%94%EC%9D%98-Valence/Arousal-%EC%A0%95%EB%8B%B5%C2%B7%EC%98%88%EC%B8%A1">¶</a></h2><p>4단계에서 사전에 정한 동일 대화의 결과를 발화 순서로 표시한다.
+<h2 id="6-2.-%EC%98%88%EC%8B%9C-%EB%8C%80%ED%99%94%EC%9D%98-%EC%A0%95%EC%84%9C%EA%B0%80%C2%B7%EA%B0%81%EC%84%B1%EB%8F%84-%EC%A0%95%EB%8B%B5%C2%B7%EC%98%88%EC%B8%A1">6-2. 예시 대화의 정서가·각성도 정답·예측<a class="anchor-link" href="#6-2.-%EC%98%88%EC%8B%9C-%EB%8C%80%ED%99%94%EC%9D%98-%EC%A0%95%EC%84%9C%EA%B0%80%C2%B7%EA%B0%81%EC%84%B1%EB%8F%84-%EC%A0%95%EB%8B%B5%C2%B7%EC%98%88%EC%B8%A1">¶</a></h2><p>4단계에서 사전에 정한 동일 대화의 결과를 발화 순서로 표시한다.
 점은 발화 단위 값이고 연결선은 순서를 보여주기 위한 시각적 보조다. 프레임별 정답이나 보간한 연속 주석이 아니다.
 범위 밖 정답은 그래프 채점 대상으로 사용하지 않도록 마스킹한다.</p>
 <p><strong>확인:</strong> 정답과 예측이 항상 같게 보이도록 수정하거나 좋은 구간만 고르지 않는다. 전체 예시 대화를 표시한다.</p>
@@ -8814,15 +8867,15 @@ matplotlib 기본 색상·스타일을 사용하고 평활화하지 않는다. P
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="7-2.-%EC%A0%84%EC%B2%B4-%EC%A0%80%EC%9E%A5-%EC%98%88%EC%B8%A1%EC%9D%98-%EB%8F%85%EB%A6%BD-%EA%B0%90%EC%82%AC">7-2. 전체 저장 예측의 독립 감사<a class="anchor-link" href="#7-2.-%EC%A0%84%EC%B2%B4-%EC%A0%80%EC%9E%A5-%EC%98%88%EC%B8%A1%EC%9D%98-%EB%8F%85%EB%A6%BD-%EA%B0%90%EC%82%AC">¶</a></h2><h3 id="Function-audit_demo.audit">Function <code>audit_demo.audit</code><a class="anchor-link" href="#Function-audit_demo.audit">¶</a></h3><ul>
-<li><strong>기능:</strong> 실제 저장 예측을 독립적으로 채점하고 원래 동결 예측과 대조한다. ID·정답·채점 마스크·전체 OOF 중복 여부도 검사한다.</li>
-<li><strong>Args:</strong> <code>output</code> — 이번 실행 결과 폴더 <code>OUT</code>.</li>
-<li><strong>Returns:</strong> <code>audit_result</code> — 통과 여부와 fold별 수치 차이. <code>independent_audit.json</code>도 저장한다.</li>
+<h2 id="7-2.-%EC%A0%84%EC%B2%B4-%EC%A0%80%EC%9E%A5-%EC%98%88%EC%B8%A1%EC%9D%98-%EB%8F%85%EB%A6%BD-%EA%B0%90%EC%82%AC">7-2. 전체 저장 예측의 독립 감사<a class="anchor-link" href="#7-2.-%EC%A0%84%EC%B2%B4-%EC%A0%80%EC%9E%A5-%EC%98%88%EC%B8%A1%EC%9D%98-%EB%8F%85%EB%A6%BD-%EA%B0%90%EC%82%AC">¶</a></h2><h3 id="%ED%95%A8%EC%88%98-audit_demo.audit">함수 <code>audit_demo.audit</code><a class="anchor-link" href="#%ED%95%A8%EC%88%98-audit_demo.audit">¶</a></h3><ul>
+<li><strong>기능:</strong> 실제 저장 예측을 독립적으로 채점하고 원래 확정된 예측과 대조한다. ID·정답·채점 마스크·전체 OOF 중복 여부도 검사한다.</li>
+<li><strong>입력 인자:</strong> <code>output</code> — 이번 실행 결과 폴더 <code>OUT</code>.</li>
+<li><strong>반환값:</strong> <code>audit_result</code> — 통과 여부와 폴드별 수치 차이. <code>independent_audit.json</code>도 저장한다.</li>
 </ul>
 <p>같은 저장 예측에서 다시 계산한 지표의 허용 오차는 <code>1e-10</code>이다.
-이전에 GPU로 계산한 예측과 현재 CPU 예측의 비교에는 float32 연산 차이를 고려해 최대 절대 차이 <code>1e-4</code>를 적용하며,
+이전에 GPU로 계산한 예측과 현재 CPU 예측의 비교에는 32비트 부동소수점 연산 차이를 고려해 최대 절대 차이 <code>1e-4</code>를 적용하며,
 분류 클래스 결정은 정확히 일치해야 한다. 허용 오차는 실행 후 점수에 맞춰 바꾸지 않는다.</p>
-<p><strong>확인:</strong> 10개 fold와 10,039개 비교 행이 <code>PASS</code>로 출력되어야 한다.</p>
+<p><strong>확인:</strong> 10개 폴드와 10,039개 비교 행이 <code>PASS</code>로 출력되어야 한다.</p>
 </div>
 </div>
 </div>
@@ -8869,8 +8922,8 @@ matplotlib 기본 색상·스타일을 사용하고 평활화하지 않는다. P
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="7-3.-%EC%A0%84%EC%B2%B4-%EC%A0%95%EB%8B%B5-%EB%B9%84%EA%B5%90%ED%91%9C%EC%99%80-%EA%B2%B0%EA%B3%BC-%ED%8C%8C%EC%9D%BC-%ED%99%95%EC%9D%B8">7-3. 전체 정답 비교표와 결과 파일 확인<a class="anchor-link" href="#7-3.-%EC%A0%84%EC%B2%B4-%EC%A0%95%EB%8B%B5-%EB%B9%84%EA%B5%90%ED%91%9C%EC%99%80-%EA%B2%B0%EA%B3%BC-%ED%8C%8C%EC%9D%BC-%ED%99%95%EC%9D%B8">¶</a></h2><p><code>utterance_comparison.csv</code>에는 전체 10,039발화의 이산·연속 정답과 예측, 채점 여부가 포함된다.
-<code>report.html</code>은 fold·발화 ID·텍스트를 검색할 수 있는 비교 화면이다. 노트북을 저장하면 셀 아래 출력도 함께 보존된다.</p>
+<h2 id="7-3.-%EC%A0%84%EC%B2%B4-%EC%A0%95%EB%8B%B5-%EB%B9%84%EA%B5%90%ED%91%9C%EC%99%80-%EA%B2%B0%EA%B3%BC-%ED%8C%8C%EC%9D%BC-%ED%99%95%EC%9D%B8">7-3. 전체 정답 비교표와 결과 파일 확인<a class="anchor-link" href="#7-3.-%EC%A0%84%EC%B2%B4-%EC%A0%95%EB%8B%B5-%EB%B9%84%EA%B5%90%ED%91%9C%EC%99%80-%EA%B2%B0%EA%B3%BC-%ED%8C%8C%EC%9D%BC-%ED%99%95%EC%9D%B8">¶</a></h2><p><code>utterance_comparison.csv</code>에는 전체 10,039개 발화의 이산·연속 정답과 예측, 채점 여부가 포함된다.
+<code>report.html</code>은 폴드·발화 ID·텍스트를 검색할 수 있는 비교 화면이다. 노트북을 저장하면 셀 아래 출력도 함께 보존된다.</p>
 <table>
 <thead>
 <tr>
@@ -8881,7 +8934,7 @@ matplotlib 기본 색상·스타일을 사용하고 평활화하지 않는다. P
 <tbody>
 <tr>
 <td><code>summary.json</code>, <code>summary.txt</code>, <code>fold_metrics.csv</code></td>
-<td>전체 지표와 fold별 점수</td>
+<td>전체 지표와 폴드별 점수</td>
 </tr>
 <tr>
 <td><code>classification_fold*.npz</code>, <code>va_fold*.npz</code>, <code>*_oof.npz</code></td>
@@ -8893,7 +8946,7 @@ matplotlib 기본 색상·스타일을 사용하고 평활화하지 않는다. P
 </tr>
 <tr>
 <td><code>figures/</code></td>
-<td>fold별 성능과 예시 V/A 그래프 PNG/PDF</td>
+<td>폴드별 성능과 예시 V/A 그래프 PNG/PDF</td>
 </tr>
 <tr>
 <td><code>preflight.json</code>, <code>notebook_example_audit.json</code>, <code>independent_audit.json</code></td>
@@ -8957,13 +9010,13 @@ matplotlib 기본 색상·스타일을 사용하고 평활화하지 않는다. P
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="8.-%ED%98%84%EC%9E%A5-%EC%84%A4%EB%AA%85-%EB%AC%B8%EA%B5%AC%EC%99%80-%ED%95%B4%EC%84%9D-%EB%B2%94%EC%9C%84">8. 현장 설명 문구와 해석 범위<a class="anchor-link" href="#8.-%ED%98%84%EC%9E%A5-%EC%84%A4%EB%AA%85-%EB%AC%B8%EA%B5%AC%EC%99%80-%ED%95%B4%EC%84%9D-%EB%B2%94%EC%9C%84">¶</a></h1><blockquote>
-<p>학습이 완료된 이산 감정 분류 모델과 연속 감정 회귀 모델의 fold별 가중치를 불러옵니다.
-IEMOCAP의 5개 세션으로 구성한 5-fold 평가에서 각 fold의 학습·개발에 사용하지 않은 시험 세션의 멀티모달 특징을 입력합니다.
-예측 감정 클래스와 원본 감정 라벨을 비교해 Weighted F1을 산출하고, 예측 Valence/Arousal과 원본 발화별 주석을 비교해 각 차원의 CCC 및 평균 CCC를 산출합니다.
+<p>학습이 완료된 이산 감정 분류 모델과 연속 감정 회귀 모델의 폴드별 가중치를 불러옵니다.
+IEMOCAP의 5개 세션으로 구성한 5겹 교차검증 평가에서 각 폴드의 학습·개발에 사용하지 않은 시험 세션의 멀티모달 특징을 입력합니다.
+예측 감정 클래스와 원본 감정 라벨을 비교해 가중 F1을 산출하고, 예측 정서가·각성도와 원본 발화별 주석을 비교해 각 차원의 CCC 및 평균 CCC를 산출합니다.
 현장에서는 재학습이나 모델 선택 없이 추론과 채점만 수행합니다.</p>
 </blockquote>
-<p>이 결과는 <strong>IEMOCAP 통제 환경의 발화 단위 예비 검증</strong>이다. 자체 수집 자료의 어노테이션 성능, 실환경(in-the-wild),
-프레임 단위 연속 감정 검증, 완전히 새로운 blind test 또는 기관 인증 완료로 표현하지 않는다.
+<p>이 결과는 <strong>IEMOCAP 통제 환경의 발화 단위 예비 검증</strong>이다. 자체 수집 자료의 어노테이션 성능, 실환경,
+프레임 단위 연속 감정 검증, 새로운 자료를 이용한 독립 시험 또는 기관 인증 완료로 표현하지 않는다.
 대화 내부 양방향 문맥을 사용하며 실시간 인과 추론을 검증한 결과도 아니다.</p>
 <p>분류와 회귀는 별도 학습 모델이며 정답 표본 수가 다르다. 이산·연속 결과를 같은 표에서 보여주는 것은 발화 ID를 이용한 연결이며,
 공동 멀티태스크 학습이나 모델 예측을 정답으로 삼은 자체 어노테이션 검증을 의미하지 않는다.</p>
