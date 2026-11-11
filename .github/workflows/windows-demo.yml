@@ -11,7 +11,7 @@ jobs:
     runs-on: windows-2022
     timeout-minutes: 25
     env:
-      PYTHONUTF8: "1"
+      PYTHONUTF8: "0"
       PYTHONIOENCODING: "utf-8"
       JUPYTER_PREFER_ENV_PATH: "1"
     steps:
@@ -31,15 +31,28 @@ jobs:
           shutil.copytree('IEMOCAP_Official_Demo', root, ignore=shutil.ignore_patterns('results', '.venv', '__pycache__', '.ipynb_checkpoints'))
           with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as stream:
               stream.write(f'DEMO_ROOT={root}\n')
-      - name: Run the Windows installer
-        shell: cmd
-        run: call "%DEMO_ROOT%\setup_windows.cmd" --non-interactive
-      - name: Check the launcher and kernel
-        shell: cmd
-        run: call "%DEMO_ROOT%\start_windows.cmd" --non-interactive --check-only
+      - name: Create the project environment and install the unified requirements
+        shell: pwsh
+        run: |
+          python -m venv "$env:DEMO_ROOT\.venv"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & "$env:DEMO_ROOT\.venv\Scripts\python.exe" -m pip install --upgrade pip==25.3
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & "$env:DEMO_ROOT\.venv\Scripts\python.exe" -m pip install -r "$env:DEMO_ROOT\requirements.txt"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & "$env:DEMO_ROOT\.venv\Scripts\python.exe" -m pip check
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & "$env:DEMO_ROOT\.venv\Scripts\python.exe" -m ipykernel install --sys-prefix --name python3
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & "$env:DEMO_ROOT\.venv\Scripts\python.exe" "$env:DEMO_ROOT\code\run_demo.py" verify
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Install browser validation tools
-        shell: cmd
-        run: '"%DEMO_ROOT%\.venv\Scripts\python.exe" -m pip install playwright==1.65.0'
+        shell: pwsh
+        run: |
+          & "$env:DEMO_ROOT\.venv\Scripts\python.exe" -m pip install playwright==1.65.0
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & "$env:DEMO_ROOT\.venv\Scripts\python.exe" -m pip check
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Run the notebook and Windows Edge playback check
         shell: pwsh
         run: |

@@ -14,21 +14,16 @@ import math
 import os
 from pathlib import Path
 import platform
-import socket
 import struct
-import subprocess
 import sys
-import tempfile
 import threading
 import time
 import traceback
-from urllib.error import HTTPError, URLError
-from urllib.parse import quote, urlsplit
-from urllib.request import Request, urlopen
+from urllib.parse import quote
 
 
 sys.dont_write_bytecode = True
-KERNEL_NAME = "iemocap-demo-windows"
+KERNEL_NAME = "python3"
 
 
 def require(condition, message):
@@ -70,153 +65,6 @@ class QuietHandler(SimpleHTTPRequestHandler):
     # HTTP 요청은 현재 PC의 임의 포트로만 받으며 별도 접근 로그를 남기지 않음.
     def log_message(self, format, *args):
         pass
-
-
-# 전용 설정으로 실제 서버를 시작하고 런타임 기록의 토큰으로 API를 확인함.
-# 토큰은 메모리와 서버 임시 기록에서만 사용하며 표준 출력·보고서에 넣지 않음.
-def check_jupyter_server(package, diagnostics):
-    config = package / "jupyter_lab_config.py"
-    require(config.is_file(), "The dedicated JupyterLab configuration is missing")
-    with socket.socket() as listener:
-        listener.bind(("127.0.0.1", 0))
-        port = listener.getsockname()[1]
-    command = [sys.executable, "-m", "jupyterlab", "--config", str(config),
-               "--no-browser", "--ip=127.0.0.1", "--port", str(port), "--ServerApp.port_retries=0"]
-    result, base_url, token = None, None, None
-    started = time.perf_counter()
-    diagnostics.update(passed=False, expected_port=port, isolated_runtime=True,
-                       runtime_candidate_count=0, candidates=[], parse_errors=0)
-    with tempfile.TemporaryDirectory(prefix="iemocap-jupyter-runtime-") as runtime:
-        environment = os.environ.copy()
-        environment["JUPYTER_RUNTIME_DIR"] = runtime
-        # Jupyter 기본 시작 메시지에는 인증 URL이 포함될 수 있으므로 저장하지 않음.
-        process = subprocess.Popen(command, cwd=package, env=environment, stdin=subprocess.DEVNULL,
-                                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                                   creationflags=subprocess.CREATE_NO_WINDOW)
-        diagnostics["launcher_pid"] = process.pid
-        server_info = None
-
-        def api(endpoint, method="GET"):
-            request = Request(base_url + endpoint.lstrip("/"),
-                              data=b"{}" if method == "POST" else None, method=method,
-                              headers={"Authorization": "token " + token, "Content-Type": "application/json"})
-            diagnostics["last_api_endpoint"] = endpoint
-            try:
-                with urlopen(request, timeout=5) as response:
-                    body = response.read()
-                    return response.status, json.loads(body.decode("utf-8")) if body else {}
-            except HTTPError as error:
-                diagnostics["last_http_error_code"] = error.code
-                raise
-            except (URLError, TimeoutError) as error:
-                diagnostics["last_connection_error_type"] = type(error).__name__
-                raise
-
-        def port_open():
-            try:
-                with socket.create_connection(("127.0.0.1", port), timeout=0.5):
-                    return True
-            except OSError:
-                return False
-
-        def stop_tree(pid):
-            # Windows 가상환경 실행기와 실제 서버의 PID가 다를 수 있어 자식까지 종료함.
-            try:
-                stopped = subprocess.run(["taskkill", "/PID", str(pid), "/T", "/F"],
-                                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=15)
-                diagnostics.setdefault("tree_termination", []).append({"pid": pid, "returncode": stopped.returncode})
-            except subprocess.TimeoutExpired:
-                diagnostics.setdefault("tree_termination", []).append({"pid": pid, "timed_out": True})
-
-        try:
-            deadline = time.monotonic() + 60
-            status = None
-            while time.monotonic() < deadline:
-                diagnostics["launcher_returncode"] = process.poll()
-                paths = list(Path(runtime).glob("jpserver-*.json"))
-                diagnostics["runtime_candidate_count"] = len(paths)
-                diagnostics["candidates"] = []
-                for path in paths:
-                    try:
-                        candidate = read_json(path)
-                        parsed = urlsplit(candidate["url"])
-                        root_matches = Path(candidate["root_dir"]).resolve() == package
-                        port_matches = candidate.get("port") == port and parsed.port == port
-                        loopback = parsed.scheme == "http" and parsed.hostname in ("127.0.0.1", "localhost")
-                    except (OSError, ValueError, KeyError, TypeError):
-                        diagnostics["parse_errors"] += 1
-                        continue
-                    diagnostics["candidates"].append(dict(file=path.name, pid=candidate.get("pid"),
-                        port=candidate.get("port"), root_matches_package=root_matches,
-                        requested_port_matches=port_matches, loopback=loopback))
-                    # 다른 서버가 쓰지 않는 임시 폴더와 요청 포트·패키지 경로로 식별함.
-                    # 가상환경 실행기의 부모 PID와 같다는 조건은 사용하지 않음.
-                    if root_matches and port_matches and loopback:
-                        server_info = candidate
-                        diagnostics["server_pid"] = candidate.get("pid")
-                        diagnostics["server_pid_matches_launcher"] = candidate.get("pid") == process.pid
-                        break
-                require(process.poll() is None or server_info is not None,
-                        f"JupyterLab launcher exited without a matching server (exit {process.returncode})")
-                if server_info is not None:
-                    parsed = urlsplit(server_info["url"])
-                    require(parsed.scheme == "http" and parsed.hostname in ("127.0.0.1", "localhost")
-                            and parsed.port == port, "The Jupyter server is not using the selected loopback address")
-                    base_url = f"http://127.0.0.1:{port}" + parsed.path.rstrip("/") + "/"
-                    token = server_info.get("token")
-                    require(isinstance(token, str) and bool(token), "The Jupyter server did not enable token authentication")
-                    try:
-                        status_code, status = api("api/status")
-                    except (HTTPError, URLError, TimeoutError):
-                        time.sleep(0.25)
-                        continue
-                    require(status_code == 200, "Jupyter /api/status did not return HTTP 200")
-                    diagnostics["status_http_code"] = status_code
-                    break
-                time.sleep(0.25)
-            require(status is not None, "JupyterLab did not become ready within 60 seconds")
-            require(Path(server_info["root_dir"]).resolve() == package, "The dedicated Jupyter root directory was not applied")
-            kernels_code, kernels = api("api/kernelspecs")
-            diagnostics.update(kernelspecs_http_code=kernels_code, observed_default_kernel=kernels.get("default"),
-                               observed_kernels=sorted(kernels.get("kernelspecs", {})))
-            require(kernels_code == 200 and kernels.get("default") == KERNEL_NAME,
-                    "The Jupyter API reports a different default kernel")
-            require(set(kernels.get("kernelspecs", {})) == {KERNEL_NAME},
-                    "The Jupyter API exposes kernels outside the dedicated configuration")
-            result = dict(passed=True, configuration=str(config), configuration_sha256=sha(config),
-                          loopback_only=True, status_http_code=status_code, kernelspecs_http_code=kernels_code,
-                          root_dir_matches_package=True, default_kernel=kernels["default"],
-                          available_kernels=sorted(kernels["kernelspecs"]),
-                          api_status={key: status.get(key) for key in ("connections", "kernels", "started", "last_activity")},
-                          startup_seconds=time.perf_counter() - started)
-        finally:
-            if base_url is not None and token is not None:
-                try:
-                    api("api/shutdown", method="POST")
-                except (HTTPError, URLError, TimeoutError, ValueError):
-                    pass
-            try:
-                process.wait(timeout=15)
-            except subprocess.TimeoutExpired:
-                stop_tree(process.pid)
-                try:
-                    process.wait(timeout=10)
-                except subprocess.TimeoutExpired:
-                    process.kill()
-                    process.wait(timeout=10)
-            if port_open() and server_info is not None:
-                server_pid = server_info.get("pid")
-                if isinstance(server_pid, int) and server_pid > 0:
-                    stop_tree(server_pid)
-            diagnostics.update(launcher_returncode=process.poll(), elapsed_seconds=time.perf_counter() - started,
-                               server_port_closed=not port_open())
-            require(process.poll() is not None, "The temporary JupyterLab server could not be stopped")
-            require(diagnostics["server_port_closed"], "The temporary JupyterLab server port is still open")
-            # 런타임 폴더는 이 블록 종료 시 삭제되며 인증 기록이 산출물에 남지 않음.
-    result.update(server_stopped=True, temporary_runtime_removed=True)
-    diagnostics.update(result)
-    result = diagnostics
-    return result
 
 
 # 실제 Microsoft Edge에서 재생 버튼을 누르고 시간 진행과 종료를 확인함.
@@ -314,7 +162,9 @@ def validate(package, output, report):
     require(Path(sys.prefix).resolve() == venv.resolve(), "The active Python prefix is not the package virtual environment")
     require(" " in str(package) and any(ord(c) > 127 for c in str(package)),
             "Use a package path containing both non-ASCII characters and a space")
-    sys.path.insert(0, str(package))
+    code_root = package / "code"
+    require(code_root.is_dir(), "The package code directory is missing")
+    sys.path.insert(0, str(code_root))
 
     import nbformat
     from nbclient import NotebookClient
@@ -336,14 +186,8 @@ def validate(package, output, report):
 
     before_inputs = snapshot_inputs(package)
     report["input_preservation"] = dict(files=len(before_inputs), before_sha256=snapshot_digest(before_inputs))
-    report["jupyterlab_server_api"] = {"passed": False}
-    try:
-        check_jupyter_server(package, report["jupyterlab_server_api"])
-    except Exception:
-        # 서버 설정 실패도 기록하되 독립적인 노트북·Edge 검증은 계속 진행함.
-        # 예외에는 토큰이나 인증 URL이 들어가지 않고 안전한 진단 필드만 남음.
-        report["jupyterlab_server_api"]["error"] = traceback.format_exc()
-    source_path = package / "현장시연.ipynb"
+    source_path = code_root / "현장시연.ipynb"
+    require(source_path.is_file(), "The notebook is missing from the package code directory")
     with source_path.open(encoding="utf-8") as stream:
         notebook = nbformat.read(stream, as_version=4)
     code_count = sum(cell.cell_type == "code" for cell in notebook.cells)
@@ -351,7 +195,7 @@ def validate(package, output, report):
     before_results = {path.resolve() for path in (package / "results").glob("notebook_*") if path.is_dir()}
     started = time.perf_counter()
     client = NotebookClient(notebook, timeout=900, kernel_name=KERNEL_NAME,
-                            resources={"metadata": {"path": str(package)}})
+                            resources={"metadata": {"path": str(code_root)}})
     # 실패한 셀 출력도 파일로 남겨 실제 Windows 환경의 오류를 확인할 수 있게 함.
     try:
         client.execute()
@@ -421,13 +265,9 @@ def validate(package, output, report):
     report["input_preservation"]["after_browser_sha256"] = snapshot_digest(final_inputs)
     report["scope"] = dict(native_windows=True, notebook_kernel_execution=True,
                            offline_edge_video_playback=True,
-                           jupyterlab_server_api=report["jupyterlab_server_api"]["passed"],
-                           jupyterlab_full_browser_ui=False,
                            new_training=False, original_model_audit_tolerances_preserved=True,
                            rgb_rounding_boundary_checks=True,
                            linux_byte_or_dtype_equality_required=False)
-    require(report["jupyterlab_server_api"]["passed"],
-            "JupyterLab server API validation failed; see jupyterlab_server_api diagnostics")
 
 
 def main():

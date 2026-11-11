@@ -11,20 +11,12 @@ venv/
 *.tar.gz
 *.log
 IEMOCAP_Official_Demo/results/*
-!IEMOCAP_Official_Demo/results/notebook_review_20261111/
-!IEMOCAP_Official_Demo/results/notebook_review_20261111/**
-!IEMOCAP_Official_Demo/results/notebook_media_preprocessing_20261111/
-!IEMOCAP_Official_Demo/results/notebook_media_preprocessing_20261111/**
-!IEMOCAP_Official_Demo/results/notebook_preprocessing00_20261111/
-!IEMOCAP_Official_Demo/results/notebook_preprocessing00_20261111/**
-!IEMOCAP_Official_Demo/results/notebook_preprocessing_long_20261111/
-!IEMOCAP_Official_Demo/results/notebook_preprocessing_long_20261111/**
-!IEMOCAP_Official_Demo/results/notebook_playback_utf8_20261111/
-!IEMOCAP_Official_Demo/results/notebook_playback_utf8_20261111/**
 
 
-!IEMOCAP_Official_Demo/results/notebook_windows_20261111/
-!IEMOCAP_Official_Demo/results/notebook_windows_20261111/**
+
+!IEMOCAP_Official_Demo/results/시험결과/
+!IEMOCAP_Official_Demo/results/시험결과/**
+.idea/
 
 # 공인시험 Word 문서는 로컬에서 관리함.
 *.docx

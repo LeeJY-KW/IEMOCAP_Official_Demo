@@ -1,6 +1,0 @@
-IEMOCAP | frozen Base | fresh inference | 5-fold mean +/- sample SD
-accuracy         0.776622 +/- 0.031902
-weighted_f1      0.773211 +/- 0.030954
-ccc_valence      0.750615 +/- 0.037333
-ccc_arousal      0.684792 +/- 0.017355
-mean_ccc         0.717703 +/- 0.022541
