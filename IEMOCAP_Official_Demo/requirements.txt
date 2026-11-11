@@ -1,5 +1,5 @@
-# Verified environment: Python 3.10.21, torch 2.7.1+cu118, numpy 1.23.5.
-# CPU inference is supported and is the default. No extractor downloads.
+# Python 3.10 x64. Windows setup installs the official torch 2.7.1+cpu wheel.
+# CPU inference is the default. Pretrained extractors are already prepared.
 torch==2.7.1
 numpy==1.23.5
 scikit-learn==1.6.1
@@ -11,6 +11,7 @@ ipykernel==6.30.1
 nbformat==5.10.4
 nbclient==0.10.2
 nbconvert==7.16.6
+jupyterlab==4.6.6
 
 # 원본 음성 전처리·운율 계산·로컬 텍스트 토큰화에 사용함.
 librosa==0.11.0

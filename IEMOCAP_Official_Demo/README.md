@@ -4,38 +4,36 @@
 
 IEMOCAP 통제 환경의 발화 단위 사람 주석을 정답으로 사용함. 이산 감정은 원본 감정 클래스와 비교해 가중 F1을 계산하고, 연속 감정은 원본 정서가·각성도와 비교해 각 차원의 CCC 및 평균 CCC를 계산함. 두 과제의 정답과 예측은 발화 ID로 연결해 한 표에서 확인함.
 
-## 바로 실행
+## Windows 설치와 실행
 
-현재 서버에서 검증된 인터프리터는 `/home/neuroai-server05/PycharmProjects/ICASSP_Hetero/.venv-emotionheart/bin/python`임. 아래 명령으로 해당 환경에서 바로 실행할 수 있음.
+Windows 64비트와 Python 3.10 64비트를 사용함. 저장소 전체를 내려받아 압축을 풀고, `setup_windows.cmd`와 `start_windows.cmd`가 있는 `IEMOCAP_Official_Demo` 폴더를 엶.
 
-```bash
-cd /home/neuroai-server05/PycharmProjects/감성_감정/공인인증/IEMOCAP_Official_Demo
-/home/neuroai-server05/PycharmProjects/ICASSP_Hetero/.venv-emotionheart/bin/python run_demo.py run
+1. 최초 한 번 `setup_windows.cmd`를 실행함. 이 폴더의 `.venv`에 CPU용 PyTorch와 `requirements.txt` 패키지를 설치하고 전용 Jupyter 커널을 등록함. 설치에는 인터넷 연결이 필요함.
+2. 설치가 끝나면 `start_windows.cmd`를 실행함. 파일 검사 후 브라우저에 JupyterLab과 `현장시연.ipynb`가 열림.
+3. 커널 이름이 **IEMOCAP Windows (Python 3.10)**인지 확인하고 위에서부터 셀을 실행함. 기존 오류로 중단된 경우에는 커널을 재시작한 뒤 전체 실행함.
+
+두 실행 파일은 자체 폴더를 작업 경로로 사용하고 UTF-8 모드를 설정함. Jupyter 서버와 커널 모두 `.venv\Scripts\python.exe`를 사용하며, 커널 목록에는 이 프로젝트의 전용 커널만 표시함. 전역 Python이나 다른 프로젝트의 커널이 섞이면 초기 검사에서 중단함.
+
+기본 추론 장치는 CPU 4스레드임. 설치가 끝난 현장에서는 준비된 특징·가중치·미디어로 오프라인 실행함. 원본 특징 추출기를 다시 설치하거나 학습할 필요 없이, 준비된 중간 출력으로 전처리 과정을 확인함. 새 결과는 `results/notebook_날짜_시간`에 저장됨.
+
+| 실행 파일 | 수행 내용 |
+|---|---|
+| `setup_windows.cmd` | Python 3.10 64비트 확인, `.venv` 설치, CPU PyTorch, 패키지 및 전용 커널 등록, 파일 검사 |
+| `start_windows.cmd` | 전용 Python·커널·가중치·자료 확인 후 JupyterLab에서 노트북 열기 |
+| `start_windows.cmd --check-only` | 브라우저를 열지 않고 설치 상태와 실행 경로 검사 |
+
+터미널에서 전체 평가만 실행할 때도 같은 가상환경을 사용함.
+
+```bat
+.venv\Scripts\python.exe run_demo.py run --device cpu --output results\site_run_01
+.venv\Scripts\python.exe audit_demo.py results\site_run_01
 ```
 
-기본 실행 환경은 CPU 4스레드임. 패키지 내부 가중치와 특징으로 오프라인 추론을 수행함. 매번 새 `results/run_날짜_시간/`에 결과를 저장하며 기존 결과를 보존함. 10개 모델의 `forward()`를 실제 실행함.
+`site_run_01`이 이미 있으면 새 이름을 사용함. 평가용 가중치는 학습 완료 상태이며, 이 명령은 추론과 독립 채점만 수행함.
 
-다른 PC에서는 **이 폴더 전체**를 복사하고 Python 3.10 환경에서 설치 후 실행함. 가상환경과 패키지 설치는 현장 방문 전에 완료함. 아래 패키지 설치에는 인터넷 연결이 필요함.
+노트북은 64개 셀(실행 코드 31개)로 구성했으며, 각 단계에 목적·사용 함수·인자·반환값·확인할 결과를 작성함. 진행 순서는 **실행 준비 → 원본 정답·미디어 → 전처리 → 폴드·가중치 → 한 대화 추론 → 전체 5겹 평가 → 그래프 → 독립 검증·결과 보존**임. 정답 비교표의 처음 12행과 대화 전체 V/A 그래프, 결과 CSV의 처음 10행을 표시함.
 
-```bash
-python -m venv .venv
-# Linux: source .venv/bin/activate
-# Windows PowerShell: .venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
-python run_demo.py verify
-python run_demo.py run --device cpu --output results/site_run_01
-python audit_demo.py results/site_run_01
-```
-
-`site_run_01`이 이미 있으면 새 이름을 사용함. `verify`는 파일 SHA256, 모델 저장 파일 소속 폴드, 개발 자료를 기준으로 한 선택 기록, 원본 정답, 데이터 분리를 검사함. `audit_demo.py`는 이번에 계산한 예측을 독립적으로 채점하고 과거 확정된 결과와 비교함. 과거 예측은 재현성 검증의 비교 자료로 사용함.
-
-노트북 사용 시 `python -m pip install -r requirements.txt`로 라이브러리를 준비하고, Jupyter 또는 IDE의 노트북 편집기에서 해당 Python 환경을 커널로 선택함. `현장시연.ipynb`는 64개 셀(실행 코드 31개)로 구성했으며, 각 단계에 목적·사용 함수·인자·반환값·확인할 결과를 작성함. 위에서부터 `Shift+Enter`로 실행함.
-
-Windows에서도 JSON과 원본 코드 텍스트를 UTF-8로 읽도록 인코딩을 명시함. 기존 버전에서 `UnicodeDecodeError`가 발생했다면 먼저 패키지에 최신 `현장시연.ipynb`와 `video_playback.py`가 반영됐는지 확인함. 이후 Jupyter 커널을 재시작하고 맨 위 셀부터 전체 실행함.
-
-노트북 진행 순서는 **실행 준비 → 데이터와 원본 정답 → 예시 발화의 음성·영상 재생 → 전처리 과정 확인 → 5겹 교차검증 분리와 가중치 → 한 대화의 모델 로딩·정규화·추론 → 전체 5겹 교차검증 평가 → 지표와 그래프 → 독립 검증·결과 보존**임. 한 대화의 추론 과정은 노트북 안에서 실제 연산 코드로 보여주며, 전체 평가는 같은 `run_demo.run()`을 호출함. 정답 비교표의 처음 12행과 대화 전체의 V/A 시계열 그래프가 코드 셀 아래에 표시됨. 결과 CSV는 처음 10행을 미리 보여줌.
-
-노트북의 자동 저장으로 바뀌는 출력·실행 번호·편집기 메타데이터는 허용함. 코드와 설명 셀의 순서·내용은 `notebook_source_sha256`으로 검사하고 가중치·특징·주석 등 나머지 전달 파일은 기존 SHA256으로 검사함. 소스 수정이 필요한 경우 전달 준비 단계에서 해시 목록을 다시 생성함. HTML 보고서는 브라우저에서 파일을 직접 열어 확인할 수 있음.
+텍스트 자료는 UTF-8로 읽고 저장함. 전달된 노트북의 출력·실행 번호·편집기 메타데이터는 저장할 수 있으며, 코드·설명과 가중치·특징·주석은 무결성 검사로 확인함. 영상은 WebM으로 재생하며 별도 HTML도 패키지 안에 포함됨.
 
 ## 원문·미디어·전처리 확인
 
@@ -66,11 +64,11 @@ WavLM·RoBERTa·ResNet18의 순전파는 준비 단계에서 정확한 고정 �
 
 ## 현장 시연 순서
 
-1. 노트북을 위에서부터 실행하여 파일 검사, 원문·음성·영상, 전처리 과정과 폴드 분리표를 확인함. 터미널 사전 검사는 `python run_demo.py verify`로 실행함.
-2. `python run_demo.py run --output results/site_run_01`을 실행함. 확정된 가중치와 정규화 통계로 추론·채점을 수행함.
+1. 노트북을 위에서부터 실행하여 파일 검사, 원문·음성·영상, 전처리 과정과 폴드 분리표를 확인함. 터미널 사전 검사는 `.venv\Scripts\python.exe run_demo.py verify`로 실행함.
+2. 노트북의 전체 평가 셀을 실행함. 터미널에서는 `.venv\Scripts\python.exe run_demo.py run --output results\site_run_01`을 실행함. 확정된 가중치와 정규화 통계로 추론·채점을 수행함.
 3. `summary.txt`와 `fold_metrics.csv`에서 폴드별 결과 및 5겹 교차검증 평균±표본표준편차를 확인함.
 4. `report.html`에서 폴드 또는 발화 ID를 선택해 원본 감정과 예측 감정, 실제 V/A와 예측 V/A를 비교함. 전체 10,039개 발화를 ID 순으로 제공함.
-5. `python audit_demo.py results/site_run_01`을 실행하고 `independent_audit.json`을 보존함.
+5. `.venv\Scripts\python.exe audit_demo.py results\site_run_01`을 실행하고 `independent_audit.json`을 보존함.
 
 ## 5겹 교차검증과 시험 자료 구성
 
@@ -110,6 +108,7 @@ WavLM·RoBERTa·ResNet18의 순전파는 준비 단계에서 정확한 고정 �
 
 | 경로 | 역할 |
 |---|---|
+| `setup_windows.cmd`, `start_windows.cmd`, `jupyter_lab_config.py` | Windows 설치와 전용 커널 실행 설정 |
 | `run_demo.py`, `model.py` | 추론 전용 진입점과 원본 모델 코드 |
 | `현장시연.ipynb` | 원문·미디어 → 전처리 → 모델 추론 → 정답 비교 → 독립 채점 |
 | `weights/{classification,va}/fold1..5/best.pt` | 확정한 10개 가중치와 학습 자료 정규화 통계 |

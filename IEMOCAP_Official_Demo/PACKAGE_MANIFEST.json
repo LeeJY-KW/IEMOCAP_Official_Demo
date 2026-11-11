@@ -2,8 +2,8 @@
   "schema": 1,
   "files": {
     "README.md": {
-      "bytes": 15641,
-      "sha256": "a38e961a1791e251832198d86d1f5b63a9036b21903a4f85bbfba529c820d544"
+      "bytes": 15431,
+      "sha256": "6f3f30536e88c650d300ded1dcbf4c917aa3770c6410dd3c276e2b7b002a92d2"
     },
     "audit_demo.py": {
       "bytes": 11276,
@@ -2241,6 +2241,10 @@
       "bytes": 615,
       "sha256": "dac252fe7353aa1ca78cdf0bc2d1d3a4dc83423aa05a6443e843b0956c5aa91c"
     },
+    "jupyter_lab_config.py": {
+      "bytes": 964,
+      "sha256": "abd8f2cc38c0db519be583b8503447410bde52f6fa96be35a160fc3eb31981d1"
+    },
     "model.py": {
       "bytes": 21128,
       "sha256": "a4a3933301c6b4f152e528a23555eb4d7d43b6c3a28d85ea2835967455a6c996"
@@ -2258,12 +2262,20 @@
       "sha256": "f00a1f79d9dc1b70e1520835fb0713ec5b8462456072e2d0ee1781855136b696"
     },
     "requirements.txt": {
-      "bytes": 501,
-      "sha256": "836543105aab3e26a7eeadcbd86c029c58ccb4738e17af38f838703b7c9bfceb"
+      "bytes": 527,
+      "sha256": "051381c49d23b9f7a80e70923211533eaf281f73d681d44ce1a2e3fe3f1d96ae"
     },
     "run_demo.py": {
       "bytes": 37623,
       "sha256": "142be76f363d98872e58ed5ff50df2f8015bcc0e0fd13db11c7a89ab6ccd78a1"
+    },
+    "setup_windows.cmd": {
+      "bytes": 4894,
+      "sha256": "312b357b9010bd60b6164cb303a2f221fadd0faa54a3b28f93850fbae12d7f8d"
+    },
+    "start_windows.cmd": {
+      "bytes": 4467,
+      "sha256": "c41d49bd93b290369c0e1cd95f7a0b7655433b3dde974106265bdc34026b1050"
     },
     "video_playback.py": {
       "bytes": 13460,
@@ -2310,9 +2322,9 @@
       "sha256": "7e52100282134ab12e175dcf025d2cca9c03f98faa47254b762e9b0b1907a47d"
     },
     "현장시연.ipynb": {
-      "bytes": 82956,
-      "sha256": "ddae2bc6f0d64f41fd0833d4bef01721d70928b13173b55874c16533c3bd6ddd",
-      "notebook_source_sha256": "b80dcb533ae11732cad3c62e69594a39a75a8abac1353723bccb6654c80bac2f"
+      "bytes": 83815,
+      "sha256": "10c8f0bb9f9143faea271ce3378b041141950a42e09bad210db189350cab6aef",
+      "notebook_source_sha256": "831e2243e672abe85859bbf7047037f0116ff8e9086f0bd13139badbb9582c82"
     }
   }
 }

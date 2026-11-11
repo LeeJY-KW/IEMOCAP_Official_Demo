@@ -25,35 +25,26 @@
 6. 폴드별 성능과 대화 전체의 V/A 시계열 그래프 확인
 7. 독립 검증 및 결과 보존
 
-## 설치와 실행
+## Windows 설치와 실행
 
-Python 3.10 환경을 사용함. 저장소 전체를 내려받으면 가중치·특징을 포함한 평가를 실행할 수 있음.
+Windows 64비트와 Python 3.10 64비트를 사용함. 저장소 전체를 내려받아 압축을 푼 뒤 내부 `IEMOCAP_Official_Demo` 폴더를 엶.
 
-```bash
-git clone https://github.com/LeeJY-KW/IEMOCAP_Official_Demo.git
-cd IEMOCAP_Official_Demo/IEMOCAP_Official_Demo
-python -m venv .venv
+1. 최초 한 번 **`setup_windows.cmd`**를 실행함. 전용 가상환경, CPU PyTorch, `requirements.txt` 패키지와 Jupyter 커널을 준비함.
+2. **`start_windows.cmd`**를 실행함. 파일 검사 후 JupyterLab에서 현장 노트북이 열림.
+3. **IEMOCAP Windows (Python 3.10)** 커널을 확인하고 위에서부터 전체 실행함.
+
+설치는 인터넷 연결이 필요하며, 이후 현장 추론은 오프라인으로 진행함. 실행 파일이 UTF-8 모드와 프로젝트 폴더를 설정하고, Jupyter와 커널 모두 `.venv\Scripts\python.exe`를 사용함. 기존 오류로 셀 실행이 중단됐으면 최신 파일로 갱신한 뒤 전용 실행 파일로 열고 커널을 재시작하여 전체 실행함.
+
+브라우저를 열기 전 검사만 할 때는 `start_windows.cmd --check-only`를 실행함. 실행 과정과 파일 구성은 [상세 안내](IEMOCAP_Official_Demo/README.md)에 있음.
+
+터미널 평가도 같은 환경으로 실행함.
+
+```bat
+.venv\Scripts\python.exe run_demo.py run --device cpu --output results\site_run_01
+.venv\Scripts\python.exe audit_demo.py results\site_run_01
 ```
 
-Linux에서는 `source .venv/bin/activate`, Windows PowerShell에서는 `.venv\Scripts\Activate.ps1`로 환경을 활성화함.
-
-```bash
-python -m pip install -r requirements.txt
-python run_demo.py verify
-```
-
-Jupyter 또는 IDE에서 이 Python 환경을 커널로 선택하고 `현장시연.ipynb`를 위에서부터 실행함. 실행 완료본의 임시 경로는 검증 당시 기록이며, 다시 실행하면 현재 패키지의 `results/notebook_...`에 새 결과가 생성됨. 학습·개발·시험 분리와 모델 설정은 고정되어 있음.
-
-Windows에서도 JSON과 원본 코드 텍스트를 UTF-8로 읽도록 인코딩을 명시함. 기존 버전에서 `UnicodeDecodeError`가 발생했다면 먼저 패키지에 최신 `현장시연.ipynb`와 `video_playback.py`가 반영됐는지 확인함. 이후 Jupyter 커널을 재시작하고 맨 위 셀부터 전체 실행함.
-
-터미널에서 전체 평가를 바로 실행할 수도 있음.
-
-```bash
-python run_demo.py run --device cpu --output results/site_run_01
-python audit_demo.py results/site_run_01
-```
-
-재실행에는 새 결과 폴더 이름을 사용해 이전 결과를 보존함. 노트북 출력·실행 번호의 자동 저장은 허용하며 코드·설명과 가중치·데이터의 무결성을 검사함. 설치를 완료한 뒤 CPU로 오프라인 추론을 수행할 수 있음.
+재실행에는 새 결과 폴더 이름을 사용함. 원래 모델 가중치·학습 자료 정규화 통계·평가 범위는 유지함.
 
 ## 원본 미디어와 전처리 확인
 
