@@ -2,8 +2,8 @@
   "schema": 1,
   "files": {
     "README.md": {
-      "bytes": 14645,
-      "sha256": "25ca70ff0f2b9ae091b86368a6c0082a69c542f49b4175b33f22cba043b8eb37"
+      "bytes": 14694,
+      "sha256": "e428fb1db3298c0992d0115b75207a71d678c1b8e89047054de2270097c924c6"
     },
     "audit_demo.py": {
       "bytes": 11276,
@@ -2294,9 +2294,9 @@
       "sha256": "7e52100282134ab12e175dcf025d2cca9c03f98faa47254b762e9b0b1907a47d"
     },
     "현장시연.ipynb": {
-      "bytes": 82286,
-      "sha256": "d4f4be66ed6d877d1ff0bba6c328278f7edb7620622bf734d3aecd44e70a3a87",
-      "notebook_source_sha256": "d366164e373f03221510cf28e5e5c5928dd1cb99f090409b6a201ac3a629cf62"
+      "bytes": 82303,
+      "sha256": "aca996281ba36c82f090a03134f1eddb9fb96001304a5dd55cd5cf9bc523a1db",
+      "notebook_source_sha256": "dd06781323d0f87071f6da57adc79c95de57456f1ec646e58a21c432c4947b93"
     }
   }
 }

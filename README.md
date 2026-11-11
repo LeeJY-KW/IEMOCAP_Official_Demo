@@ -6,19 +6,19 @@
 
 ## 먼저 볼 자료
 
-- **[설명·코드·실행 결과가 포함된 노트북](IEMOCAP_Official_Demo/results/notebook_preprocessing00_20261111/현장시연_실행완료.ipynb)** — GitHub에서 셀별 설명과 실제 출력 확인
+- **[설명·코드·실행 결과가 포함된 노트북](IEMOCAP_Official_Demo/results/notebook_preprocessing_long_20261111/현장시연_실행완료.ipynb)** — GitHub에서 셀별 설명과 실제 출력 확인
 - [새로 실행할 현장 노트북](IEMOCAP_Official_Demo/현장시연.ipynb)
 - [상세 실행 안내](IEMOCAP_Official_Demo/README.md)
-- [5겹 교차검증 결과 요약](IEMOCAP_Official_Demo/results/notebook_preprocessing00_20261111/summary.txt)
-- [실제 Jupyter 커널 실행 검증](IEMOCAP_Official_Demo/results/notebook_preprocessing00_20261111/notebook_execution_audit.json)
-- [독립 채점 검증](IEMOCAP_Official_Demo/results/notebook_preprocessing00_20261111/independent_audit.json)
+- [5겹 교차검증 결과 요약](IEMOCAP_Official_Demo/results/notebook_preprocessing_long_20261111/summary.txt)
+- [실제 Jupyter 커널 실행 검증](IEMOCAP_Official_Demo/results/notebook_preprocessing_long_20261111/notebook_execution_audit.json)
+- [독립 채점 검증](IEMOCAP_Official_Demo/results/notebook_preprocessing_long_20261111/independent_audit.json)
 
 노트북은 **목적 → 함수·인자·반환값 → 실행 코드 → 결과 확인** 순서의 64개 셀(실행 코드 31개)로 구성함. 원문·음성·영상, 전처리 과정, 정답 비교표와 성능 그래프를 같은 흐름에서 확인함.
 
 ## 실행 순서
 
 1. 실행 환경과 파일 무결성 확인
-2. 멀티모달 특징과 원본 정답, 00번 발화의 음성·원문·영상 및 전처리 확인
+2. 멀티모달 특징과 원본 정답, 선택 발화의 음성·원문·영상 및 전처리 확인
 3. 학습·개발·시험 세션과 가중치 선택 기록 확인
 4. 한 대화의 가중치 로딩 → 정규화 → 실제 추론 → 정답 비교
 5. 전체 5겹 교차검증 추론 및 정확도·가중 F1·CCC 계산
@@ -53,9 +53,9 @@ python audit_demo.py results/site_run_01
 
 재실행에는 새 결과 폴더 이름을 사용해 이전 결과를 보존함. 노트북 출력·실행 번호의 자동 저장은 허용하며 코드·설명과 가중치·데이터의 무결성을 검사함. 설치를 완료한 뒤 CPU로 오프라인 추론을 수행할 수 있음.
 
-## 00번 발화의 원본 미디어와 전처리 확인
+## 원본 미디어와 전처리 확인
 
-2-4~2-12절의 미디어·전처리 예시는 00번 `Ses01F_impro01_F000`으로 고정함. 같은 발화의 원문·음성·영상과 전처리 과정을 순서대로 확인함. 노트북을 위에서부터 실행하면 됨.
+2-4~2-12절의 미디어·전처리 예시는 약 9.81초 길이의 `Ses01F_impro01_F011`을 사용함. 같은 발화의 원문·음성·영상과 전처리 과정을 순서대로 확인함. 노트북을 위에서부터 실행하면 됨.
 
 | 포함 폴더 | 내용 | 용량 |
 |---|---|---:|
@@ -64,7 +64,7 @@ python audit_demo.py results/site_run_01
 
 현장에서는 원본 음성 읽기·모노화·16 kHz 처리, librosa 운율 계산, tokenizers 토큰화, 원본 RGB 프레임의 크기 조절·중앙 자르기·정규화, 특징 집계와 학습 통계 정규화를 실제 실행함. WavLM·RoBERTa·ResNet18 순전파의 중간 출력은 준비 단계에서 정확한 고정 가중치와 설정으로 CUDA에서 계산해 저장한 자료를 사용함. 2-12절에는 원본 `make_extractor` 전체 코드를 표시함.
 
-현장 커널은 Python 3.10·CPU 4스레드를 유지함. `requirements.txt` 하나로 현장 라이브러리를 설치하며 `librosa`, `soundfile`, `tokenizers`가 포함됨. 준비된 미디어·프레임·중간 출력·토크나이저가 함께 있어 현장에서 필요한 자료를 오프라인으로 읽을 수 있음. 패키지에는 예시 대화 30발화의 자료가 준비되어 있으며, 미디어·전처리 시연에는 00번 자료를 사용함. 전체 10,039개 발화의 감정 모델 입력은 검증된 기존 특징 캐시를 그대로 사용함.
+현장 커널은 Python 3.10·CPU 4스레드를 유지함. `requirements.txt` 하나로 현장 라이브러리를 설치하며 `librosa`, `soundfile`, `tokenizers`가 포함됨. 준비된 미디어·프레임·중간 출력·토크나이저가 함께 있어 현장에서 필요한 자료를 오프라인으로 읽을 수 있음. 패키지에는 예시 대화 30발화의 자료가 준비되어 있으며, 미디어·전처리 시연에는 선택한 긴 문장 자료를 사용함. 전체 10,039개 발화의 감정 모델 입력은 검증된 기존 특징 캐시를 그대로 사용함.
 
 준비용 PC의 패키지 폴더에서 기본 예시 대화의 자료를 처음 생성하는 명령은 아래와 같음.
 
@@ -105,8 +105,8 @@ k번 세션은 그 세션을 학습·개발에서 제외한 k번 폴드 가중�
 | 각성도 CCC | 0.684792 ± 0.017355 |
 | 평균 CCC | 0.717703 ± 0.022541 |
 
-한 대화의 설명용 추론과 전체 평가 예측의 일치를 확인했으며, 전체 저장 예측을 별도로 재채점함. 실행 시의 검사와 근거는 `results/notebook_preprocessing00_20261111`에 있음.
+한 대화의 설명용 추론과 전체 평가 예측의 일치를 확인했으며, 전체 저장 예측을 별도로 재채점함. 실행 시의 검사와 근거는 `results/notebook_preprocessing_long_20261111`에 있음.
 
 ## 결과 확인
 
-`results/notebook_preprocessing00_20261111/현장시연_설명과결과.html`은 설명과 코드·출력을 함께 읽는 미리보기임. 노트북에는 정답·예측 비교표의 처음 12행, 대화 전체의 V/A 시계열 그래프, 전체 CSV의 처음 10행을 표시함. `report.html`은 전체 발화의 정답·예측을 검색하는 화면임. HTML 파일은 저장소를 내려받은 뒤 브라우저에서 열어 확인함.
+`results/notebook_preprocessing_long_20261111/현장시연_설명과결과.html`은 설명과 코드·출력을 함께 읽는 미리보기임. 노트북에는 정답·예측 비교표의 처음 12행, 대화 전체의 V/A 시계열 그래프, 전체 CSV의 처음 10행을 표시함. `report.html`은 전체 발화의 정답·예측을 검색하는 화면임. HTML 파일은 저장소를 내려받은 뒤 브라우저에서 열어 확인함.

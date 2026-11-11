@@ -1,0 +1,839 @@
+{
+  "schema": 1,
+  "passed": true,
+  "audited_at": "2026-11-11T07:53:15.133800+00:00",
+  "audit_kind": "Independent saved-result preservation audit; no inference or training executed",
+  "baseline_result": "/home/neuroai-server05/PycharmProjects/감성_감정/공인인증/IEMOCAP_Official_Demo/results/notebook_preprocessing00_20261111",
+  "new_result": "/home/neuroai-server05/PycharmProjects/감성_감정/공인인증/IEMOCAP_Official_Demo/results/notebook_preprocessing_long_20261111",
+  "npz_file_count": 12,
+  "array_count": 72,
+  "npz_checks": [
+    {
+      "file": "classification_fold1.npz",
+      "passed": true,
+      "old_sha256": "e5c801eefca2a89185d0bc9d720d3f54006a19b2ea520cb8d241f9b6a4ae5195",
+      "new_sha256": "e5c801eefca2a89185d0bc9d720d3f54006a19b2ea520cb8d241f9b6a4ae5195",
+      "arrays": [
+        {
+          "key": "dialogues",
+          "dtype": "<U17",
+          "shape": [
+            1819
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "folds",
+          "dtype": "int64",
+          "shape": [
+            1819
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "ids",
+          "dtype": "<U22",
+          "shape": [
+            1819
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "predictions",
+          "dtype": "float32",
+          "shape": [
+            1819,
+            7
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "target_valid",
+          "dtype": "bool",
+          "shape": [
+            1819
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "targets",
+          "dtype": "int64",
+          "shape": [
+            1819
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        }
+      ]
+    },
+    {
+      "file": "classification_fold2.npz",
+      "passed": true,
+      "old_sha256": "4c7a5a170c877c9fc8c342fc527ec1a058950ecadad7979349670dcf87d2512f",
+      "new_sha256": "4c7a5a170c877c9fc8c342fc527ec1a058950ecadad7979349670dcf87d2512f",
+      "arrays": [
+        {
+          "key": "dialogues",
+          "dtype": "<U17",
+          "shape": [
+            1811
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "folds",
+          "dtype": "int64",
+          "shape": [
+            1811
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "ids",
+          "dtype": "<U22",
+          "shape": [
+            1811
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "predictions",
+          "dtype": "float32",
+          "shape": [
+            1811,
+            7
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "target_valid",
+          "dtype": "bool",
+          "shape": [
+            1811
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "targets",
+          "dtype": "int64",
+          "shape": [
+            1811
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        }
+      ]
+    },
+    {
+      "file": "classification_fold3.npz",
+      "passed": true,
+      "old_sha256": "2d986e905990a2805b4c94f803f266ba5c09444f028ac495f7ea38896e35db88",
+      "new_sha256": "2d986e905990a2805b4c94f803f266ba5c09444f028ac495f7ea38896e35db88",
+      "arrays": [
+        {
+          "key": "dialogues",
+          "dtype": "<U17",
+          "shape": [
+            2136
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "folds",
+          "dtype": "int64",
+          "shape": [
+            2136
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "ids",
+          "dtype": "<U22",
+          "shape": [
+            2136
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "predictions",
+          "dtype": "float32",
+          "shape": [
+            2136,
+            7
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "target_valid",
+          "dtype": "bool",
+          "shape": [
+            2136
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "targets",
+          "dtype": "int64",
+          "shape": [
+            2136
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        }
+      ]
+    },
+    {
+      "file": "classification_fold4.npz",
+      "passed": true,
+      "old_sha256": "328bf94ef14efdd75cbde3849b9c39fc747e8d9c532f8a6d6657ca034cfdec2d",
+      "new_sha256": "328bf94ef14efdd75cbde3849b9c39fc747e8d9c532f8a6d6657ca034cfdec2d",
+      "arrays": [
+        {
+          "key": "dialogues",
+          "dtype": "<U17",
+          "shape": [
+            2103
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "folds",
+          "dtype": "int64",
+          "shape": [
+            2103
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "ids",
+          "dtype": "<U22",
+          "shape": [
+            2103
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "predictions",
+          "dtype": "float32",
+          "shape": [
+            2103,
+            7
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "target_valid",
+          "dtype": "bool",
+          "shape": [
+            2103
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "targets",
+          "dtype": "int64",
+          "shape": [
+            2103
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        }
+      ]
+    },
+    {
+      "file": "classification_fold5.npz",
+      "passed": true,
+      "old_sha256": "09ac783e537deaece395c920a6ee4a55c23d758290506e889849b01ac2cca53b",
+      "new_sha256": "09ac783e537deaece395c920a6ee4a55c23d758290506e889849b01ac2cca53b",
+      "arrays": [
+        {
+          "key": "dialogues",
+          "dtype": "<U18",
+          "shape": [
+            2170
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "folds",
+          "dtype": "int64",
+          "shape": [
+            2170
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "ids",
+          "dtype": "<U23",
+          "shape": [
+            2170
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "predictions",
+          "dtype": "float32",
+          "shape": [
+            2170,
+            7
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "target_valid",
+          "dtype": "bool",
+          "shape": [
+            2170
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "targets",
+          "dtype": "int64",
+          "shape": [
+            2170
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        }
+      ]
+    },
+    {
+      "file": "classification_oof.npz",
+      "passed": true,
+      "old_sha256": "9191de344e240fac89fd5027c66a64fbede4d9a0d5d52f2f50d4a14433bcde69",
+      "new_sha256": "9191de344e240fac89fd5027c66a64fbede4d9a0d5d52f2f50d4a14433bcde69",
+      "arrays": [
+        {
+          "key": "dialogues",
+          "dtype": "<U18",
+          "shape": [
+            10039
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "folds",
+          "dtype": "int64",
+          "shape": [
+            10039
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "ids",
+          "dtype": "<U23",
+          "shape": [
+            10039
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "predictions",
+          "dtype": "float32",
+          "shape": [
+            10039,
+            7
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "target_valid",
+          "dtype": "bool",
+          "shape": [
+            10039
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "targets",
+          "dtype": "int64",
+          "shape": [
+            10039
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        }
+      ]
+    },
+    {
+      "file": "va_fold1.npz",
+      "passed": true,
+      "old_sha256": "417092778df008b74a71ebddf48b882f06b8d8d61850f412dd3e5dd0728d74aa",
+      "new_sha256": "417092778df008b74a71ebddf48b882f06b8d8d61850f412dd3e5dd0728d74aa",
+      "arrays": [
+        {
+          "key": "dialogues",
+          "dtype": "<U17",
+          "shape": [
+            1819
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "folds",
+          "dtype": "int64",
+          "shape": [
+            1819
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "ids",
+          "dtype": "<U22",
+          "shape": [
+            1819
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "predictions",
+          "dtype": "float32",
+          "shape": [
+            1819,
+            2
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "target_valid",
+          "dtype": "bool",
+          "shape": [
+            1819
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "targets",
+          "dtype": "float32",
+          "shape": [
+            1819,
+            2
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        }
+      ]
+    },
+    {
+      "file": "va_fold2.npz",
+      "passed": true,
+      "old_sha256": "1572362192f59683fe50f1cda858c8a34ceed1c1fa24010c2e839ad2559f0f47",
+      "new_sha256": "1572362192f59683fe50f1cda858c8a34ceed1c1fa24010c2e839ad2559f0f47",
+      "arrays": [
+        {
+          "key": "dialogues",
+          "dtype": "<U17",
+          "shape": [
+            1811
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "folds",
+          "dtype": "int64",
+          "shape": [
+            1811
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "ids",
+          "dtype": "<U22",
+          "shape": [
+            1811
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "predictions",
+          "dtype": "float32",
+          "shape": [
+            1811,
+            2
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "target_valid",
+          "dtype": "bool",
+          "shape": [
+            1811
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "targets",
+          "dtype": "float32",
+          "shape": [
+            1811,
+            2
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        }
+      ]
+    },
+    {
+      "file": "va_fold3.npz",
+      "passed": true,
+      "old_sha256": "1bc5a77f40d25aaf38cf623ccc9eb020174017bc6a8e07e2557faeec72c7055d",
+      "new_sha256": "1bc5a77f40d25aaf38cf623ccc9eb020174017bc6a8e07e2557faeec72c7055d",
+      "arrays": [
+        {
+          "key": "dialogues",
+          "dtype": "<U17",
+          "shape": [
+            2136
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "folds",
+          "dtype": "int64",
+          "shape": [
+            2136
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "ids",
+          "dtype": "<U22",
+          "shape": [
+            2136
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "predictions",
+          "dtype": "float32",
+          "shape": [
+            2136,
+            2
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "target_valid",
+          "dtype": "bool",
+          "shape": [
+            2136
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "targets",
+          "dtype": "float32",
+          "shape": [
+            2136,
+            2
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        }
+      ]
+    },
+    {
+      "file": "va_fold4.npz",
+      "passed": true,
+      "old_sha256": "3f3bb9dc984596a6dad2f75b79504c603104a1e9d56a848f8d60c53d9d5ca53f",
+      "new_sha256": "3f3bb9dc984596a6dad2f75b79504c603104a1e9d56a848f8d60c53d9d5ca53f",
+      "arrays": [
+        {
+          "key": "dialogues",
+          "dtype": "<U17",
+          "shape": [
+            2103
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "folds",
+          "dtype": "int64",
+          "shape": [
+            2103
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "ids",
+          "dtype": "<U22",
+          "shape": [
+            2103
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "predictions",
+          "dtype": "float32",
+          "shape": [
+            2103,
+            2
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "target_valid",
+          "dtype": "bool",
+          "shape": [
+            2103
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "targets",
+          "dtype": "float32",
+          "shape": [
+            2103,
+            2
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        }
+      ]
+    },
+    {
+      "file": "va_fold5.npz",
+      "passed": true,
+      "old_sha256": "f93ac8a38aa350aa93b1438eaa1741a7d54efa17398adde4467edc2c5bbdfd35",
+      "new_sha256": "f93ac8a38aa350aa93b1438eaa1741a7d54efa17398adde4467edc2c5bbdfd35",
+      "arrays": [
+        {
+          "key": "dialogues",
+          "dtype": "<U18",
+          "shape": [
+            2170
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "folds",
+          "dtype": "int64",
+          "shape": [
+            2170
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "ids",
+          "dtype": "<U23",
+          "shape": [
+            2170
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "predictions",
+          "dtype": "float32",
+          "shape": [
+            2170,
+            2
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "target_valid",
+          "dtype": "bool",
+          "shape": [
+            2170
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "targets",
+          "dtype": "float32",
+          "shape": [
+            2170,
+            2
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        }
+      ]
+    },
+    {
+      "file": "va_oof.npz",
+      "passed": true,
+      "old_sha256": "b31f1b7a8ab84f17331b8e3adfb2ddcb1ac81635e383b081875d00c613c187ae",
+      "new_sha256": "b31f1b7a8ab84f17331b8e3adfb2ddcb1ac81635e383b081875d00c613c187ae",
+      "arrays": [
+        {
+          "key": "dialogues",
+          "dtype": "<U18",
+          "shape": [
+            10039
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "folds",
+          "dtype": "int64",
+          "shape": [
+            10039
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "ids",
+          "dtype": "<U23",
+          "shape": [
+            10039
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "predictions",
+          "dtype": "float32",
+          "shape": [
+            10039,
+            2
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        },
+        {
+          "key": "target_valid",
+          "dtype": "bool",
+          "shape": [
+            10039
+          ],
+          "exact_equal": true
+        },
+        {
+          "key": "targets",
+          "dtype": "float32",
+          "shape": [
+            10039,
+            2
+          ],
+          "exact_equal": true,
+          "max_abs_difference": 0.0
+        }
+      ]
+    }
+  ],
+  "metrics": {
+    "tasks_exactly_equal": true,
+    "summary_changed_metadata_only": [
+      "completed_at",
+      "inference_seconds",
+      "package_manifest_sha256"
+    ],
+    "allowed_changed_metadata": [
+      "completed_at",
+      "inference_seconds",
+      "package_manifest_sha256"
+    ],
+    "fold_mean": {
+      "accuracy": {
+        "mean": 0.7766216085068922,
+        "sample_sd": 0.03190198022011864
+      },
+      "weighted_f1": {
+        "mean": 0.7732114515969093,
+        "sample_sd": 0.03095424620075993
+      }
+    },
+    "va_fold_mean": {
+      "ccc_valence": {
+        "mean": 0.7506153894425764,
+        "sample_sd": 0.03733287351499031
+      },
+      "ccc_arousal": {
+        "mean": 0.6847915499268521,
+        "sample_sd": 0.017354689003401605
+      },
+      "mean_ccc": {
+        "mean": 0.7177034696847143,
+        "sample_sd": 0.02254085578937749
+      }
+    }
+  },
+  "identical_files": [
+    {
+      "file": "summary.txt",
+      "byte_identical": true,
+      "sha256": "b92ee0b99a865b8e873ec7bd4732702939e7bf8391ac5d52bcf1feb41cb6085f"
+    },
+    {
+      "file": "fold_metrics.csv",
+      "byte_identical": true,
+      "sha256": "1a11228d73c959e6382d19b5274768b52f08cb29d4fc4f7737c7f61b8043df88"
+    },
+    {
+      "file": "utterance_comparison.csv",
+      "byte_identical": true,
+      "sha256": "6674929886e7a980d75f421386492602bebff92319572757882c198d07d7e126"
+    },
+    {
+      "file": "figures/example_va.png",
+      "byte_identical": true,
+      "sha256": "6955c43a8ee2f1a9cf6968143f3a4c86f14000fcd6b70a3f24144d8fc7b1b77e"
+    },
+    {
+      "file": "figures/fold_scores.png",
+      "byte_identical": true,
+      "sha256": "fbb775db42b875e023b7ceb7d3729e832ee3b27213b20e0f043ce0dab89db733"
+    }
+  ],
+  "comparison_rows": 10039,
+  "unique_utterance_ids": 10039,
+  "preprocessing": {
+    "passed": true,
+    "utterance_id": "Ses01F_impro01_F011",
+    "live_operations": [
+      "audio_loading",
+      "prosody",
+      "tokenization",
+      "image_transform",
+      "feature_pooling",
+      "train_normalization"
+    ],
+    "pretrained_forward": "prepared_intermediate_outputs",
+    "max_abs_feature_differences": {
+      "audio": 0.0,
+      "prosody": 2.384185791015625e-07,
+      "text": 0.0,
+      "visual": 2.384185791015625e-07
+    },
+    "media_and_preprocessing_hashes_verified": true,
+    "audit_sha256": "dc1a160d5d2c7508bf10d132e79459b92cfd125668e577e8cf87ca0153e7b475"
+  },
+  "execution": {
+    "notebook_cells": 64,
+    "code_cells_executed": 31,
+    "code_execution_sequence_valid": true,
+    "error_outputs": 0,
+    "executed_notebook_source_equals_primary": true,
+    "independent_audit_passed": true,
+    "example_prediction_max_abs_difference": 0.0,
+    "training": false
+  },
+  "notes": [
+    "The two PNG comparison figures are byte-identical; PDF metadata was not compared.",
+    "Only completion time, inference duration, and package manifest hash differ in summary.json."
+  ]
+}

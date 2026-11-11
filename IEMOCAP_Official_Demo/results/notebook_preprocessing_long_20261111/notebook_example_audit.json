@@ -1,0 +1,10 @@
+{
+  "classification": {
+    "passed": true,
+    "max_abs_difference": 0.0
+  },
+  "va": {
+    "passed": true,
+    "max_abs_difference": 0.0
+  }
+}
