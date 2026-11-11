@@ -1,0 +1,31 @@
+{
+  "modality": "prosody",
+  "implementation": "iemocap-local-features-v1",
+  "packages": {
+    "numpy": "2.2.6",
+    "librosa": "0.11.0",
+    "soundfile": "0.13.1"
+  },
+  "names": [
+    "log1p_duration_seconds",
+    "log_rms_mean",
+    "log_rms_std",
+    "log_rms_mean_absolute_delta",
+    "voiced_log_f0_mean",
+    "voiced_log_f0_std",
+    "voiced_log_f0_iqr",
+    "voiced_log_f0_mean_absolute_delta",
+    "voiced_fraction",
+    "zcr_mean",
+    "zcr_std",
+    "centroid_hz_mean",
+    "centroid_hz_std",
+    "rolloff_85_hz_mean",
+    "spectral_flatness_mean",
+    "quiet_fraction"
+  ],
+  "sample_rate": 16000,
+  "frame_samples": 1024,
+  "hop_samples": 320,
+  "voicing": "YIN 50..500Hz; energy>-45dBFS and peak-35dB; flatness<0.25"
+}

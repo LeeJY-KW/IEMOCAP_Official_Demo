@@ -1,0 +1,13 @@
+{
+  "modality": "text",
+  "implementation": "iemocap-local-features-v1",
+  "packages": {
+    "numpy": "2.2.6",
+    "torch": "2.7.1+cu118",
+    "transformers": "4.53.3",
+    "huggingface-hub": "0.36.2"
+  },
+  "model": "FacebookAI/roberta-base",
+  "revision": "e2da8e2f811d1448a5b465c236feacd80ffbac7b",
+  "pooling": "mean of nonspecial tokens across complete 510-token chunks"
+}

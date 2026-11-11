@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "folds": 5,
+  "utterances": 10039,
+  "prediction_metrics_verified": true,
+  "protocol_sha256": "4b8c8d95357f0340e79d9292a9fc663bbe2c62aa09b4dedf743aab78b6a9c379",
+  "time": "2026-09-30T11:57:02.089653+09:00"
+}

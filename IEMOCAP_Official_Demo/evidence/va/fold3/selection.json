@@ -1,0 +1,13 @@
+{
+  "identity": "ce6fa4643ff0dc9a222804fcb0239b4efdc3a3dfeac226fda0bcf91454027f0f",
+  "fold": 3,
+  "best_epoch": 39,
+  "dev_score": 0.7082737646091528,
+  "epochs_completed": 50,
+  "checkpoint_sha256": "c3d5a61e0285b04de7154ef8f147b0be39a4bc682dc10d4892c2bc145c8b9e32",
+  "normalizer_hash": "05b299602b58ceae0be693058210ff89162b3800aa4162760be8f96dc3eef306",
+  "test_loaded_during_training": false,
+  "locked_at": "2026-09-30T11:40:58.660646+09:00",
+  "parameters": 5277509,
+  "training_seconds": 464.0598199367523
+}

@@ -1,0 +1,16 @@
+{
+  "modality": "visual",
+  "implementation": "iemocap-local-visual-features-v2",
+  "packages": {
+    "numpy": "2.2.6",
+    "torch": "2.7.1+cu118",
+    "torchvision": "0.22.1+cu118",
+    "opencv-python-headless": "4.12.0.88"
+  },
+  "model": "torchvision/resnet18",
+  "weights": "IMAGENET1K_V1",
+  "weights_url": "https://download.pytorch.org/models/resnet18-f37072fd.pth",
+  "whole_frame": true,
+  "sampling": "3 equal interval centers within annotation/video intersection",
+  "partial_clips": "record observed interval and coverage; no time shift or imputation"
+}

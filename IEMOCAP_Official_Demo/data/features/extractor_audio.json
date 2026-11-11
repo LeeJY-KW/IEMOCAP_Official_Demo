@@ -1,0 +1,16 @@
+{
+  "modality": "audio",
+  "implementation": "iemocap-local-features-v1",
+  "packages": {
+    "numpy": "2.2.6",
+    "torch": "2.7.1+cu118",
+    "transformers": "4.53.3",
+    "huggingface-hub": "0.36.2"
+  },
+  "model": "microsoft/wavlm-base-plus",
+  "revision": "4c66d4806a428f2e922ccfa1a962776e232d487b",
+  "sample_rate": 16000,
+  "chunk_seconds": 20,
+  "pooling": "all final hidden frames mean+population std; no overlap",
+  "waveform_normalization": "whole utterance before chunking"
+}

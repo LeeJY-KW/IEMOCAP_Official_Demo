@@ -1,0 +1,1907 @@
+[
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/평가정의/원래실험/classification_dataset.json",
+    "path": "data/classification_dataset.json",
+    "sha256": "d24d6631872daffea1cc37a83972fed00fb3ec91c627dfcc95c91b591da39d9d"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/protocol.json",
+    "path": "evidence/classification/protocol.json",
+    "sha256": "833ce577d212149bd6337d9ce0ea4111c979040736d7091fe71c29d9ffa3d595"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/evaluation_gate.json",
+    "path": "evidence/classification/evaluation_gate.json",
+    "sha256": "85210cc39513fef22ae3b80f87e1bdcf80a3e6f0d5fe26dfd19eae293a1b8f6f"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/test_summary.json",
+    "path": "evidence/classification/test_summary.json",
+    "sha256": "06e4be6e3df5a909fae953d810a7b46eaf1a30db7d66b037c1827555781e7894"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/test_results.json",
+    "path": "evidence/classification/test_results.json",
+    "sha256": "648034c0cddb4cfafaad3829c5afa28db876adfa45e5948a0f2bd6ff3bc072a7"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/final_audit.json",
+    "path": "evidence/classification/final_audit.json",
+    "sha256": "86f94add2521b04fcac3b7f9a446cdd14c68ad7349bce6557727c5ab63993d03"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/source_snapshot/certification.py",
+    "path": "evidence/classification/source_snapshot/certification.py",
+    "sha256": "d332d1907d4326659e35f02e1a5027a86c6491d00e47ef19aef39921b2b16950"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/source_snapshot/model.py",
+    "path": "evidence/classification/source_snapshot/model.py",
+    "sha256": "a4a3933301c6b4f152e528a23555eb4d7d43b6c3a28d85ea2835967455a6c996"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/source_snapshot/train.py",
+    "path": "evidence/classification/source_snapshot/train.py",
+    "sha256": "3f194b8375848397d48bbab71f3cebf8ff3395a14bd31318d6da9016746c8169"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/source_snapshot/matched.py",
+    "path": "evidence/classification/source_snapshot/matched.py",
+    "sha256": "ce45f1d563a3687b161201d1d36f4181dc70681741c1e3a261bd6a33726e0c95"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/source_snapshot/data.py",
+    "path": "evidence/classification/source_snapshot/data.py",
+    "sha256": "f303e737cbf5a0b2e819cf0434ee5189d6f45adb2e618a5ba3ee56595bcce206"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold1/best.pt",
+    "path": "weights/classification/fold1/best.pt",
+    "sha256": "3f542a814a8ab7abd5135ddd5f07e91a111d1115ef34714b6679b3429175c455"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold1/selection.json",
+    "path": "evidence/classification/fold1/selection.json",
+    "sha256": "05fe1656d60c8816b25047f5cdd800fe20ab5978367a77bd3ef02d39faf84662"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold1/history.jsonl",
+    "path": "evidence/classification/fold1/history.jsonl",
+    "sha256": "0d18e865caf238e3797c0516d80a1582e63104b21d5644721ef66c6f067f573a"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold1/test_predictions.npz",
+    "path": "evidence/classification/fold1/test_predictions.npz",
+    "sha256": "397ff5860371356bd1b93f065c27d0d986f9b7710959465787cd3663d65375fc"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold1/test.json",
+    "path": "evidence/classification/fold1/test.json",
+    "sha256": "bf9512dd1d0cdd46c8561366aa42143b56d48501aa9c294178289a19c8f173df"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold2/best.pt",
+    "path": "weights/classification/fold2/best.pt",
+    "sha256": "02fd60e0c436005669da81fd2eb6ece37b8556dfddb61545b2221756885a7881"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold2/selection.json",
+    "path": "evidence/classification/fold2/selection.json",
+    "sha256": "0aa32f35fcb59a44ceb34a0793ef0ac26285e39868ff9aa848f31b352ce9f542"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold2/history.jsonl",
+    "path": "evidence/classification/fold2/history.jsonl",
+    "sha256": "c35e3f8c057ff075c7d268113bfcf2682073a010101ffd167107d67435411010"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold2/test_predictions.npz",
+    "path": "evidence/classification/fold2/test_predictions.npz",
+    "sha256": "dc8d7f7d3c2fff473639e66ca7d9fa537ddb449a1b67126f1708417c6079eea4"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold2/test.json",
+    "path": "evidence/classification/fold2/test.json",
+    "sha256": "f6d10227bdcfddacef2791db0df062dd8a5120a6600f3c993f974e7116ad4494"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold3/best.pt",
+    "path": "weights/classification/fold3/best.pt",
+    "sha256": "3c7b63e65618b61de96d90020af3ed79a5c8e15b8cf3b539104d0b53381dcd91"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold3/selection.json",
+    "path": "evidence/classification/fold3/selection.json",
+    "sha256": "babe20790eb4b8ec98770ecb3d69f0fd2943a904298de5554f841fc09230b47e"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold3/history.jsonl",
+    "path": "evidence/classification/fold3/history.jsonl",
+    "sha256": "c6198057d461f19001fa3ef3cec37e8de71cacab4677f470e4c4d21a8c3d71b1"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold3/test_predictions.npz",
+    "path": "evidence/classification/fold3/test_predictions.npz",
+    "sha256": "a42677403000d3a5286980daa1c3df531c261b65ed4898e7e4030149bd7c065c"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold3/test.json",
+    "path": "evidence/classification/fold3/test.json",
+    "sha256": "e5ac92da0715bff1fc5b6d029c24bb4d394ce8492d6c7e19544d26a156b0388e"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold4/best.pt",
+    "path": "weights/classification/fold4/best.pt",
+    "sha256": "2305e39b4463e85597499bfe195ce6689b924e410be383231522bfbece05f957"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold4/selection.json",
+    "path": "evidence/classification/fold4/selection.json",
+    "sha256": "d0c33754516422fb506ac40918125d131f5daa5e79d73dc23cea17eeaae13dc6"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold4/history.jsonl",
+    "path": "evidence/classification/fold4/history.jsonl",
+    "sha256": "4bad498e2c4a7daac044199d8ba0719892432ea65ab3ef59f7bb046a7222266d"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold4/test_predictions.npz",
+    "path": "evidence/classification/fold4/test_predictions.npz",
+    "sha256": "be24d7810e528724ef76a456aa537c9f60b98452070c6e6872517f702899d002"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold4/test.json",
+    "path": "evidence/classification/fold4/test.json",
+    "sha256": "e76a8edd32177e0ad1e43bde92990b766615846fc6729a8e189f1c1c2b69f44b"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold5/best.pt",
+    "path": "weights/classification/fold5/best.pt",
+    "sha256": "e2b10471d879a80eef2b767b312dcd1342766df0ea8b23873443f18a8b77310c"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold5/selection.json",
+    "path": "evidence/classification/fold5/selection.json",
+    "sha256": "ab3178948785b8305a74d97672e18179bc6d196b84722e0c88983619b9d2f3a9"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold5/history.jsonl",
+    "path": "evidence/classification/fold5/history.jsonl",
+    "sha256": "5e084c528d0d57e94cfb109604290a7d80fa4033c8f1ce62db88ebb769896bcf"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold5/test_predictions.npz",
+    "path": "evidence/classification/fold5/test_predictions.npz",
+    "sha256": "61b850d91088fa469aaf7cd604d78f8db73813cc570a9bf4c982b176d9c8fbbd"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/fold5/test.json",
+    "path": "evidence/classification/fold5/test.json",
+    "sha256": "cd8ea76b7ded282e814b83ed21ebd4e02994e404285d09baca96b2e5153ab81b"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/평가정의/원래실험/va_dataset.json",
+    "path": "data/va_dataset.json",
+    "sha256": "a1d4b51eda4395a95d31cba280452c359663be7813a1b8c741e66b75bd1e929e"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/protocol.json",
+    "path": "evidence/va/protocol.json",
+    "sha256": "4b8c8d95357f0340e79d9292a9fc663bbe2c62aa09b4dedf743aab78b6a9c379"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/evaluation_gate.json",
+    "path": "evidence/va/evaluation_gate.json",
+    "sha256": "0474970daa3f95889640d0fda518566c018906acad6e037a5ac3f2d415c7e124"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/test_summary.json",
+    "path": "evidence/va/test_summary.json",
+    "sha256": "dac252fe7353aa1ca78cdf0bc2d1d3a4dc83423aa05a6443e843b0956c5aa91c"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/test_results.json",
+    "path": "evidence/va/test_results.json",
+    "sha256": "2b1eb7730bc6231e7b03eff092c5977cce4962764646db16ab002d70ebb506d9"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/final_audit.json",
+    "path": "evidence/va/final_audit.json",
+    "sha256": "eebcdd9826ad88a7f89637c13217bb1e86728689b550d7e1f6368b35527b1bee"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/source_snapshot/certification.py",
+    "path": "evidence/va/source_snapshot/certification.py",
+    "sha256": "d332d1907d4326659e35f02e1a5027a86c6491d00e47ef19aef39921b2b16950"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/source_snapshot/model.py",
+    "path": "evidence/va/source_snapshot/model.py",
+    "sha256": "a4a3933301c6b4f152e528a23555eb4d7d43b6c3a28d85ea2835967455a6c996"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/source_snapshot/train.py",
+    "path": "evidence/va/source_snapshot/train.py",
+    "sha256": "3f194b8375848397d48bbab71f3cebf8ff3395a14bd31318d6da9016746c8169"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/source_snapshot/matched.py",
+    "path": "evidence/va/source_snapshot/matched.py",
+    "sha256": "ce45f1d563a3687b161201d1d36f4181dc70681741c1e3a261bd6a33726e0c95"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/source_snapshot/data.py",
+    "path": "evidence/va/source_snapshot/data.py",
+    "sha256": "f303e737cbf5a0b2e819cf0434ee5189d6f45adb2e618a5ba3ee56595bcce206"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold1/best.pt",
+    "path": "weights/va/fold1/best.pt",
+    "sha256": "e5bd6dd0dab51f4830c532a64d16d330cb32f41b3fd82a5b8000e8e37a14e9fa"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold1/selection.json",
+    "path": "evidence/va/fold1/selection.json",
+    "sha256": "625cef94277d5afead0df34ee5a834f74a581ba7639b6d31250935150461f143"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold1/history.jsonl",
+    "path": "evidence/va/fold1/history.jsonl",
+    "sha256": "f9ddbf9d96089102842bfedea1453dbdbd28d3308d2e3dd56515baacba20ecfe"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold1/test_predictions.npz",
+    "path": "evidence/va/fold1/test_predictions.npz",
+    "sha256": "607aa94ad73fc2cfc8d0575c37e5fe4dcfd9afcea1b92765c78d346c52226714"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold1/test.json",
+    "path": "evidence/va/fold1/test.json",
+    "sha256": "5013cc1d7101868a8b4228e2fcee4d28cd9228b73497801ec16e7e3c3b0e775e"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold2/best.pt",
+    "path": "weights/va/fold2/best.pt",
+    "sha256": "20a18da37c4894672a84125a9e4728c0e57d328c1c431630f04ef2499345e07b"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold2/selection.json",
+    "path": "evidence/va/fold2/selection.json",
+    "sha256": "1d53552fe8f37a5938cd7e2e93da4da8b5316ac8ad4fc68638829d37ad37f3e7"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold2/history.jsonl",
+    "path": "evidence/va/fold2/history.jsonl",
+    "sha256": "3bbf25eeba8ceda9340065478cee3925b9c661fcbc9fd8dcae44cb2dc06b37b7"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold2/test_predictions.npz",
+    "path": "evidence/va/fold2/test_predictions.npz",
+    "sha256": "3f1b9929a3e2703c73303354df249830e15808195aa5698c36d66c81f704ffbf"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold2/test.json",
+    "path": "evidence/va/fold2/test.json",
+    "sha256": "e59d93a467ec1d05634d7ac32580ce7dbaa684c44f5e2fb9ccdd72135640caa8"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold3/best.pt",
+    "path": "weights/va/fold3/best.pt",
+    "sha256": "c3d5a61e0285b04de7154ef8f147b0be39a4bc682dc10d4892c2bc145c8b9e32"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold3/selection.json",
+    "path": "evidence/va/fold3/selection.json",
+    "sha256": "8ea9af9b3ccdcec143129f69d7045efcb0495776963488b25d968aeffd37361d"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold3/history.jsonl",
+    "path": "evidence/va/fold3/history.jsonl",
+    "sha256": "0f620bc7dfd39322335e07d296cbebc4a15d44147cefc626eee6fafc699f834e"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold3/test_predictions.npz",
+    "path": "evidence/va/fold3/test_predictions.npz",
+    "sha256": "27998fcec4170a27eeb4f351866b6d918a43618d00af929300c46649b364be61"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold3/test.json",
+    "path": "evidence/va/fold3/test.json",
+    "sha256": "3517d0eebf29d3d6f9444bb08e6ed7afc30831d5b7a6ae81deff132c1ebe34b8"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold4/best.pt",
+    "path": "weights/va/fold4/best.pt",
+    "sha256": "abd6fd7a197d8f0b0f0131001bcee836ecaab5eb128587058804f2382a86dc52"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold4/selection.json",
+    "path": "evidence/va/fold4/selection.json",
+    "sha256": "bafce39705a286288d5b5649a0796dbd339e5d012a0acef30352174717ed0a9d"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold4/history.jsonl",
+    "path": "evidence/va/fold4/history.jsonl",
+    "sha256": "5f889c511477c9beecccd59142dd9fc6ffef674a642317f0a5a4adefe43dd038"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold4/test_predictions.npz",
+    "path": "evidence/va/fold4/test_predictions.npz",
+    "sha256": "48f4ac48250c175e22499c428ab57c885a1383322cb163c50336830f48dc5c9f"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold4/test.json",
+    "path": "evidence/va/fold4/test.json",
+    "sha256": "fe1a9b655b88109fa1951f599c67fd1ad6587fd79c995ebd59a3f6c86efbc819"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold5/best.pt",
+    "path": "weights/va/fold5/best.pt",
+    "sha256": "7e52100282134ab12e175dcf025d2cca9c03f98faa47254b762e9b0b1907a47d"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold5/selection.json",
+    "path": "evidence/va/fold5/selection.json",
+    "sha256": "464998fdd7eccfe65ae77806e4742d71d5d78e4f24e21201f20223e12bb89b71"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold5/history.jsonl",
+    "path": "evidence/va/fold5/history.jsonl",
+    "sha256": "e72e53d5af6ae291c610a3998792fbc403b2b96d4aca87fd0702448cdfc42281"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold5/test_predictions.npz",
+    "path": "evidence/va/fold5/test_predictions.npz",
+    "sha256": "9f1eed7fb88d40cdff70a852f18d23e36150b18678651f5c89511c9f0dd3551c"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_va_v1/fold5/test.json",
+    "path": "evidence/va/fold5/test.json",
+    "sha256": "f75bf4bc9ca41b8e84a038b663be41b4aea1d14d15510ce590bfeaea91f05ff1"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/실험원본/certification_classification_v1/source_snapshot/model.py",
+    "path": "model.py",
+    "sha256": "a4a3933301c6b4f152e528a23555eb4d7d43b6c3a28d85ea2835967455a6c996"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/audit.json",
+    "path": "data/features/audit.json",
+    "sha256": "d0691e4489ceebba5b73bdd04263da1837726dd6d9992859a962404342574267"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01F_impro01.npz",
+    "path": "data/features/dialogues/Ses01F_impro01.npz",
+    "sha256": "5274fb64c11a1074bff5761f5435829ca98590b162c485bd0da475c10c52e6c7"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01F_impro02.npz",
+    "path": "data/features/dialogues/Ses01F_impro02.npz",
+    "sha256": "47aa21e6909bed4b264fa73396a455e67f38e4054c0453059f0f006ee139663c"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01F_impro03.npz",
+    "path": "data/features/dialogues/Ses01F_impro03.npz",
+    "sha256": "ef0b9f06cc43eca89b750ddaf631282d7cfaae16c9feaea9899383a73e809faa"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01F_impro04.npz",
+    "path": "data/features/dialogues/Ses01F_impro04.npz",
+    "sha256": "308275da04f4d3f4fd9f09c0d6bbba8fde3d64c88daf41b6da4fd1048f82145a"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01F_impro05.npz",
+    "path": "data/features/dialogues/Ses01F_impro05.npz",
+    "sha256": "1751a8278db90da6c5fe9151db9cded3a6dbaf5e6671b77ba198a872e779dce2"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01F_impro06.npz",
+    "path": "data/features/dialogues/Ses01F_impro06.npz",
+    "sha256": "6eff62be8a3d3cac1e2744adccc5489d165766a4c510cc712a3e4125263767da"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01F_impro07.npz",
+    "path": "data/features/dialogues/Ses01F_impro07.npz",
+    "sha256": "1fa8b31116bc08f2b1cee4e7aba97224be2cd4956eb83b5ba0dd801198cf156e"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01F_script01_1.npz",
+    "path": "data/features/dialogues/Ses01F_script01_1.npz",
+    "sha256": "a913f7af943184fbd9ba0bd4bc9fe160aed68f07f7f38380b28c46b356a1c73f"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01F_script01_2.npz",
+    "path": "data/features/dialogues/Ses01F_script01_2.npz",
+    "sha256": "fc631bafadd97e69d67141e7a922d2d2a5325d514326265ce758732a9c05bd19"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01F_script01_3.npz",
+    "path": "data/features/dialogues/Ses01F_script01_3.npz",
+    "sha256": "d17b0f0deea4823ce4801de0f7ca8c9f838b24b3fde96af73bcd6ea0e652da9a"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01F_script02_1.npz",
+    "path": "data/features/dialogues/Ses01F_script02_1.npz",
+    "sha256": "6ff0da82edb389349a75f98ec831a55d2ba8dde88ef361449d33f5ac54b675f2"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01F_script02_2.npz",
+    "path": "data/features/dialogues/Ses01F_script02_2.npz",
+    "sha256": "bea16fd237cfe849ae01860b3b6bf74253aa01b9b071a81816c4c4503e676bf3"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01F_script03_1.npz",
+    "path": "data/features/dialogues/Ses01F_script03_1.npz",
+    "sha256": "d7a4b1d83b5fa378f2f4e63687485ab960aaac16372f9930077f726362ca8f63"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01F_script03_2.npz",
+    "path": "data/features/dialogues/Ses01F_script03_2.npz",
+    "sha256": "3d386a676b7e84c4158d3b4ed143a35cd34682c2f802e4ce7d1baaac652cf52b"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01M_impro01.npz",
+    "path": "data/features/dialogues/Ses01M_impro01.npz",
+    "sha256": "ec5c314cf4a0cb81e66c51af2bfdd3b02fd7ab8a65129fa73204605f93c2acf6"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01M_impro02.npz",
+    "path": "data/features/dialogues/Ses01M_impro02.npz",
+    "sha256": "2af20826b449df2306d0c37ad4bf915a71e6c1edeb16067da3e2ed0983cf9e3b"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01M_impro03.npz",
+    "path": "data/features/dialogues/Ses01M_impro03.npz",
+    "sha256": "fbf874da112dc60e1378e3cec9f61f6ed3f0754c1504c3bc101426098547fa67"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01M_impro04.npz",
+    "path": "data/features/dialogues/Ses01M_impro04.npz",
+    "sha256": "1b1f4b57508c4430a05de31184b9c5f9c2f20041f95c1bbbc867a4612cc0a16e"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01M_impro05.npz",
+    "path": "data/features/dialogues/Ses01M_impro05.npz",
+    "sha256": "88c9e6bee9f999abf81ee61a88e6f515c4ecb3100b4b23e1e73307504e40d89d"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01M_impro06.npz",
+    "path": "data/features/dialogues/Ses01M_impro06.npz",
+    "sha256": "778b077f6f0655b0612f3f373a9f52e9e716956841f05576233eb073832af51e"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01M_impro07.npz",
+    "path": "data/features/dialogues/Ses01M_impro07.npz",
+    "sha256": "d1e8dc974e347d7322958181f38a6cf50645a6bb1aab735e631b7d3774e38a36"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01M_script01_1.npz",
+    "path": "data/features/dialogues/Ses01M_script01_1.npz",
+    "sha256": "7287abee1488052772e9e1f92d7876a47b1dfbbf6c16dbd036f3837415fda6fd"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01M_script01_2.npz",
+    "path": "data/features/dialogues/Ses01M_script01_2.npz",
+    "sha256": "09964a999852c991ef3964e9a150e20143a74535563769d83eacaea42db667af"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01M_script01_3.npz",
+    "path": "data/features/dialogues/Ses01M_script01_3.npz",
+    "sha256": "2a90253283e85aeadc88cf250af42e325e97bbe08928278f77a5fefe0c0823dc"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01M_script02_1.npz",
+    "path": "data/features/dialogues/Ses01M_script02_1.npz",
+    "sha256": "08726b8e570f5801fb3a633389d0b8ddbe43c6770344c27adbc44a3b914847f5"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01M_script02_2.npz",
+    "path": "data/features/dialogues/Ses01M_script02_2.npz",
+    "sha256": "a7150c128757d734fd7c6886a0c2417be81d189440b501a0edbf3537b509ddc1"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01M_script03_1.npz",
+    "path": "data/features/dialogues/Ses01M_script03_1.npz",
+    "sha256": "b5ead6a78d0294f8c4dd36c1fc74dfce24fd1a66bb97d6e805c12bff1cbd5bdb"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses01M_script03_2.npz",
+    "path": "data/features/dialogues/Ses01M_script03_2.npz",
+    "sha256": "0befe6aa606c293b1fb6a298e01123b63283899b6d1aec25f6aef5c58b27de12"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02F_impro01.npz",
+    "path": "data/features/dialogues/Ses02F_impro01.npz",
+    "sha256": "e59ee25cca3a8639c6c5625242dd8399f08cd038edb25cc719d00b6ad8018345"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02F_impro02.npz",
+    "path": "data/features/dialogues/Ses02F_impro02.npz",
+    "sha256": "6bd826633078ce99ef758db53dd180158909cc7fc89f4f0e5ed291b5152c8d8a"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02F_impro03.npz",
+    "path": "data/features/dialogues/Ses02F_impro03.npz",
+    "sha256": "4b56abeaf678869a14fc7fbe3f58ac4b625113cacb992e3c915f50f66ea78aa3"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02F_impro04.npz",
+    "path": "data/features/dialogues/Ses02F_impro04.npz",
+    "sha256": "b3e053a66a19e6e57998f4331e7f124af333c0a826850c98c42097f661224e27"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02F_impro05.npz",
+    "path": "data/features/dialogues/Ses02F_impro05.npz",
+    "sha256": "ae17445342d8e3c9dc2f3e23f12d0e653b1299d5d47387c16f034b2c665b468a"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02F_impro06.npz",
+    "path": "data/features/dialogues/Ses02F_impro06.npz",
+    "sha256": "7929695acc345e948e277cf2ccf669b1665191c4c85026064da9c747c69456a2"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02F_impro07.npz",
+    "path": "data/features/dialogues/Ses02F_impro07.npz",
+    "sha256": "91427801d75e5ce67f27162643e0e2a077f816f149121a4c2ffc37d1a2adaeed"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02F_impro08.npz",
+    "path": "data/features/dialogues/Ses02F_impro08.npz",
+    "sha256": "06c690bf949c2d58a11210f878990472d04ecd7f172459923545360d4bfb966a"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02F_script01_1.npz",
+    "path": "data/features/dialogues/Ses02F_script01_1.npz",
+    "sha256": "0033b4be0a7ac9284d7460c3f819130db45a8cf15cbbfa886cc81be7086136d9"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02F_script01_2.npz",
+    "path": "data/features/dialogues/Ses02F_script01_2.npz",
+    "sha256": "3a12494979889332ab45e8c5ea63fc5d5f8b40614261e335a189ce8ed5058a81"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02F_script01_3.npz",
+    "path": "data/features/dialogues/Ses02F_script01_3.npz",
+    "sha256": "7cb573ff2ea3c6eb16def6429075afc60067a185c80b48eec63f2d5613caf4b6"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02F_script02_1.npz",
+    "path": "data/features/dialogues/Ses02F_script02_1.npz",
+    "sha256": "ec1328ea32d5598535640f4440bd423e36aebb892bf78f3f5870d850a85bb84e"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02F_script02_2.npz",
+    "path": "data/features/dialogues/Ses02F_script02_2.npz",
+    "sha256": "4778bd4a0808b5cb1ee469cdd43286c06e9576223aea816456ae8d874b2c53ab"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02F_script03_1.npz",
+    "path": "data/features/dialogues/Ses02F_script03_1.npz",
+    "sha256": "6391d2b47a070d5a16269352a71f1bbf3651faf0724455579b10bff08f916334"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02F_script03_2.npz",
+    "path": "data/features/dialogues/Ses02F_script03_2.npz",
+    "sha256": "16411d8dbbf31cae654634431d18e499459b75bf7ff7f99d8b90cbee22560020"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02M_impro01.npz",
+    "path": "data/features/dialogues/Ses02M_impro01.npz",
+    "sha256": "e66ad72706b393eb894739dd775c8e9cec0361ae62f4c5d871be27acd6787905"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02M_impro02.npz",
+    "path": "data/features/dialogues/Ses02M_impro02.npz",
+    "sha256": "87901ff4ce840ff81b457299fd3ea38b92f3ebf7d5b45512b352248d3f7d1408"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02M_impro03.npz",
+    "path": "data/features/dialogues/Ses02M_impro03.npz",
+    "sha256": "39683d09bad45581d6d762e071f4675eb3933bc31de6ffcf7753a25678c4780a"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02M_impro04.npz",
+    "path": "data/features/dialogues/Ses02M_impro04.npz",
+    "sha256": "1a7b517ef2247d15c4869aeadfc18e719a76dd149d1d67f62aa460a3985e98a7"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02M_impro05.npz",
+    "path": "data/features/dialogues/Ses02M_impro05.npz",
+    "sha256": "4b75d13886a995b857c9e407d3cbe6edeac7e161810c1f81226899d719159324"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02M_impro06.npz",
+    "path": "data/features/dialogues/Ses02M_impro06.npz",
+    "sha256": "64805feeb9422713f9d13fa2a00740e87a3a9f0a8535c9d971f50f10e3bf51d6"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02M_impro07.npz",
+    "path": "data/features/dialogues/Ses02M_impro07.npz",
+    "sha256": "5ba5e0412144c1f1f2da767ad952210f6898fae719718f1f73d028a6272c87c7"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02M_impro08.npz",
+    "path": "data/features/dialogues/Ses02M_impro08.npz",
+    "sha256": "87a9519cc114233b914fd9d89b5fa26aba7293bfe1a27a8134bb5e522fcf1572"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02M_script01_1.npz",
+    "path": "data/features/dialogues/Ses02M_script01_1.npz",
+    "sha256": "1702492c4418665168a2c9d0a15f1258af4480886b1c176928b0a2462231590c"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02M_script01_2.npz",
+    "path": "data/features/dialogues/Ses02M_script01_2.npz",
+    "sha256": "2c88885d8c3c5839724404b82b6119dde3698b96f5bea499e53c1fc80ca57610"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02M_script01_3.npz",
+    "path": "data/features/dialogues/Ses02M_script01_3.npz",
+    "sha256": "83e811dae7cdaae14bf0fa52f64722eb2f9389ec3e971106f9039194dc8c9d08"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02M_script02_1.npz",
+    "path": "data/features/dialogues/Ses02M_script02_1.npz",
+    "sha256": "e16221a9342e26fb8fcfc8e3775c53150ed4d61f0bb1a0b74568433112d03f16"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02M_script02_2.npz",
+    "path": "data/features/dialogues/Ses02M_script02_2.npz",
+    "sha256": "21b10ee5d924fae14587ddcf7d57135becc2b77743a0fa9e9ef4e1e05c20c8c3"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02M_script03_1.npz",
+    "path": "data/features/dialogues/Ses02M_script03_1.npz",
+    "sha256": "b5d8d9c2dd8e390b4ac22e9652efbcf3d5b999e11a04bf74b119bd9898d89cb6"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses02M_script03_2.npz",
+    "path": "data/features/dialogues/Ses02M_script03_2.npz",
+    "sha256": "4db6cbbb8222dfe36ff614fb64cb36db363575d29ed74eeb9fdd66c851941de7"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03F_impro01.npz",
+    "path": "data/features/dialogues/Ses03F_impro01.npz",
+    "sha256": "26d81db640be89649c5a57f4ddfc52b784b74fdaddcee80a4653447c2d82675f"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03F_impro02.npz",
+    "path": "data/features/dialogues/Ses03F_impro02.npz",
+    "sha256": "8a2033c7cad984dcd6f2547b22da6fafa08342ec5abddea749c2eadf21a2beea"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03F_impro03.npz",
+    "path": "data/features/dialogues/Ses03F_impro03.npz",
+    "sha256": "c2b751234d6c1d65156eb9fb726f68a3cfd15b69b808d55f5a5746e25d12091b"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03F_impro04.npz",
+    "path": "data/features/dialogues/Ses03F_impro04.npz",
+    "sha256": "4b8bcefbdb8572ee44012cd1489351ba3b3161191b2e95eea6fb4faeefc51bc1"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03F_impro05.npz",
+    "path": "data/features/dialogues/Ses03F_impro05.npz",
+    "sha256": "19f5ee78c57c7c1b46a858105d531c281ac15f169c71b6555cbf8c7026d7e422"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03F_impro06.npz",
+    "path": "data/features/dialogues/Ses03F_impro06.npz",
+    "sha256": "8585731093a66faa30e9f7aed4f1009d28cf392c64595f2a5dc5fe1613f0b158"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03F_impro07.npz",
+    "path": "data/features/dialogues/Ses03F_impro07.npz",
+    "sha256": "e3350c99a30f457fb0291f4c41434b295ae715d6bbdbd9f8b28c504e3d742be4"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03F_impro08.npz",
+    "path": "data/features/dialogues/Ses03F_impro08.npz",
+    "sha256": "91db6172718043596c9db4120272314ca5081ee1ff1aedc9f22e9c88412105d9"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03F_script01_1.npz",
+    "path": "data/features/dialogues/Ses03F_script01_1.npz",
+    "sha256": "1859d9ee7abf1247ef7f052635765b89b370d8949fcb8463a149f0eb89318802"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03F_script01_2.npz",
+    "path": "data/features/dialogues/Ses03F_script01_2.npz",
+    "sha256": "33a619aaec9bb7417455fc0724916bd3990a36645cf7e2b59cf11848b1e48f77"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03F_script01_3.npz",
+    "path": "data/features/dialogues/Ses03F_script01_3.npz",
+    "sha256": "44f75d7a1d9fae9dc5f2c12b4e0fe126c0a42992354010f325ca39878ff3d781"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03F_script02_1.npz",
+    "path": "data/features/dialogues/Ses03F_script02_1.npz",
+    "sha256": "73b788a03c35c633b629648be3bfc0584183dd25d3e3a33af63bfe33b38d4611"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03F_script02_2.npz",
+    "path": "data/features/dialogues/Ses03F_script02_2.npz",
+    "sha256": "cd5e5e200dbfa3ca7be6a315de77335fb256beff27fe10d741d23b0475361dec"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03F_script03_1.npz",
+    "path": "data/features/dialogues/Ses03F_script03_1.npz",
+    "sha256": "2ab4e037e8ea2ec74faa55bf059badf5557993ee7be2a8ddadfa57f2012aab9b"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03F_script03_2.npz",
+    "path": "data/features/dialogues/Ses03F_script03_2.npz",
+    "sha256": "e149e25f18ba23ac63bcfd8891df93dbe6b48dede054782d2c371b81d05a317e"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03M_impro01.npz",
+    "path": "data/features/dialogues/Ses03M_impro01.npz",
+    "sha256": "898d84faf31bca6c5de6a24ff650d65de66edf6b94fb330b518aabd940ebc1ba"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03M_impro02.npz",
+    "path": "data/features/dialogues/Ses03M_impro02.npz",
+    "sha256": "a9338090fad9dcd0dc1c36af5ad1790e14bbeec18562249314f18e02450098bc"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03M_impro03.npz",
+    "path": "data/features/dialogues/Ses03M_impro03.npz",
+    "sha256": "316ca9a669b616f22bbfd774ac18f2040f63e78c37d2f13accfa57662fc51a6f"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03M_impro04.npz",
+    "path": "data/features/dialogues/Ses03M_impro04.npz",
+    "sha256": "9a6f709ebf6fad82bb267b3e3e38adc894857eb393ac0ed6c377c3ac102d9d73"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03M_impro05a.npz",
+    "path": "data/features/dialogues/Ses03M_impro05a.npz",
+    "sha256": "5e4ce0c8ab8fde594c62b33e5dff98b8917d8b2ec9d84ee1e01b654209899da8"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03M_impro05b.npz",
+    "path": "data/features/dialogues/Ses03M_impro05b.npz",
+    "sha256": "1880cc5f16dabf030761994ce22c8c2c449ca5bd0106e2747bac2838478b4b97"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03M_impro06.npz",
+    "path": "data/features/dialogues/Ses03M_impro06.npz",
+    "sha256": "818783661877e39a08e965d8d76600512ced7ac625576fec8a98cd397b45c2b9"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03M_impro07.npz",
+    "path": "data/features/dialogues/Ses03M_impro07.npz",
+    "sha256": "9ca9025af33f3e0c712dabdb5db9e87a54d3cf066ff0fa7b2fe5b0bea0d50e90"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03M_impro08a.npz",
+    "path": "data/features/dialogues/Ses03M_impro08a.npz",
+    "sha256": "0ac990105d96b955cd73c6f9fa5440523af4b62abcf03f60f50c43e5844eb49a"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03M_impro08b.npz",
+    "path": "data/features/dialogues/Ses03M_impro08b.npz",
+    "sha256": "41d91bbd4619b644cf3573dcff14f54a80e179d4ba62b91b9c3a478c233621af"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03M_script01_1.npz",
+    "path": "data/features/dialogues/Ses03M_script01_1.npz",
+    "sha256": "d8808423570963e6fed5b232626546827501664dfbb8ec0d744dbf09680e4459"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03M_script01_2.npz",
+    "path": "data/features/dialogues/Ses03M_script01_2.npz",
+    "sha256": "454e5acc9eb8c48f5ba8673a439b4ebb97b4e9a956598f0e70138970936267b7"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03M_script01_3.npz",
+    "path": "data/features/dialogues/Ses03M_script01_3.npz",
+    "sha256": "6da9c9a4ace3ede2ad2d30310f6f763f248efbc00e54c6dd14fbf48e01a6e068"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03M_script02_1.npz",
+    "path": "data/features/dialogues/Ses03M_script02_1.npz",
+    "sha256": "8ca2a6ad193e7b27a9be0bdca5b664859b4a895df1cc4f37829cf92af47c4740"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03M_script02_2.npz",
+    "path": "data/features/dialogues/Ses03M_script02_2.npz",
+    "sha256": "4199a88f678ecbe774e1bddf6894f1ffca3b30f9e65c56ceeb980e61edc4e488"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03M_script03_1.npz",
+    "path": "data/features/dialogues/Ses03M_script03_1.npz",
+    "sha256": "bd5b78c9e6de9d8546300c7b00c64ab552305a93dcffd752f56dfe94676beeef"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses03M_script03_2.npz",
+    "path": "data/features/dialogues/Ses03M_script03_2.npz",
+    "sha256": "621b7f45c862ac08b979ebe1aa428fe53989a8e7fbe2112ebc071c53d73407f0"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04F_impro01.npz",
+    "path": "data/features/dialogues/Ses04F_impro01.npz",
+    "sha256": "65655cc8b394008d982f396254950415a26bd0acf83a247932870f65cb160585"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04F_impro02.npz",
+    "path": "data/features/dialogues/Ses04F_impro02.npz",
+    "sha256": "0bf6c537a6fde714a5d535e8a90e881eed21cd3079d6734d43f859db867994ad"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04F_impro03.npz",
+    "path": "data/features/dialogues/Ses04F_impro03.npz",
+    "sha256": "b8bad982c370232e39e7b3f11d3b342634e327d72afe9249412c8a2624f023c5"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04F_impro04.npz",
+    "path": "data/features/dialogues/Ses04F_impro04.npz",
+    "sha256": "a0be713d7cf3565a9e82f03bd6cb06ccd420a048ce69ad60b8dfa221a329588a"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04F_impro05.npz",
+    "path": "data/features/dialogues/Ses04F_impro05.npz",
+    "sha256": "e9e986d9040f5fe37a5dcd57e3e5878a4cd9bb75e65c24d7d0280a959f13e94e"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04F_impro06.npz",
+    "path": "data/features/dialogues/Ses04F_impro06.npz",
+    "sha256": "1f3641d55f1488a72f9e764f9af7becf54add391987f6ff09d2b124a2c2f7904"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04F_impro07.npz",
+    "path": "data/features/dialogues/Ses04F_impro07.npz",
+    "sha256": "24df6b7f6263584f00a45be6e83c1af9bf2caca90b89ee12a0b3efcdfef3caf0"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04F_impro08.npz",
+    "path": "data/features/dialogues/Ses04F_impro08.npz",
+    "sha256": "481021dc173d31c1732fecf377ebb15bd5748ff59771aa99bf3b315bdd5aa740"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04F_script01_1.npz",
+    "path": "data/features/dialogues/Ses04F_script01_1.npz",
+    "sha256": "e4de66650eea1ea73ad089214a434c011e821ef4d35fb3132e55c8dcb738a7f9"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04F_script01_2.npz",
+    "path": "data/features/dialogues/Ses04F_script01_2.npz",
+    "sha256": "b33e31cd3f077957ab1b59ae0d3b382a4b3d5be99bf52eb937bc7e4495de44ca"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04F_script01_3.npz",
+    "path": "data/features/dialogues/Ses04F_script01_3.npz",
+    "sha256": "d155b129529c9bbd4632386f75286310b61b0d583db0db56c50bd3a275b23fde"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04F_script02_1.npz",
+    "path": "data/features/dialogues/Ses04F_script02_1.npz",
+    "sha256": "08147872b4c3d2abda6cf7ee1e94a54d42ce611c96689f4a55e69f93bda465d8"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04F_script02_2.npz",
+    "path": "data/features/dialogues/Ses04F_script02_2.npz",
+    "sha256": "8fa6f020382501462448b8cddabfb44b6132c977ebb7ab1fdbac0ff7c60366cd"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04F_script03_1.npz",
+    "path": "data/features/dialogues/Ses04F_script03_1.npz",
+    "sha256": "ce711d41d617cd6e05fae0ab50988f5c1cbaf621c404d32813d911468bcd044a"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04F_script03_2.npz",
+    "path": "data/features/dialogues/Ses04F_script03_2.npz",
+    "sha256": "d9cf137a057c6643887d6d855724673b9daddb5d04f24bc1f819812ca6c521a9"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04M_impro01.npz",
+    "path": "data/features/dialogues/Ses04M_impro01.npz",
+    "sha256": "8e6508bd520f7f1a13d30a42058f88c12af036a48ef62a9df3af5199bab2a6db"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04M_impro02.npz",
+    "path": "data/features/dialogues/Ses04M_impro02.npz",
+    "sha256": "7916df1224ee992933d0cb446188b93290e91ebf520557ed50fe28f1440d7c6c"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04M_impro03.npz",
+    "path": "data/features/dialogues/Ses04M_impro03.npz",
+    "sha256": "9ca66c8a3f717da8ec52615d4ed4565d705a9af481c270f3f479786462bd11bb"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04M_impro04.npz",
+    "path": "data/features/dialogues/Ses04M_impro04.npz",
+    "sha256": "3c072344cfa8289b74ccf96215811777f427089a1ba22d7ff2c91a5216c8785f"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04M_impro05.npz",
+    "path": "data/features/dialogues/Ses04M_impro05.npz",
+    "sha256": "2457d6a7c98822b5d578ba91429dbbf33db8a08985bd67df67b4a8924cf718bd"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04M_impro06.npz",
+    "path": "data/features/dialogues/Ses04M_impro06.npz",
+    "sha256": "e40affd676f8cf85034ac042e4f10e5c5fde34a54d0edc8be25712662787510d"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04M_impro07.npz",
+    "path": "data/features/dialogues/Ses04M_impro07.npz",
+    "sha256": "705657b10f4d80fb77c926ded5d94c9d0b4f9c8448890731755df92a3014d4ad"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04M_impro08.npz",
+    "path": "data/features/dialogues/Ses04M_impro08.npz",
+    "sha256": "b566815a56ccd66538d8741f10dc794cb1837ff28c82200f4c2ecc97206da99e"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04M_script01_1.npz",
+    "path": "data/features/dialogues/Ses04M_script01_1.npz",
+    "sha256": "b36a8e3618d9f2a038969f79c0fb29f57552ec7030f58c4b1e657848bc233023"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04M_script01_2.npz",
+    "path": "data/features/dialogues/Ses04M_script01_2.npz",
+    "sha256": "6b46c62a8b1e423b350d8b0ec952e018da1b0751eabb63d0466e73d7992c45f9"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04M_script01_3.npz",
+    "path": "data/features/dialogues/Ses04M_script01_3.npz",
+    "sha256": "03a12a6c5a9eb64ef3b9cf3db26b76deb48fd33a848464969ed75888919c0b0c"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04M_script02_1.npz",
+    "path": "data/features/dialogues/Ses04M_script02_1.npz",
+    "sha256": "9fbeedc1ebb3e0cce5cb16c11219c11d3a5cef1e07de44b47affac1d5274c319"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04M_script02_2.npz",
+    "path": "data/features/dialogues/Ses04M_script02_2.npz",
+    "sha256": "e7e242f9ceb151effb73d9ced6c822c78b866e09655077cac16f93e06cf5e7ad"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04M_script03_1.npz",
+    "path": "data/features/dialogues/Ses04M_script03_1.npz",
+    "sha256": "0b56f03220bcc522f48f3e95e7778ebdf41ced4937103efdc9b1f64fff87d3bb"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses04M_script03_2.npz",
+    "path": "data/features/dialogues/Ses04M_script03_2.npz",
+    "sha256": "70e704c0933340265a48f6f0f5ebe43e04ccf458790009e0bc0e7b7515552153"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05F_impro01.npz",
+    "path": "data/features/dialogues/Ses05F_impro01.npz",
+    "sha256": "092b4d562898042f6d2639a5fdd41f8d63d726ee268a87fca6adb521bf687e2d"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05F_impro02.npz",
+    "path": "data/features/dialogues/Ses05F_impro02.npz",
+    "sha256": "18df9519a58e9c0869220778375f996f70b42a3ac20e84634f62ea5a67326faf"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05F_impro03.npz",
+    "path": "data/features/dialogues/Ses05F_impro03.npz",
+    "sha256": "451cfce30304305b2910492a62a0b992a8254cf4ffb35a4e9cff391f64b14113"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05F_impro04.npz",
+    "path": "data/features/dialogues/Ses05F_impro04.npz",
+    "sha256": "fce7f1e0dd165d3d8a4d3d089d4e4d2274b95d875fed5617a02404f5af04b1f9"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05F_impro05.npz",
+    "path": "data/features/dialogues/Ses05F_impro05.npz",
+    "sha256": "e22502f0f18e13954e57db6f5ba93d9477780ff0e29ebcec851e96f1d8e03c99"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05F_impro06.npz",
+    "path": "data/features/dialogues/Ses05F_impro06.npz",
+    "sha256": "c29427e3e596c36635d790768cf4c5e69fbb4cc138f3ed5f55cb3c5abd13c80d"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05F_impro07.npz",
+    "path": "data/features/dialogues/Ses05F_impro07.npz",
+    "sha256": "0873e81641d349ec2eddc442c68ce33730d023dc0382a280fc613a41da7c2267"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05F_impro08.npz",
+    "path": "data/features/dialogues/Ses05F_impro08.npz",
+    "sha256": "088db57f4fa48e3146c4ec65162ea915bf11d665fd3f5c5fe1977bd1702ebc56"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05F_script01_1.npz",
+    "path": "data/features/dialogues/Ses05F_script01_1.npz",
+    "sha256": "9c4d14018c4fd5c795506b9d69cf52ab436af474604f8f255224b9bef2c11438"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05F_script01_2.npz",
+    "path": "data/features/dialogues/Ses05F_script01_2.npz",
+    "sha256": "0509c9f93131eaf1bbebb49c2888f66e8c439a1b8bea583efdea3df59fd3dc28"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05F_script01_3.npz",
+    "path": "data/features/dialogues/Ses05F_script01_3.npz",
+    "sha256": "6c382bb2d81d6ae24d146c957a5da164bb1377d7428f1f3333a95a4778bf9465"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05F_script02_1.npz",
+    "path": "data/features/dialogues/Ses05F_script02_1.npz",
+    "sha256": "78e5ce5b463b819f025b69280b6a3be740e9944a495eeb23b53ce85fe6ad96b7"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05F_script02_2.npz",
+    "path": "data/features/dialogues/Ses05F_script02_2.npz",
+    "sha256": "707319c5226a5a63675394d237906641559ca9f4d64a324fc3c69b6e1b1a94d1"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05F_script03_1.npz",
+    "path": "data/features/dialogues/Ses05F_script03_1.npz",
+    "sha256": "78b2cf514b1157584dcd60c5435713e2fd33ab0814299d0f9bbf4f7c237134db"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05F_script03_2.npz",
+    "path": "data/features/dialogues/Ses05F_script03_2.npz",
+    "sha256": "a6c440111b4662d782ef7b9de9e9ab71bbbc896da33460e5d83d5bebe47236b2"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05M_impro01.npz",
+    "path": "data/features/dialogues/Ses05M_impro01.npz",
+    "sha256": "37dd7dfbdc9d2bfedcb16999d5a5ff0d33c0f8add1b2c5b8722787daf681749b"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05M_impro02.npz",
+    "path": "data/features/dialogues/Ses05M_impro02.npz",
+    "sha256": "007fe5c6fe07114dd9184bb2c9f53e6ef5bce6f2ef902957bfd97ffd4f264292"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05M_impro03.npz",
+    "path": "data/features/dialogues/Ses05M_impro03.npz",
+    "sha256": "546de081e2bb5f32430d30c0942e1a62052912e8ef92e20a67a3a93bc1a20e9f"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05M_impro04.npz",
+    "path": "data/features/dialogues/Ses05M_impro04.npz",
+    "sha256": "2750c7209aef138bbb6a86150e81c51a4cd0d61b5fcccc8b10f148e7ac2906ee"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05M_impro05.npz",
+    "path": "data/features/dialogues/Ses05M_impro05.npz",
+    "sha256": "5fb8cb44f760f13a8a244fe051c1fbc852820eed09c0011d02a1fc139aa6d303"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05M_impro06.npz",
+    "path": "data/features/dialogues/Ses05M_impro06.npz",
+    "sha256": "b911b9e62ca5df253473984ae387e63077e14a2cf4a8e97b221e5fa24bb46160"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05M_impro07.npz",
+    "path": "data/features/dialogues/Ses05M_impro07.npz",
+    "sha256": "1dba21d91593eb1c77e18267791de0d7cbe9b0d1e48979e08370b1f11a1ee49e"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05M_impro08.npz",
+    "path": "data/features/dialogues/Ses05M_impro08.npz",
+    "sha256": "babf56645ffedf214d47048e740be22514ac53f79e054d6b0937105d3e0a6e76"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05M_script01_1.npz",
+    "path": "data/features/dialogues/Ses05M_script01_1.npz",
+    "sha256": "f6e3ffff7f8590deeafd1c763437e03a0dcd598072f3ab1197d046c71de2d80e"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05M_script01_1b.npz",
+    "path": "data/features/dialogues/Ses05M_script01_1b.npz",
+    "sha256": "393efaa4b8864f7d7ca26fba51f647163c08cb5757123714ca9d4a13edaa2db6"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05M_script01_2.npz",
+    "path": "data/features/dialogues/Ses05M_script01_2.npz",
+    "sha256": "88ef6cb535e4abceafb41e30e0dca7fb8d07d5cfb4c9a12326cc0fa1ea83d863"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05M_script01_3.npz",
+    "path": "data/features/dialogues/Ses05M_script01_3.npz",
+    "sha256": "ddde50d48150731ae9e2850e42ad6e439321ae7b9ea7f4ca547bace632b02840"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05M_script02_1.npz",
+    "path": "data/features/dialogues/Ses05M_script02_1.npz",
+    "sha256": "9e49890d8b254bea59036d8402c8c5e565207f329d2511ed751e3ae827f3e6ca"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05M_script02_2.npz",
+    "path": "data/features/dialogues/Ses05M_script02_2.npz",
+    "sha256": "bc90b48b7de00a895ccc568a029b3ba937e66db161a8acb3848aa5b124c444d5"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05M_script03_1.npz",
+    "path": "data/features/dialogues/Ses05M_script03_1.npz",
+    "sha256": "752b961c5cccd0a9cc81a537cd5e1b059df736c9ef6440bb87b79ed6d685b360"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/dialogues/Ses05M_script03_2.npz",
+    "path": "data/features/dialogues/Ses05M_script03_2.npz",
+    "sha256": "8cc3b4b3ace4541caaec8b33588471f87b666a49120c313b51a7834d671250ec"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/extractor_audio.json",
+    "path": "data/features/extractor_audio.json",
+    "sha256": "4e9a98e7a1e1f05bba6c054b4728128a645d3035611f09dda5ed9f6e9ffb3724"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/extractor_prosody.json",
+    "path": "data/features/extractor_prosody.json",
+    "sha256": "c1291539235d65873dc23dabce76ccfcafc3140d16b21de864ca996d2cb390db"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/extractor_text.json",
+    "path": "data/features/extractor_text.json",
+    "sha256": "c6ad33febc6ae07ef5db17f3a39e2798bc65be2ca1d5de394ac728177e8e500e"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/extractor_visual.json",
+    "path": "data/features/extractor_visual.json",
+    "sha256": "0b9c0a9f38ba37830d14b39237c403a87d5f1a27fd4a44779e793b76e1467d91"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/iemocap/manifest.json",
+    "path": "data/features/manifest.json",
+    "sha256": "21d774a4012cb4e0cf401a853dd2686c6fff6e10d1ae5e910ed6c7c4208c06ca"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01F_impro01.txt",
+    "path": "data/annotations/Session1/Ses01F_impro01.txt",
+    "sha256": "e9f60d1c0d75cda99a744810cb0a282779a94a6f3b2e7629797c8ce2e26fa22f"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01F_impro02.txt",
+    "path": "data/annotations/Session1/Ses01F_impro02.txt",
+    "sha256": "ce52e19b8fd26e7541c2ad0118902c90130b14590ca3732ca4fb4c99f1022615"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01F_impro03.txt",
+    "path": "data/annotations/Session1/Ses01F_impro03.txt",
+    "sha256": "16960e50ead1b502fac13c196d63545f3e53c59d84fd8b9e0d52fdda745fc7b1"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01F_impro04.txt",
+    "path": "data/annotations/Session1/Ses01F_impro04.txt",
+    "sha256": "3e0e4c0b5bc5274836bb44b7af14dafb36f16806e4da604bbf83cfa4cb69ec4d"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01F_impro05.txt",
+    "path": "data/annotations/Session1/Ses01F_impro05.txt",
+    "sha256": "57f19434c4b4f38342d32bc7e07890b18848031297ca465690180837dffeabc9"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01F_impro06.txt",
+    "path": "data/annotations/Session1/Ses01F_impro06.txt",
+    "sha256": "64a032d6293848711168954382849e056c642a1be141a8ee67db8d0b3322a99a"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01F_impro07.txt",
+    "path": "data/annotations/Session1/Ses01F_impro07.txt",
+    "sha256": "cae0fc662163abd5a336835319599c4866bcb48c3930bc0c9254ebdc61d3ba0e"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01F_script01_1.txt",
+    "path": "data/annotations/Session1/Ses01F_script01_1.txt",
+    "sha256": "56ca15d8bbcbca8416fe5bb1d261f5645c9af2e1287fe882f2ab888e1986f123"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01F_script01_2.txt",
+    "path": "data/annotations/Session1/Ses01F_script01_2.txt",
+    "sha256": "5ef38411d39b07956425aa3d93924ccdcf495e6a1ab7df1e35be2816692a5811"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01F_script01_3.txt",
+    "path": "data/annotations/Session1/Ses01F_script01_3.txt",
+    "sha256": "6d719f4f4a389b541ea2c968b57128db4445d5831183f1d7a11ce2d52a51792c"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01F_script02_1.txt",
+    "path": "data/annotations/Session1/Ses01F_script02_1.txt",
+    "sha256": "d8861841d97439e734dc648c65f2e35812ea9e305460213c34f5d6a22ad308f7"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01F_script02_2.txt",
+    "path": "data/annotations/Session1/Ses01F_script02_2.txt",
+    "sha256": "d9b5afebdd601bc3089d4276024ddc2f46c4233efab919b26a9feb5820085100"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01F_script03_1.txt",
+    "path": "data/annotations/Session1/Ses01F_script03_1.txt",
+    "sha256": "0b9c5e2726c689167f173923219bf315440b3975d662a6aba6a324a92db83025"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01F_script03_2.txt",
+    "path": "data/annotations/Session1/Ses01F_script03_2.txt",
+    "sha256": "7d56c27afad6b6eff38e035ee355e81cffbf1fb1ab0bf78edbd9a65e5072657f"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01M_impro01.txt",
+    "path": "data/annotations/Session1/Ses01M_impro01.txt",
+    "sha256": "4334b93b948a98588239cc1bfbf43341ee094c02fda422913351a3cf30eac769"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01M_impro02.txt",
+    "path": "data/annotations/Session1/Ses01M_impro02.txt",
+    "sha256": "6882cb92db2da130d2f31aad12d1570cf1c507ca0c5d786712b2d3a4f91019d7"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01M_impro03.txt",
+    "path": "data/annotations/Session1/Ses01M_impro03.txt",
+    "sha256": "534a0a1b7928e514de925e259379485b2dda2d6eaaec7ed66b959849c20cf292"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01M_impro04.txt",
+    "path": "data/annotations/Session1/Ses01M_impro04.txt",
+    "sha256": "53f9cf0024e152302e52c704613cf7f41da651e9336dbd9550d6c74e1ddf6a1c"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01M_impro05.txt",
+    "path": "data/annotations/Session1/Ses01M_impro05.txt",
+    "sha256": "1467891c7c83e9d59160ce1b3a46b80ec4673e98870d45a35fab0efacb058b45"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01M_impro06.txt",
+    "path": "data/annotations/Session1/Ses01M_impro06.txt",
+    "sha256": "e12924fcf5347f8ffae2c9714722ffc7565f17f26e2145f89adaec6067b0beff"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01M_impro07.txt",
+    "path": "data/annotations/Session1/Ses01M_impro07.txt",
+    "sha256": "f04654f3532794fd1467d0c7f9d1c3cf1042c75a23b3908d162aba56a4209c14"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01M_script01_1.txt",
+    "path": "data/annotations/Session1/Ses01M_script01_1.txt",
+    "sha256": "9100d4f10d78205088924bee9876976e51e23d422615ffbbf22d2143f7762472"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01M_script01_2.txt",
+    "path": "data/annotations/Session1/Ses01M_script01_2.txt",
+    "sha256": "207049c3d656189edf2642facaf629cd8d8b9a83cbebdf2d70689a93136c6f19"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01M_script01_3.txt",
+    "path": "data/annotations/Session1/Ses01M_script01_3.txt",
+    "sha256": "98d836bd692e9e0db0b93876efadb0322689f48a24f8374ce7c34c7ae01065c1"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01M_script02_1.txt",
+    "path": "data/annotations/Session1/Ses01M_script02_1.txt",
+    "sha256": "6c7ae597d29d96b64dc918225f3310132a1ad330f8aeacf215c84cfa6c4bb700"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01M_script02_2.txt",
+    "path": "data/annotations/Session1/Ses01M_script02_2.txt",
+    "sha256": "963451acb79ad6712d992afee20488240b2330502bf3d79b950ead88943aea8d"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01M_script03_1.txt",
+    "path": "data/annotations/Session1/Ses01M_script03_1.txt",
+    "sha256": "349fad48978fc5eaa4f31cd38609737bdb7e58af5b71de0f14f892150f28bb29"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session1/Ses01M_script03_2.txt",
+    "path": "data/annotations/Session1/Ses01M_script03_2.txt",
+    "sha256": "6c92463a0ff98bb0f45a62f4f7b71427c0545f467f888701430705ec3a7dacc3"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02F_impro01.txt",
+    "path": "data/annotations/Session2/Ses02F_impro01.txt",
+    "sha256": "745ff5983370b1a85f4f5742affbb0a73fd091baed12f21bc74a34fc60fc8d0f"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02F_impro02.txt",
+    "path": "data/annotations/Session2/Ses02F_impro02.txt",
+    "sha256": "e9402d86e69e543b2c08f0500b1b6e3a9a1196345bc2912463252fd84ad3e30c"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02F_impro03.txt",
+    "path": "data/annotations/Session2/Ses02F_impro03.txt",
+    "sha256": "5a4bf25d6d985a87bb1c48f9f2c37afe530c062c7630a608cc7f707f886b29da"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02F_impro04.txt",
+    "path": "data/annotations/Session2/Ses02F_impro04.txt",
+    "sha256": "b7806807117b6ec96355fcfcee970abbf21cb8dc63f0eb845fe9d9abc0d7c7c6"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02F_impro05.txt",
+    "path": "data/annotations/Session2/Ses02F_impro05.txt",
+    "sha256": "fa849cc4553e73bbe003e17dfc7f4be636fb199bfa6e1debf427919952ed9d84"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02F_impro06.txt",
+    "path": "data/annotations/Session2/Ses02F_impro06.txt",
+    "sha256": "f8990da201286a917d1430edbaaac78793200b4acf3c13bb1ef6251f03b313e3"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02F_impro07.txt",
+    "path": "data/annotations/Session2/Ses02F_impro07.txt",
+    "sha256": "a0baa4b03834d1030088111785e78842bb791eb0ea310ba1f505b985c77afd01"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02F_impro08.txt",
+    "path": "data/annotations/Session2/Ses02F_impro08.txt",
+    "sha256": "79a6e9af498dea814abe8dc34adf49ff7fa6060f28a2dd2c52628738ce775b54"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02F_script01_1.txt",
+    "path": "data/annotations/Session2/Ses02F_script01_1.txt",
+    "sha256": "88ad799f117a09e42e4ef3815b5e0b73d02d5c4a67b3bdecf1045c921c267a01"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02F_script01_2.txt",
+    "path": "data/annotations/Session2/Ses02F_script01_2.txt",
+    "sha256": "9ce662074c5142a486bf4df12e207b14f1023fc623aac00cffbc2e7c433d509a"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02F_script01_3.txt",
+    "path": "data/annotations/Session2/Ses02F_script01_3.txt",
+    "sha256": "e62ddcb0e69dd51ccc3b098c4705db183fc2b10a9a52f5ce5ce4c00ac0a5b1d4"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02F_script02_1.txt",
+    "path": "data/annotations/Session2/Ses02F_script02_1.txt",
+    "sha256": "57f76055f119de58176a3639bad4d0a79626e234725874f886b1eac4327c222c"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02F_script02_2.txt",
+    "path": "data/annotations/Session2/Ses02F_script02_2.txt",
+    "sha256": "34f422ac0f5514473416f309ef62550c641f098010e9b2320f4ea938e4d502fa"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02F_script03_1.txt",
+    "path": "data/annotations/Session2/Ses02F_script03_1.txt",
+    "sha256": "7f784b67fd49e74e9a0214c7730661f15da267f57590c95960f1824a8e334441"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02F_script03_2.txt",
+    "path": "data/annotations/Session2/Ses02F_script03_2.txt",
+    "sha256": "ef2a8c09b89268dbea10e925b13f9edbbc47a4406547d87e0e3e2bc36ceec449"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02M_impro01.txt",
+    "path": "data/annotations/Session2/Ses02M_impro01.txt",
+    "sha256": "37c6ef77eec355595f3ecc0e72d92ee0e4b65256b24d3f01d574fc2b8cb7c6ad"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02M_impro02.txt",
+    "path": "data/annotations/Session2/Ses02M_impro02.txt",
+    "sha256": "1b710b17acb3e9efc97704f4c14b7973c584091905e60b649d766053ff228e7b"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02M_impro03.txt",
+    "path": "data/annotations/Session2/Ses02M_impro03.txt",
+    "sha256": "277a0cdfa20a0a7409d8490bbb80f904ae243ed79e5fcabdc76bc1952cfe5df6"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02M_impro04.txt",
+    "path": "data/annotations/Session2/Ses02M_impro04.txt",
+    "sha256": "9de13c525d39630ae8de45c1c1c787573bc09105ef6713e570cd5fb90d8e0cfc"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02M_impro05.txt",
+    "path": "data/annotations/Session2/Ses02M_impro05.txt",
+    "sha256": "0d0542a2bb5255ee1be1df23967dffa929df574ae038841f80d5a417ffa902b7"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02M_impro06.txt",
+    "path": "data/annotations/Session2/Ses02M_impro06.txt",
+    "sha256": "f63455b098ed51ba52b720da9c7045a17574328a0c4e95f1a6d9cdc63016b5c6"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02M_impro07.txt",
+    "path": "data/annotations/Session2/Ses02M_impro07.txt",
+    "sha256": "7ec359bbb21398b2c1d4151ad105ff5b4fea1a088cbd4b4aa12f6764ae0160ae"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02M_impro08.txt",
+    "path": "data/annotations/Session2/Ses02M_impro08.txt",
+    "sha256": "edcc1ea5c1b4247608867a17ea5a5d4493313145275be80957e6a6cd10e8047f"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02M_script01_1.txt",
+    "path": "data/annotations/Session2/Ses02M_script01_1.txt",
+    "sha256": "60e4ad4600d024cbc73cab3c2f7a15b814a6c644ad07977e3c207aec40de63e7"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02M_script01_2.txt",
+    "path": "data/annotations/Session2/Ses02M_script01_2.txt",
+    "sha256": "28f2a98e0ffaa72ae3892ba96d33179cc5a08564e046d9f212cc927402f52499"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02M_script01_3.txt",
+    "path": "data/annotations/Session2/Ses02M_script01_3.txt",
+    "sha256": "dfea82b6edd9455633c4b4a432a1f6ca1c298ae762392295811c279b1387c0f7"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02M_script02_1.txt",
+    "path": "data/annotations/Session2/Ses02M_script02_1.txt",
+    "sha256": "f80bc694abda6736c2f0bc8cd464abaf6ea5a48b4281c36d0978dc7b1f17ef5a"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02M_script02_2.txt",
+    "path": "data/annotations/Session2/Ses02M_script02_2.txt",
+    "sha256": "6058afce626176238c3c24ebde2a79c8667fe1e22e769c640dd1e19053f93820"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02M_script03_1.txt",
+    "path": "data/annotations/Session2/Ses02M_script03_1.txt",
+    "sha256": "babc53cbac677f74e941fd4769ac2333ff252e27a0ca457101d49ded974bc3c8"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session2/Ses02M_script03_2.txt",
+    "path": "data/annotations/Session2/Ses02M_script03_2.txt",
+    "sha256": "04ed99cd78a57e4ffe3277068496bd917164998fd37f33759eea5705412f569d"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03F_impro01.txt",
+    "path": "data/annotations/Session3/Ses03F_impro01.txt",
+    "sha256": "06e9326475e0b837318a3498691202cff66c030c0859a652be061f04b80946cf"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03F_impro02.txt",
+    "path": "data/annotations/Session3/Ses03F_impro02.txt",
+    "sha256": "b57db87f7a3015f380646696d69acf9c883d827ac06aae74c6ffbc16ac2673f0"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03F_impro03.txt",
+    "path": "data/annotations/Session3/Ses03F_impro03.txt",
+    "sha256": "1bf2e02ebc0efb49c102dccc6ab930dde4bc5d804377296aefc6f527a82b1b71"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03F_impro04.txt",
+    "path": "data/annotations/Session3/Ses03F_impro04.txt",
+    "sha256": "38fdf3077cec3feaf3f606e41445f081d25c8f11913f574a8efa3c27193a1631"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03F_impro05.txt",
+    "path": "data/annotations/Session3/Ses03F_impro05.txt",
+    "sha256": "18ac044798b26527fd235d8c012a94366aac18e782e4f2a3df836e7896f16ff8"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03F_impro06.txt",
+    "path": "data/annotations/Session3/Ses03F_impro06.txt",
+    "sha256": "5b79eacefba280fcb2aa034bf159869f7a3738f58f98b518103db42ee9b6b449"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03F_impro07.txt",
+    "path": "data/annotations/Session3/Ses03F_impro07.txt",
+    "sha256": "eed39f75c60a6aa743c00c9e96465e1e171c8415496efb025367e1d47bcaeaf6"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03F_impro08.txt",
+    "path": "data/annotations/Session3/Ses03F_impro08.txt",
+    "sha256": "c27e02c91dad68b0aed7bc1ea6a377f4d9267356fdef31de4515527ba3b80509"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03F_script01_1.txt",
+    "path": "data/annotations/Session3/Ses03F_script01_1.txt",
+    "sha256": "a87f7e59d80f41eeca9cbdf16b1a0c8e6f804ca815591e4824880d0570c6902c"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03F_script01_2.txt",
+    "path": "data/annotations/Session3/Ses03F_script01_2.txt",
+    "sha256": "9eb6986eb5baaac76699a1c069312f57f30624623b184eb4a0170fe72af0a4e7"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03F_script01_3.txt",
+    "path": "data/annotations/Session3/Ses03F_script01_3.txt",
+    "sha256": "aead0264d2608a6fc383de11cecc5a66998474096d1147253bf3a3d6d08e1411"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03F_script02_1.txt",
+    "path": "data/annotations/Session3/Ses03F_script02_1.txt",
+    "sha256": "10bc2a23820ef5c97cfc0fc037b580274831a9999434038c0902b066d3a582af"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03F_script02_2.txt",
+    "path": "data/annotations/Session3/Ses03F_script02_2.txt",
+    "sha256": "4120d198ff7538132ce1002478e44302e6a40e2ebeb8c46c7045ce1a6b55e9c1"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03F_script03_1.txt",
+    "path": "data/annotations/Session3/Ses03F_script03_1.txt",
+    "sha256": "ccda28cf37f3779f72614e3c7b8e0834d045c7cd9cea22cce2c17f8055b4df80"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03F_script03_2.txt",
+    "path": "data/annotations/Session3/Ses03F_script03_2.txt",
+    "sha256": "3fddc9b6958cfcbfd9348b40934605d3a0196ecaf8dadbdd5af2dc6b0db16f6b"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03M_impro01.txt",
+    "path": "data/annotations/Session3/Ses03M_impro01.txt",
+    "sha256": "c09d13fabc8ba99ac795c70c26ebd0862024d9670a4449d33b7938862ff8abbb"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03M_impro02.txt",
+    "path": "data/annotations/Session3/Ses03M_impro02.txt",
+    "sha256": "1fb6630756a6561952768b2b59912e3de7d03eb300539967378aaed5eb75355d"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03M_impro03.txt",
+    "path": "data/annotations/Session3/Ses03M_impro03.txt",
+    "sha256": "c18336746ed38afc1e2779a5c363aa0eda280b083d7054a24e0711e95686b328"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03M_impro04.txt",
+    "path": "data/annotations/Session3/Ses03M_impro04.txt",
+    "sha256": "4eea48b18d607593b5904b85a5a75e007870b8304d375cb9fd742e60d9637b6a"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03M_impro05a.txt",
+    "path": "data/annotations/Session3/Ses03M_impro05a.txt",
+    "sha256": "e9b5294df52c832b24e6e17899278686296327b11acfef502cb63cc1880cd983"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03M_impro05b.txt",
+    "path": "data/annotations/Session3/Ses03M_impro05b.txt",
+    "sha256": "8199691f7e0dde7676a3045c2d8b69b2174c47bb2c31aea7a8f93d3771512448"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03M_impro06.txt",
+    "path": "data/annotations/Session3/Ses03M_impro06.txt",
+    "sha256": "d9994f1f6d0224ff45c5ce689e419ac4d2af9d38e997fcaa33480adc87f0d371"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03M_impro07.txt",
+    "path": "data/annotations/Session3/Ses03M_impro07.txt",
+    "sha256": "1ccfc7c1c1907ddc12e511538a1e39aa0b2928109de9ff0af4ea0cfcde87a757"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03M_impro08a.txt",
+    "path": "data/annotations/Session3/Ses03M_impro08a.txt",
+    "sha256": "661689f72ff5cc168ad37015e9d949dc7f7272351afdc94d11ad8f3664cbb3b5"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03M_impro08b.txt",
+    "path": "data/annotations/Session3/Ses03M_impro08b.txt",
+    "sha256": "058c5227309bfd7d646f5479467c876a6855d801153fb55ca7ecea30a80f6253"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03M_script01_1.txt",
+    "path": "data/annotations/Session3/Ses03M_script01_1.txt",
+    "sha256": "52ce180d5366b7fc60ff3e7dece08efc3b5a2fbf334a6c37ccef1b5322acc792"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03M_script01_2.txt",
+    "path": "data/annotations/Session3/Ses03M_script01_2.txt",
+    "sha256": "5ad1670ef8edbbbbf0cfb0e8ed69c20314813ed7e2db5b94328c324914e16080"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03M_script01_3.txt",
+    "path": "data/annotations/Session3/Ses03M_script01_3.txt",
+    "sha256": "0cd2a1b4f44e2aabdbec9b9f08a5a50b7b1440abd823591b37db5bd8c4b49110"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03M_script02_1.txt",
+    "path": "data/annotations/Session3/Ses03M_script02_1.txt",
+    "sha256": "e735f20c80e3c13d1c11bd8485b18d6b01f74d84237052ae83ed73e076da122a"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03M_script02_2.txt",
+    "path": "data/annotations/Session3/Ses03M_script02_2.txt",
+    "sha256": "7e0f72059032ca1d394d2f0bd8d3e337455caee42fc47ccdfe2b6e94104e37d9"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03M_script03_1.txt",
+    "path": "data/annotations/Session3/Ses03M_script03_1.txt",
+    "sha256": "5d045cf00d84a91b4d64e27e4003bff1ec00acc6a3f5bae757eacec3148ecf6b"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session3/Ses03M_script03_2.txt",
+    "path": "data/annotations/Session3/Ses03M_script03_2.txt",
+    "sha256": "e7c9fe42d7b258f05b63f422dc7e4c2200179f657a1c68197bae1d8ed1c01563"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04F_impro01.txt",
+    "path": "data/annotations/Session4/Ses04F_impro01.txt",
+    "sha256": "00e35ad03c9d72ea9f004916aee80fdb6b3670e6413dc1b3d7cc0d15ddc2381a"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04F_impro02.txt",
+    "path": "data/annotations/Session4/Ses04F_impro02.txt",
+    "sha256": "42ab6594fd8044571a8ac70aae3de42005b19b4d6d5017d43b1ec437073a88b0"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04F_impro03.txt",
+    "path": "data/annotations/Session4/Ses04F_impro03.txt",
+    "sha256": "edd0f4b7ff4eb882400469a1f49419b91599cd5b118dba0135eb27916875f7a2"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04F_impro04.txt",
+    "path": "data/annotations/Session4/Ses04F_impro04.txt",
+    "sha256": "83ed7ef0078e0282064f60db269b78f1618803859df496efc0a20e248dddd16d"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04F_impro05.txt",
+    "path": "data/annotations/Session4/Ses04F_impro05.txt",
+    "sha256": "09451c2c244e01c46ce4b67b737ab71b862e6b91cb761ef186905e157cb673e1"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04F_impro06.txt",
+    "path": "data/annotations/Session4/Ses04F_impro06.txt",
+    "sha256": "62ce78226cd99a7e7b5383df0c56e86360e019179dc28aaab5cad3491fa20412"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04F_impro07.txt",
+    "path": "data/annotations/Session4/Ses04F_impro07.txt",
+    "sha256": "1e07da57d687766b762df94d03f59b261089a6f9a654acaa60a46e26f2dbfbc6"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04F_impro08.txt",
+    "path": "data/annotations/Session4/Ses04F_impro08.txt",
+    "sha256": "cbe5159192ed3e97ffcd18dfad3b238a7f6e0e1060691dc0cd375e0d01a8e522"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04F_script01_1.txt",
+    "path": "data/annotations/Session4/Ses04F_script01_1.txt",
+    "sha256": "df21648cd66a08aba3e7b9b798d748d0e35776d53a3ba019bb8c7ddabd0b6a09"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04F_script01_2.txt",
+    "path": "data/annotations/Session4/Ses04F_script01_2.txt",
+    "sha256": "1b4da19dde8c06ab9c22d8a3b91fbe791231352bedd9066a63fba5c4ad1c06b3"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04F_script01_3.txt",
+    "path": "data/annotations/Session4/Ses04F_script01_3.txt",
+    "sha256": "b283cdc1ef55c16df5a2f89f0db9d736b9131bc342581f88616c27e85591b31f"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04F_script02_1.txt",
+    "path": "data/annotations/Session4/Ses04F_script02_1.txt",
+    "sha256": "d6067c9e7cb96c1cfa9edb64a77f68f0fb9e29d67d5e8785d79991542ac62a46"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04F_script02_2.txt",
+    "path": "data/annotations/Session4/Ses04F_script02_2.txt",
+    "sha256": "2a994e7077407cefa04bf7f167a714cef65847e5f53dc61a469a42d0274373c5"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04F_script03_1.txt",
+    "path": "data/annotations/Session4/Ses04F_script03_1.txt",
+    "sha256": "3d53cb5a059e14b2e68600399778afc8f4132ffe5a8a9573661f70b9c36e5d26"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04F_script03_2.txt",
+    "path": "data/annotations/Session4/Ses04F_script03_2.txt",
+    "sha256": "0c9ea22187d0f1b42f6c1edbb7dc04cb44d8b69f580efd0af00a897e2684e859"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04M_impro01.txt",
+    "path": "data/annotations/Session4/Ses04M_impro01.txt",
+    "sha256": "89d2a104a94024e0357757a1d29c59c02959b86edb6d938971b7c18a7589960c"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04M_impro02.txt",
+    "path": "data/annotations/Session4/Ses04M_impro02.txt",
+    "sha256": "0505b9bfa718f5c1aa55a14aa2ce22e94e46f55e3f7e0c3dbdacda37282dbb19"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04M_impro03.txt",
+    "path": "data/annotations/Session4/Ses04M_impro03.txt",
+    "sha256": "438610dcc724b61902fb97ffde9c9e2997ff671871945291121d86c46abe2aaa"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04M_impro04.txt",
+    "path": "data/annotations/Session4/Ses04M_impro04.txt",
+    "sha256": "4cc3e2dbb560f2338d34ae6605b587517015a20b1eae6b882a61a1fe143b7c18"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04M_impro05.txt",
+    "path": "data/annotations/Session4/Ses04M_impro05.txt",
+    "sha256": "50c201ee35a0abc34b0627ce336dc789debd61354afeb682c0e2d6f6a688cfa9"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04M_impro06.txt",
+    "path": "data/annotations/Session4/Ses04M_impro06.txt",
+    "sha256": "e20e2cc60dccebad9701d029ab69cbe366f67ef394e0b5938549f9a16118cede"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04M_impro07.txt",
+    "path": "data/annotations/Session4/Ses04M_impro07.txt",
+    "sha256": "fe4fb09bedd9bf6f9a2900cf80ce2ba9ab966eb096563ac07a8f7af159f8ed57"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04M_impro08.txt",
+    "path": "data/annotations/Session4/Ses04M_impro08.txt",
+    "sha256": "7f4fc3a2403db8ae85bf651c70069bc0d4d213a86f51caf2d5f79ed0ef3b7974"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04M_script01_1.txt",
+    "path": "data/annotations/Session4/Ses04M_script01_1.txt",
+    "sha256": "fd7254b3cb75c816609fd0d501b65b83b8a3d7f17d1f951cc76114444e42db94"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04M_script01_2.txt",
+    "path": "data/annotations/Session4/Ses04M_script01_2.txt",
+    "sha256": "c986616c568f052a1479c62dfc729cfe17096455146dd64c88232cebf319f4f1"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04M_script01_3.txt",
+    "path": "data/annotations/Session4/Ses04M_script01_3.txt",
+    "sha256": "ffbbcd68cf587bf2fe689437370fdda8327b6db4a57e357c0d60fea70268c08b"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04M_script02_1.txt",
+    "path": "data/annotations/Session4/Ses04M_script02_1.txt",
+    "sha256": "cf553160f9e5959bce13826780715c04c00b79cd3fceead68703e21340ed97a3"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04M_script02_2.txt",
+    "path": "data/annotations/Session4/Ses04M_script02_2.txt",
+    "sha256": "ca95474fc3b0bf5e1439c88b4f54ad9b797c45d08a510bda61061764c3613fb7"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04M_script03_1.txt",
+    "path": "data/annotations/Session4/Ses04M_script03_1.txt",
+    "sha256": "0a37d48fbe6b4248546baf26eb5347b3114fc3c62ef61601e4043acda81cb1fa"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session4/Ses04M_script03_2.txt",
+    "path": "data/annotations/Session4/Ses04M_script03_2.txt",
+    "sha256": "d84b67b056f933064dc5acf83cb8df1974edf184e8297234d242d7a643d46d2a"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05F_impro01.txt",
+    "path": "data/annotations/Session5/Ses05F_impro01.txt",
+    "sha256": "1c8e6cc45571fa59a9a6dde1c178042df125777fed83f073d128363fc838cc09"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05F_impro02.txt",
+    "path": "data/annotations/Session5/Ses05F_impro02.txt",
+    "sha256": "59ce7264903173f02a3372d268a706612c1cf0a27f468af9b897b9876ae74dbb"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05F_impro03.txt",
+    "path": "data/annotations/Session5/Ses05F_impro03.txt",
+    "sha256": "b5795cf9fa1ecc2fe349ff42f2113e75c951657e9ed5a531f1129fda2801b410"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05F_impro04.txt",
+    "path": "data/annotations/Session5/Ses05F_impro04.txt",
+    "sha256": "203537979f6dc43059e755bb0c88075c0961eab7c8e8dfcb9988feb2680feccf"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05F_impro05.txt",
+    "path": "data/annotations/Session5/Ses05F_impro05.txt",
+    "sha256": "a96117ab9f6268dc73d0b8c14aaf013a5d1bf081836bb508d2c215a939526b2f"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05F_impro06.txt",
+    "path": "data/annotations/Session5/Ses05F_impro06.txt",
+    "sha256": "f3f3c503e504e56818174fd5952471b2f8f9eb51577b78297c9a5a83be710754"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05F_impro07.txt",
+    "path": "data/annotations/Session5/Ses05F_impro07.txt",
+    "sha256": "a80d766b2cfec3600ced555cae28d8f914bece69a840226a5bb9beeaccaae558"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05F_impro08.txt",
+    "path": "data/annotations/Session5/Ses05F_impro08.txt",
+    "sha256": "771440e9e072cb249baa4427b7980da427d1f5dc8488172e220b5342b2d78f74"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05F_script01_1.txt",
+    "path": "data/annotations/Session5/Ses05F_script01_1.txt",
+    "sha256": "761b955149fc17f4144e8743f6c2c65568b411fe63211cb9a13575aa31cea0fa"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05F_script01_2.txt",
+    "path": "data/annotations/Session5/Ses05F_script01_2.txt",
+    "sha256": "74f3d36c59a19844ca0e159ab79aa358a9e7a45afad58ae67805513f9e2b4874"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05F_script01_3.txt",
+    "path": "data/annotations/Session5/Ses05F_script01_3.txt",
+    "sha256": "b665423b33773182af94f1a4fa44b4a4fb851a2ed994eefeade4c874a045f5fc"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05F_script02_1.txt",
+    "path": "data/annotations/Session5/Ses05F_script02_1.txt",
+    "sha256": "077f675f1b7915af0a6c4b8cecfb0766400fd9a703057c5acea1a55b7c7aa06b"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05F_script02_2.txt",
+    "path": "data/annotations/Session5/Ses05F_script02_2.txt",
+    "sha256": "826382c24a04eb80195635f54ec338d870b2a511a4e059881c3e5728d3a0cd0e"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05F_script03_1.txt",
+    "path": "data/annotations/Session5/Ses05F_script03_1.txt",
+    "sha256": "12f4d6b871e44c65a11a75cc0dd86cc215251acf20f95e00f97fe8b92ab7978e"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05F_script03_2.txt",
+    "path": "data/annotations/Session5/Ses05F_script03_2.txt",
+    "sha256": "bcd22f55ee7684a945bddaa4a6b29df201594fbe9f1af9564fc83651dc9ec0ae"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05M_impro01.txt",
+    "path": "data/annotations/Session5/Ses05M_impro01.txt",
+    "sha256": "2690c6e385d8305826d08ef487b47a4291b71157e465aa3c145c73f8c2f335da"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05M_impro02.txt",
+    "path": "data/annotations/Session5/Ses05M_impro02.txt",
+    "sha256": "bc20df43e5e2637f5f7743f38886ac576c999a09602665e79608957349057a4d"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05M_impro03.txt",
+    "path": "data/annotations/Session5/Ses05M_impro03.txt",
+    "sha256": "1135ea99746c2057f63b2d77eca1660fb3a2255ed6b2e8cf5d4516dc186df8f4"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05M_impro04.txt",
+    "path": "data/annotations/Session5/Ses05M_impro04.txt",
+    "sha256": "7994986f2d41972f3419553332b47e34f3b19c8be3a24288031b5268cdeb8ddb"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05M_impro05.txt",
+    "path": "data/annotations/Session5/Ses05M_impro05.txt",
+    "sha256": "de40a29cd8149ea6f1c6a2610400d933f4699cefb7f4454fed6e2433036a818f"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05M_impro06.txt",
+    "path": "data/annotations/Session5/Ses05M_impro06.txt",
+    "sha256": "ac0f37fd94f6e592283640792de4fbaf77743fb130b28f8aa1a62d173ab24ef0"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05M_impro07.txt",
+    "path": "data/annotations/Session5/Ses05M_impro07.txt",
+    "sha256": "5521de50b6caccc8c538c357a089ed42ad6074801dc9a9fbe2fd47e158784fa7"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05M_impro08.txt",
+    "path": "data/annotations/Session5/Ses05M_impro08.txt",
+    "sha256": "f667f4ae2f2efd0504876eabcee64555813d3aac8c00af80473f7cb539a13610"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05M_script01_1.txt",
+    "path": "data/annotations/Session5/Ses05M_script01_1.txt",
+    "sha256": "53d1d05d28b0c3378cf7f62fec148e71713632299bd28a8ab3e154f34d83b849"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05M_script01_1b.txt",
+    "path": "data/annotations/Session5/Ses05M_script01_1b.txt",
+    "sha256": "ca91cd682ac52f076d48e3c4b7dbf222a9a59b70d42fa50b613d9bb4f53cc364"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05M_script01_2.txt",
+    "path": "data/annotations/Session5/Ses05M_script01_2.txt",
+    "sha256": "f4d7b19c3fecdd158108d58ad9b0dc949db2f00b0f3125b61d5fc8dfad72f647"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05M_script01_3.txt",
+    "path": "data/annotations/Session5/Ses05M_script01_3.txt",
+    "sha256": "706f08015dffe1ac37aa6d1c5027aa415852c45646735c49f4af6e824931af7a"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05M_script02_1.txt",
+    "path": "data/annotations/Session5/Ses05M_script02_1.txt",
+    "sha256": "283de93edc63eba78bbe79c1880e1a838308f5a910073d134d905ea54a853efa"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05M_script02_2.txt",
+    "path": "data/annotations/Session5/Ses05M_script02_2.txt",
+    "sha256": "c0b7261bbd8b148a6f5e4863986e254495381b5bdcfbee309601ee8c0f9ff8a3"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05M_script03_1.txt",
+    "path": "data/annotations/Session5/Ses05M_script03_1.txt",
+    "sha256": "f8ec925e5935727db36f7d3d94966f5dfd0090a3a0813647e683de580d9dc058"
+  },
+  {
+    "source": "/home/neuroai-server05/PycharmProjects/감성_감정/데이터/원본주석/Session5/Ses05M_script03_2.txt",
+    "path": "data/annotations/Session5/Ses05M_script03_2.txt",
+    "sha256": "3de49f9a035ece2ad8282dd7b290253c0a49585b71d6772d1a5bcbba903545b2"
+  }
+]

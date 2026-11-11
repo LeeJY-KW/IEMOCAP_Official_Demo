@@ -1,0 +1,5 @@
+# Verified environment: Python 3.10.21, torch 2.7.1+cu118, numpy 1.23.5.
+# CPU inference is supported and is the default. No extractor downloads.
+torch==2.7.1
+numpy==1.23.5
+scikit-learn==1.6.1

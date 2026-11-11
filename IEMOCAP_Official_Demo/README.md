@@ -1,0 +1,101 @@
+# IEMOCAP 공인인증 평가 시연 준비본
+
+**현장에서는 학습 완료 가중치를 불러와 추론과 채점만 실행한다.** 분류용 5개·V/A 회귀용 5개, 총 10개 가중치와 대응 시험 데이터가 포함되어 있다. 모델은 이 프로젝트의 Base `InductiveGraph(variant='multi_graph', context_gate='observed')`이며 두 과제는 별도로 학습했다.
+
+자체 수집 자료의 어노테이션이 아직 없으므로 IEMOCAP의 기존 사람 주석을 Ground Truth로 사용한다. 모델이 만든 예측을 정답으로 사용하지 않는다. 이산·연속 결과는 발화 ID로 연결해 한 표에서 비교하며 두 과제의 점수를 임의로 합친 혼합 점수를 만들지 않는다.
+
+## 바로 실행
+
+현재 서버에서 검증된 인터프리터는 `/home/neuroai-server05/PycharmProjects/ICASSP_Hetero/.venv-emotionheart/bin/python`이다. 활성 환경과 무관하게 아래 명령을 그대로 사용할 수 있다.
+
+```bash
+cd /home/neuroai-server05/PycharmProjects/감성_감정/공인인증/IEMOCAP_Official_Demo
+/home/neuroai-server05/PycharmProjects/ICASSP_Hetero/.venv-emotionheart/bin/python run_demo.py run
+```
+
+기본은 CPU 4스레드다. GPU·인터넷·원래 학습 저장소가 없어도 특징 입력 추론이 가능하다. 새 `results/run_날짜_시간/`에 저장하며 같은 출력 폴더를 덮어쓰지 않는다. 저장된 과거 예측을 표시하는 대신 10개 모델의 `forward()`를 실제 실행한다.
+
+다른 PC에서는 **이 폴더 전체**를 복사하고 Python 3.10 환경에서 설치 후 실행한다. 가상환경과 패키지 설치는 현장 이전에 완료한다. 아래 설치에는 인터넷이 필요하며, 추론 자체는 오프라인이다. 다른 OS의 설치는 이 서버에서 검증하지 않았다.
+
+```bash
+python -m venv .venv
+# Linux: source .venv/bin/activate
+# Windows PowerShell: .venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python run_demo.py verify
+python run_demo.py run --device cpu --output results/site_run_01
+python audit_demo.py results/site_run_01
+```
+
+`site_run_01`이 이미 있으면 새 이름을 사용한다. `verify`는 파일 SHA256, 체크포인트 소속 fold, 개발셋 선택 기록, 원본 정답, 데이터 분리를 검사한다. `audit_demo.py`는 이번에 계산한 예측을 독립적으로 채점하고 과거 동결 결과와 비교한다. 과거 예측은 추론 입력이 아니라 재현성 감사에만 사용한다.
+
+노트북 사용 시 `python -m pip install -r requirements-notebook.txt`로 라이브러리를 준비하고, Jupyter 또는 IDE의 노트북 편집기에서 해당 Python 환경을 커널로 선택한다. `현장시연.ipynb`는 46개 셀(실행 코드 22개)로 구성했으며, 각 단계에 목적·사용 함수·인자·반환값·확인할 결과를 적었다. 위에서부터 `Shift+Enter`로 실행한다.
+
+노트북 진행 순서는 **실행 준비 → 데이터와 원본 정답 → 5-fold 분리와 가중치 → 한 대화의 모델 로딩·정규화·추론 → 전체 5-fold 평가 → 지표와 그래프 → 독립 검증·결과 보존**이다. 한 대화 추론은 노트북 안에서 실제 연산 코드를 보여주며, 전체 평가는 같은 `run_demo.run()`을 호출한다. 정답 비교표와 그래프가 코드 셀 아래에 표시된다.
+
+노트북의 자동 저장으로 바뀌는 출력·실행 번호·편집기 메타데이터는 허용한다. 코드와 설명 셀의 순서·내용은 `notebook_source_sha256`으로 검사하고 가중치·특징·주석 등 나머지 전달 파일은 기존 SHA256으로 검사한다. 소스 수정이 필요한 경우 전달 준비 단계에서 해시 목록을 다시 생성한다. HTML 보고서는 별도 설치 없이 브라우저에서 열 수 있다.
+
+## 현장 시연 순서
+
+1. `python run_demo.py verify`의 통과와 fold 분리표를 확인한다.
+2. `python run_demo.py run --output results/site_run_01`을 실행한다. 학습·epoch 반복·모델 선택·정규화 재학습은 없다.
+3. `summary.txt`와 `fold_metrics.csv`에서 fold별 결과 및 5-fold 평균±표본SD를 확인한다.
+4. `report.html`에서 fold 또는 발화 ID를 선택해 원본 감정과 예측 감정, 실제 V/A와 예측 V/A를 비교한다. 전체 10,039발화를 ID 순으로 제공하므로 정답을 맞힌 사례만 고르지 않는다.
+5. `python audit_demo.py results/site_run_01`을 실행하고 `independent_audit.json`을 보존한다.
+
+## 5-fold와 학습 미사용 자료의 의미
+
+| Fold / 가중치 번호 | 학습 세션 | 개발 세션 | 현장 시험 세션 |
+|---|---|---|---|
+| 1 | 3, 4, 5 | 2 | 1 |
+| 2 | 1, 4, 5 | 3 | 2 |
+| 3 | 1, 2, 5 | 4 | 3 |
+| 4 | 1, 2, 3 | 5 | 4 |
+| 5 | 2, 3, 4 | 1 | 5 |
+
+5-fold 학습은 이미 완료했다. 현장에서는 각 fold의 고정 test를 해당 fold 모델로 재평가한다. `Session k → fold k` 연결을 바꾸거나 5개 모델을 앙상블하지 않는다. 한 발화는 다른 fold의 학습에는 등장할 수 있지만 **그 발화를 예측하는 모델의 학습·개발에는 등장하지 않는다.** 각 발화는 과제별 OOF(out-of-fold) 예측에 정확히 한 번 포함된다.
+
+가중치와 특징 정규화 통계는 2026-09-30 완료한 `certification_classification_v1` / `certification_va_v1`의 원본 바이트를 보존했다. 각 fold의 50 epoch 기록 중 분류 dev Weighted F1, 회귀 dev 평균 CCC가 처음 최대가 된 checkpoint를 사용한다. 5개 선택 lock이 모두 생성된 후 test를 평가한 원래 기록도 함께 제공한다. `verify --audit-normalizers`는 필요할 때 저장 통계가 train에서만 계산되었는지 읽기 전용으로 재검산하며 모델이나 통계를 바꾸지 않는다.
+
+## 데이터와 점수
+
+| 항목 | 사용 내용 |
+|---|---|
+| 입력 | 음성 WavLM 1536차원·운율 16차원, RoBERTa 텍스트 768차원, ResNet18 영상 512차원의 고정 특징 |
+| 문맥 | 151대화, 10,039발화; 대화 내부 양방향 문맥 |
+| 이산 정답 | 원본 hap/sad/ang/fea/sur/dis/neu: 행복/슬픔/분노/공포/놀람/혐오/중립, 4,639개 |
+| 이산 채점 | Accuracy와 Weighted F1; 주 지표는 Weighted F1 |
+| 분류 제외 | exc/fru/xxx/oth는 재매핑하지 않고 채점 제외, 문맥은 유지 |
+| 연속 정답 | 원본 발화별 Valence/Activation 평균 주석; Activation을 Arousal로 표기 |
+| 연속 채점 | CCC-V, CCC-A 및 두 값의 평균; 10,035개 V/A 쌍 |
+| V/A 제외 | 원본 Valence 5.5인 4발화는 원값 보존, 두 차원 모두 채점 제외 |
+| 집계 | fold별 지표 산술평균±표본SD(ddof=1); pooled OOF는 별도 보조 값 |
+
+Weighted F1은 각 클래스 F1에 정답 표본 비율을 곱해 합산한다. CCC는 `2*cov(y,p)/(var(y)+var(p)+(mean(y)-mean(p))^2)`이며 전체 발화 쌍의 모집단 분산·공분산을 사용한다. 각 fold에서 V/A 두 차원의 CCC를 각각 구한 뒤 평균한다.
+
+`data/features`의 캐시 안에 과거 6분류 labels 필드가 있어도 이를 입력이나 7분류 정답으로 사용하지 않는다. 원본 주석과 대조한 별도 평가 정의를 채점에 사용한다. 모델 forward에는 특징·화자·발화 순서·시간만 전달한다.
+
+이 묶음은 **사전 추출한 멀티모달 특징을 입력하는 평가**다. 원본 음성·영상 및 WavLM/RoBERTa/ResNet18 추출기 가중치는 포함하지 않았다. 원음·영상 재생 또는 현장에서 원본으로부터 특징을 새로 추출하는 시험으로 설명하지 않는다. 원본 출처 경로는 이력용으로 보존하지만 실행은 패키지 내부 상대 경로로 해결한다.
+
+## 파일 구성
+
+| 경로 | 역할 |
+|---|---|
+| `run_demo.py`, `model.py` | 추론 전용 진입점과 원본 모델 코드 |
+| `현장시연.ipynb` | 준비 → 무결성 검사 → 추론 → 정답 비교 → 독립 채점 |
+| `weights/{classification,va}/fold1..5/best.pt` | 동결한 10개 가중치와 train 정규화 통계 |
+| `data/features`, `data/annotations`, `data/*_dataset.json` | 고정 특징, 원본 주석, 원본 평가 정의 |
+| `evidence/` | protocol, selection, history, 원본 코드 snapshot, 과거 예측 및 복사 출처 |
+| `PACKAGE_MANIFEST.json` | 전달 파일별 SHA256·크기. 결과 폴더는 대상 제외 |
+| `results/*/preflight.json` | 실제 실행 당시 무결성과 분리 검사 |
+| `results/*/*_fold*.npz`, `*_oof.npz` | 이번 실행에서 계산한 예측·정답·ID·채점 마스크 |
+| `results/*/utterance_comparison.csv`, `report.html` | 이산·연속 정답과 예측을 발화별로 연결한 결과 |
+| `results/*/independent_audit.json` | 별도 지표 구현과 동결 결과의 대조 |
+
+`evidence/source_snapshot`의 학습 코드는 출처 증거로만 보존하며 현장 진입점에서 import하거나 실행하지 않는다. 원본 갈망과제 저장소 `CravingBiomarkers_Official_test`의 준비→분석→결과 노트북 흐름을 참고했다. 해당 코드는 생체신호 상관·정상화 분석용이므로 감정 인식 모델이나 평가 지표로 재사용하지 않았다.
+
+## 시험 설명에 사용할 문구
+
+> 학습이 완료된 이산 감정 분류 모델 및 연속 감정 회귀 모델의 fold별 가중치를 불러온다. IEMOCAP의 5개 세션을 기준으로 구성한 5-fold 교차검증에서, 각 fold의 학습 및 개발에 사용되지 않은 시험 세션의 멀티모달 특징을 입력한다. 모델이 출력한 감정 클래스와 원본 감정 라벨을 비교하여 Weighted F1을 산출하고, 예측 Valence/Arousal과 원본 발화별 주석을 비교하여 각 차원의 CCC 및 평균 CCC를 산출한다. 현장에서는 재학습이나 모델 선택 없이 추론 및 채점만 수행한다.
+
+IEMOCAP 통제 환경의 기존 held-out 세션 재현 시연이다. 자체 수집 자료에 대한 검증, in-the-wild 평가, 촘촘한 프레임 단위 연속 주석 평가, 완전히 새로운 blind test 또는 기관 인증 완료로 표현하지 않는다. 혐오 정답은 전체 2개다. 자체 자료에 대한 결과는 별도 사람 주석이 확보된 후에 평가한다.

@@ -1,0 +1,9 @@
+# Preserve the exact frozen bytes, including when cloned on Windows.
+IEMOCAP_Official_Demo/** -text
+*.pt -text -diff
+*.npz -text -diff
+*.png -text -diff
+*.pdf -text -diff
+/README.md text eol=lf
+/.gitignore text eol=lf
+/.gitattributes text eol=lf
