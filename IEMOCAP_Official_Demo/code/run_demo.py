@@ -35,6 +35,12 @@ KOREAN = ['행복', '슬픔', '분노', '공포', '놀람', '혐오', '중립']
 # 분류와 회귀용 모델을 각각 학습했으며 두 과제의 지표를 별도로 산출함.
 TASKS = ('classification', 'va')
 KEYS = dict(classification=('accuracy', 'weighted_f1'), va=('ccc_valence', 'ccc_arousal', 'mean_ccc'))
+# 성능 판정 기준은 5개 Fold 점수의 산술평균에 적용함.
+# 내부 계산과 판정에는 원래 척도를 사용하고 분류 지표만 화면에서 %로 표시함.
+PERFORMANCE_CRITERIA = {
+    'classification': dict(metric='weighted_f1', label='Weighted F1', threshold=0.70, unit='%'),
+    'va': dict(metric='mean_ccc', label='평균 CCC', threshold=0.60, unit='CCC'),
+}
 
 
 # JSON 읽기: 파일 경로를 받아 사전 또는 목록 형태의 내용을 반환함.
@@ -75,6 +81,35 @@ def require(condition, message):
 # 검사·실행 시작과 완료 시각을 한국 표준시가 포함된 문자열로 반환함.
 def timestamp():
     return datetime.now(KST).isoformat()
+
+
+# 지표 표시용 함수임. Accuracy·Weighted F1은 %, CCC는 원래 척도로 표시함.
+# 반올림한 표시 문자열은 성능 판정이나 지표 계산에 사용하지 않음.
+def format_metric(metric, value):
+    value = float(value)
+    require(np.isfinite(value), f'Nonfinite metric: {metric}')
+    return f'{100 * value:.4f}%' if metric in ('accuracy', 'weighted_f1') else f'{value:.6f}'
+
+
+# 입력: 현재 시험 summary. 반환: 지표별 측정값·기준·판정과 두 기준의 종합 판정임.
+# 같은 summary의 5-fold 평균 원값에 >=를 적용하며 반올림·허용 오차를 적용하지 않음.
+def evaluate_performance(summary):
+    criteria = []
+    for task, rule in PERFORMANCE_CRITERIA.items():
+        measured = float(summary['tasks'][task]['fold_mean'][rule['metric']]['mean'])
+        threshold = float(rule['threshold'])
+        require(np.isfinite(measured) and np.isfinite(threshold), f'Nonfinite performance metric: {rule["metric"]}')
+        require((0 <= measured <= 1) if task == 'classification' else (-1 <= measured <= 1),
+                f'Performance metric outside valid range: {rule["metric"]}')
+        passed = measured >= threshold
+        criteria.append(dict(task=task, metric=rule['metric'], label=rule['label'],
+                             measured=measured, threshold=threshold, operator='>=', unit=rule['unit'],
+                             measured_display=format_metric(rule['metric'], measured),
+                             threshold_display=f'{100 * threshold:g}%' if rule['unit'] == '%' else f'{threshold:.2f}',
+                             passed=passed, status='PASS' if passed else 'FAIL'))
+    overall_passed = all(row['passed'] for row in criteria)
+    return dict(schema=1, aggregation='five_fold_arithmetic_mean', criteria=criteria,
+                overall_passed=overall_passed, overall_status='PASS' if overall_passed else 'FAIL')
 
 
 # 지정한 과제와 폴드의 best.pt를 CPU 메모리로 읽어 가중치·정규화 통계·선택 기록을 반환함.
@@ -280,7 +315,13 @@ def compact(summary):
     for task in TASKS:
         for key in KEYS[task]:
             v = summary['tasks'][task]['fold_mean'][key]
-            lines.append(f'{key:16s} {v["mean"]:.6f} +/- {v["sample_sd"]:.6f}')
+            deviation = f'{100 * v["sample_sd"]:.4f}%p' if key in ('accuracy', 'weighted_f1') else f'{v["sample_sd"]:.6f}'
+            lines.append(f'{key:16s} {format_metric(key, v["mean"])} +/- {deviation}')
+    performance = evaluate_performance(summary)
+    lines.extend(['', '성능 판정 | 5-fold 평균 | 반올림 전 원값으로 판정함'])
+    for criterion in performance['criteria']:
+        lines.append(f'{criterion["label"]}: 측정 {criterion["measured_display"]} | 기준 >= {criterion["threshold_display"]} | {criterion["status"]}')
+    lines.append(f'종합 성능 판정: {performance["overall_status"]} (두 기준 모두 충족해야 PASS)')
     return '\n'.join(lines)
 
 
@@ -289,18 +330,21 @@ def compact(summary):
 # 보고서에 필요한 데이터가 파일 안에 들어 있으므로 별도 서버나 인터넷 연결이 필요 없음.
 def make_html(path, summary, rows):
     # JSON 안의 < 문자를 이스케이프하여 발화 텍스트가 HTML 태그로 해석되는 것을 방지함.
-    payload = json.dumps(dict(summary=summary, rows=rows), ensure_ascii=False).replace('<', '\\u003c')
+    payload = json.dumps(dict(summary={**summary, 'performance': evaluate_performance(summary)}, rows=rows),
+                         ensure_ascii=False, allow_nan=False).replace('<', '\\u003c')
     html = '''<!doctype html><html lang="ko"><meta charset="utf-8"><title>IEMOCAP 시험 결과</title>
-<style>body{font:15px system-ui,sans-serif;margin:28px;color:#172b4d;background:#f5f7fa}h1{font-size:25px}.panel{background:white;padding:18px;border-radius:10px;margin:16px 0}pre{white-space:pre-wrap}table{border-collapse:collapse;width:100%;background:white;font-size:13px}th,td{padding:9px;text-align:left;border-bottom:1px solid #dde3eb}th{position:sticky;top:0;background:#eaf0f8}input,select,button{font:inherit;padding:7px;margin:4px}td:last-child{min-width:260px}.muted{color:#526178}</style>
+<style>body{font:15px system-ui,sans-serif;margin:28px;color:#172b4d;background:#f5f7fa}h1{font-size:25px}.panel{background:white;padding:18px;border-radius:10px;margin:16px 0}pre{white-space:pre-wrap}table{border-collapse:collapse;width:100%;background:white;font-size:13px}th,td{padding:9px;text-align:left;border-bottom:1px solid #dde3eb}th{position:sticky;top:0;background:#eaf0f8}input,select,button{font:inherit;padding:7px;margin:4px}td:last-child{min-width:260px}.muted{color:#526178}.performance-table td:last-child{min-width:0}.decision{font-size:21px;font-weight:700}.pass{color:#146b36}.fail{color:#b42318}</style>
 <h1>IEMOCAP 시험 결과</h1>
+<div class="panel"><h2>성능 판정</h2><p id="performance-status" class="decision"></p><table class="performance-table"><thead><tr><th>5-fold 평균 지표</th><th>측정값</th><th>판정 기준</th><th>판정</th></tr></thead><tbody id="performance"></tbody></table><p class="muted">두 기준 모두 충족해야 종합 PASS임. 판정에는 반올림 전 5-fold 평균을 사용하며 화면 표시 반올림이나 허용 오차를 적용하지 않음.</p></div>
 <div class="panel"><pre id="summary"></pre><table><thead><tr><th>Fold</th><th>분류 표본</th><th>Accuracy</th><th>Weighted F1</th><th>V/A 표본</th><th>CCC-V</th><th>CCC-A</th><th>평균 CCC</th></tr></thead><tbody id="folds"></tbody></table></div>
 <div class="panel"><label>Fold <select id="fold"><option value="">전체</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label><input id="search" placeholder="발화 ID 또는 텍스트 검색" size="38"><button id="prev">이전</button><button id="next">다음</button><span id="count"></span><p class="muted">전체 발화를 ID 순서로 표시함. 채점에서 제외된 발화도 문맥과 원본 정답을 보존함. V/A 열은 정답 → 예측 순서임.</p></div>
 <table><thead><tr><th>Fold</th><th>발화 ID</th><th>원본 감정</th><th>예측 감정</th><th>분류 채점</th><th>Valence</th><th>Arousal</th><th>V/A 채점</th><th>텍스트</th></tr></thead><tbody id="rows"></tbody></table>
 <script id="payload" type="application/json">PAYLOAD</script><script>
 const data=JSON.parse(document.getElementById('payload').textContent);let page=0;const size=40;
-const f=x=>Number(x).toFixed(4);const s=data.summary;document.getElementById('summary').textContent='실행: '+s.completed_at+' | 장치: '+s.device+' | 추론: '+s.inference_seconds.toFixed(2)+'초\\n'+Object.entries(s.tasks).flatMap(([task,v])=>Object.entries(v.fold_mean).map(([k,m])=>k+': '+f(m.mean)+' ± '+f(m.sample_sd))).join('\\n');
+const f=x=>Number(x).toFixed(6);const percent=x=>(100*Number(x)).toFixed(4)+'%';const metric=(k,x)=>['accuracy','weighted_f1'].includes(k)?percent(x):f(x);const deviation=(k,x)=>['accuracy','weighted_f1'].includes(k)?(100*Number(x)).toFixed(4)+'%p':f(x);const s=data.summary;document.getElementById('summary').textContent='실행: '+s.completed_at+' | 장치: '+s.device+' | 추론: '+s.inference_seconds.toFixed(2)+'초\\n'+Object.entries(s.tasks).flatMap(([task,v])=>Object.entries(v.fold_mean).map(([k,m])=>k+': '+metric(k,m.mean)+' ± '+deviation(k,m.sample_sd))).join('\\n');
 function row(parent, values){const tr=document.createElement('tr');values.forEach(v=>{const td=document.createElement('td');td.textContent=v;tr.append(td)});parent.append(tr)}
-s.tasks.classification.folds.forEach((c,i)=>{const v=s.tasks.va.folds[i];row(document.getElementById('folds'),[i+1,c.n,f(c.accuracy),f(c.weighted_f1),v.n,f(v.ccc_valence),f(v.ccc_arousal),f(v.mean_ccc)])});
+const decision=document.getElementById('performance-status');decision.textContent='종합 성능 판정: '+s.performance.overall_status;decision.classList.add(s.performance.overall_passed?'pass':'fail');s.performance.criteria.forEach(c=>row(document.getElementById('performance'),[c.label,c.measured_display,c.operator+' '+c.threshold_display,c.status]));
+s.tasks.classification.folds.forEach((c,i)=>{const v=s.tasks.va.folds[i];row(document.getElementById('folds'),[i+1,c.n,percent(c.accuracy),percent(c.weighted_f1),v.n,f(v.ccc_valence),f(v.ccc_arousal),f(v.mean_ccc)])});
 function render(){const query=document.getElementById('search').value.toLowerCase(),fold=document.getElementById('fold').value;const filtered=data.rows.filter(r=>(!fold||r.fold==fold)&&(!query||(r.utterance_id+' '+r.text).toLowerCase().includes(query)));page=Math.max(0,Math.min(page,Math.ceil(filtered.length/size)-1));const el=document.getElementById('rows');el.replaceChildren();filtered.slice(page*size,(page+1)*size).forEach(r=>row(el,[r.fold,r.utterance_id,r.original_emotion,r.predicted_emotion_ko,r.classification_valid?'포함':'제외: '+r.classification_exclusion,f(r.gt_valence)+' → '+f(r.pred_valence),f(r.gt_arousal)+' → '+f(r.pred_arousal),r.va_valid?'포함':'제외: 범위 밖',r.text]));document.getElementById('count').textContent=filtered.length+'개 / '+(page+1)+' 페이지'}
 document.getElementById('search').oninput=()=>{page=0;render()};document.getElementById('fold').onchange=()=>{page=0;render()};document.getElementById('prev').onclick=()=>{page--;render()};document.getElementById('next').onclick=()=>{page++;render()};render();</script></html>'''
     Path(path).write_text(html.replace('PAYLOAD', payload), encoding='utf-8')
@@ -314,7 +358,7 @@ def run(output, device, threads):
     torch.set_num_threads(threads)
     require(device != 'cuda' or torch.cuda.is_available(), 'CUDA unavailable; use --device cpu')
     report, datasets, protocols, original = verify()
-    print(f'PASS: {report["files_checked"]} files, 10 selected checkpoints, 5 disjoint folds, source ground truth', flush=True)
+    print(f'입력 검사 완료: {report["files_checked"]} files, 10 selected checkpoints, 5 disjoint folds, source ground truth', flush=True)
     # 결과 폴더가 이미 있으면 중단하여 이전 결과를 덮어쓰지 않음.
     # 진행 상태와 사전 검사 기록을 먼저 남기고, 모든 저장이 끝나야 complete로 갱신함.
     output = Path(output).resolve()
@@ -370,7 +414,7 @@ def run(output, device, threads):
             score = dict(fold=number, selected_epoch=saved['epoch'], **metrics(task, y, p))
             fold_results.append(score)
             joined.append(arrays)
-            print(f'{task:14s} fold {number}/5 | test Session {number} | n={score["n"]} | ' + ' | '.join(f'{k}={score[k]:.6f}' for k in KEYS[task]), flush=True)
+            print(f'{task:14s} fold {number}/5 | test Session {number} | n={score["n"]} | ' + ' | '.join(f'{k}={format_metric(k, score[k])}' for k in KEYS[task]), flush=True)
             del model, saved
         # 5개 폴드의 시험 예측을 합쳐 과제별 OOF 파일을 만듦.
         # 전체 10,039개 발화가 중복·누락 없이 한 번씩 있고 채점 표본 수도 맞는지 검사함.
@@ -386,6 +430,7 @@ def run(output, device, threads):
         summary['tasks'][task] = dict(folds=fold_results, fold_mean={key: dict(mean=float(np.mean([r[key] for r in fold_results])), sample_sd=float(np.std([r[key] for r in fold_results], ddof=1))) for key in KEYS[task]}, pooled_oof_secondary=metrics(task, combined['targets'], combined['predictions']), context_utterances=len(combined['ids']), scored_utterances=int(combined['target_valid'].sum()))
     summary['inference_seconds'] = time.perf_counter() - inference_start
     summary['completed_at'] = timestamp()
+    summary['performance'] = evaluate_performance(summary)
     # 발화 ID를 기준으로 분류·회귀 결과를 연결하여 같은 발화끼리 비교함.
     # 같은 발화의 분류·회귀 모델이 동일한 시험 폴드를 사용했는지도 확인함.
     # 대응한 발화의 분류·회귀 정답과 예측을 나란히 표시함.

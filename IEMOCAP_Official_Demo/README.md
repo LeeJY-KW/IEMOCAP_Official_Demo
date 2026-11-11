@@ -28,7 +28,7 @@ python -m pip install -r requirements.txt
 4. Fold별 가중치와 시험 Session 확인
 5. 한 대화 추론 및 정답·예측 비교
 6. 전체 5-fold cross-validation 평가와 성능 그래프 확인
-7. 독립 채점 및 결과 저장
+7. 계산 검증, 성능 기준 판정 및 결과 저장
 
 미디어·전처리는 약 9.81초의 `Ses01F_impro01_F011` 한 발화로 설명함. 음성·영상은 재생 버튼으로 확인함. 전체 모델 평가와 결과 표·그래프는 기존 범위를 유지함.
 
@@ -45,7 +45,10 @@ WavLM·RoBERTa·ResNet18의 고정 가중치로 미리 계산한 중간 출력�
 | 전체 문맥 | 151개 대화, 10,039개 발화 |
 | 주 지표 | Weighted F1 및 정서가·각성도 CCC의 평균 |
 | 집계 | 5개 Fold 지표의 산술평균 ± 표본표준편차 |
-| 목표 | Weighted F1 0.67, 평균 CCC 0.60 |
+| 기준 | Weighted F1 70% 이상, 평균 CCC 0.60 이상 |
+
+이번 시험에서 측정한 5개 Fold 지표의 산술평균으로 판정함. 반올림 전 Weighted F1이 0.70 이상, 평균 CCC가 0.60 이상이면 각각 `PASS`이며, 두 항목 모두 충족하면 종합 `PASS`임.
+Accuracy·Weighted F1의 평균은 %, 표본표준편차는 %p로 표시함. CCC와 기계 판독용 JSON·CSV의 지표는 원래 척도로 저장함.
 
 분류 채점에서는 원본 7종 이외의 라벨을 문맥으로 보존하고, 연속 채점에서는 범위를 벗어난 정서가 4개를 두 차원의 공통 마스크로 제외함. 노트북에 정답 정의와 유효 표본 수를 표시함.
 
@@ -62,7 +65,7 @@ WavLM·RoBERTa·ResNet18의 고정 가중치로 미리 계산한 중간 출력�
 | `results/` | 시험 실행 결과 |
 | `PACKAGE_MANIFEST.json` | 전달 자료의 무결성 검사 목록 |
 
-`summary.txt`, `fold_metrics.csv`, `report.html`에서 결과를 확인함. `utterance_comparison.csv`에는 전체 발화의 정답·예측을 저장하며, `independent_audit.json`에는 독립 검증 결과를 기록함.
+`summary.json`, `summary.txt`, `report.html`에서 이번 시험의 측정값·기준·성능 판정을 확인함. `fold_metrics.csv`에는 Fold별 지표, `utterance_comparison.csv`에는 전체 발화의 정답·예측, `independent_audit.json`에는 계산 검증 기록을 저장함.
 
 
 시험을 실행하면 해당 실행의 결과가 `results/notebook_날짜_시간`에 생성됨. 결과는 해당 폴더의 예측·Ground Truth·성능 지표와 검정 기록으로 확인함.

@@ -10,6 +10,7 @@ import sys
 sys.dont_write_bytecode = True
 import numpy as np
 from sklearn.metrics import accuracy_score, confusion_matrix, f1_score
+from run_demo import evaluate_performance
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -141,16 +142,34 @@ def audit(output):
         check(row['classification_valid'] == str(bool(c['target_valid'])) and row['va_valid'] == str(bool(v['target_valid'])), 'CSV scoring mask mismatch')
         for key, value in [('gt_valence', v['targets'][0]), ('gt_arousal', v['targets'][1]), ('pred_valence', v['predictions'][0]), ('pred_arousal', v['predictions'][1])]:
             check(float(row[key]) == float(value), f'CSV V/A mismatch: {key}')
-    # 모든 검사가 끝난 경우에만 통과 보고서를 저장함. 원본 예측 파일은 수정하지 않음.
+    # 성능 기준과 판정은 현재 시험의 Fold 평균으로 다시 확인함.
+    # 지표 재채점의 허용 오차는 내부 계산 검증에만 쓰며 성능 기준의 >= 판정에는 쓰지 않음.
+    expected_performance = evaluate_performance(summary)
+    recorded_performance = summary['performance']
+    for key in ('schema', 'aggregation', 'overall_passed', 'overall_status'):
+        check(recorded_performance[key] == expected_performance[key], f'Performance summary mismatch: {key}')
+    check(len(recorded_performance['criteria']) == len(expected_performance['criteria']), 'Performance criterion count mismatch')
+    for recorded, expected in zip(recorded_performance['criteria'], expected_performance['criteria']):
+        for key, value in expected.items():
+            if key == 'measured':
+                check_metric(recorded[key], value, f'Performance measured value mismatch: {expected["metric"]}')
+            else:
+                check(recorded[key] == value, f'Performance criterion mismatch: {expected["metric"]}/{key}')
+        # 저장된 원값 자체도 동일한 기준으로 같은 판정을 내야 함. 경계값에 오차를 더하지 않음.
+        check((float(recorded['measured']) >= expected['threshold']) == expected['passed'],
+              f'Performance raw-value decision mismatch: {expected["metric"]}')
+    # 모든 검사가 끝난 경우에만 계산 검증 보고서를 저장함. 성능 판정과 구분함.
+    # passed는 계산·저장 검증 완료 여부이며 성능 기준 충족 여부는 summary.performance에 있음.
     max_difference = max(metric_differences)
-    report = dict(schema=2, passed=True,
+    report = dict(schema=3, purpose='calculation_integrity', passed=True,
                   source='current test predictions / dataset ground truth / independent sklearn metrics / numpy covariance',
                   folds=records, comparison_rows=len(rows),
                   max_abs_metric_recompute_difference=max_difference, metric_recompute_atol=1e-10,
+                  performance_decision_verified=True,
                   new_training=False)
     dest = output / 'independent_audit.json'
-    dest.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    print(f'PASS | 10 folds | 10039 comparison rows | max metric recompute difference {max_difference:.9g}')
+    dest.write_text(json.dumps(report, ensure_ascii=False, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+    print('계산 검증 완료 | 10개 Fold | 10,039개 발화의 정답·예측·지표 및 성능 판정 확인')
     return report
 
 
