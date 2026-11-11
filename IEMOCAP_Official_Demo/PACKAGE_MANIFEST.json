@@ -2,8 +2,8 @@
   "schema": 1,
   "files": {
     "README.md": {
-      "bytes": 3889,
-      "sha256": "9c6a891a68305aefc8ee331e24fc82c89de2118ce0d9f9e8418206e49f6823b1"
+      "bytes": 3951,
+      "sha256": "85d948ee9bd8fcd7a17e994d798ea88134010053ae9494906886b855da0c4232"
     },
     "code/audit_demo.py": {
       "bytes": 11343,
@@ -20,11 +20,6 @@
     "code/video_playback.py": {
       "bytes": 13464,
       "sha256": "a5b91d7f6407b46b441c042f235bc1a71454f05c24e9dd58712a9a8884c26447"
-    },
-    "code/현장시연.ipynb": {
-      "bytes": 87606,
-      "sha256": "38c0924c02caec974c955892b8609a308687a20c0f7b8709828df25d79fa7643",
-      "notebook_source_sha256": "df9895b5eca7d7395b58bb649d5f7772598fb6d35500e984d53edbdb561efaa7"
     },
     "data/annotations/Session1/Ses01F_impro01.txt": {
       "bytes": 8722,
@@ -2301,6 +2296,11 @@
     "weights/va/fold5/best.pt": {
       "bytes": 21194359,
       "sha256": "7e52100282134ab12e175dcf025d2cca9c03f98faa47254b762e9b0b1907a47d"
+    },
+    "현장시연.ipynb": {
+      "bytes": 87596,
+      "sha256": "b8e16d743863715fe07eac716730d47e7fe19cad7eb626eb31efa0310e67fcd3",
+      "notebook_source_sha256": "b3a0edf557b0a0b09ad9f5c3af8917750c9751a41c71733d63da25022347d7f6"
     }
   }
 }

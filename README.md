@@ -5,9 +5,9 @@
 
 1. 내부 `IEMOCAP_Official_Demo` 폴더를 PyCharm 프로젝트로 엶.
 2. Python 3.10 64비트 프로젝트 인터프리터에서 `requirements.txt` 하나로 설치함.
-3. [code/현장시연.ipynb](IEMOCAP_Official_Demo/code/현장시연.ipynb)를 위에서부터 실행함.
+3. [현장시연.ipynb](IEMOCAP_Official_Demo/현장시연.ipynb)를 위에서부터 실행함.
 
 [설치·시험 안내](IEMOCAP_Official_Demo/README.md) · [실행 결과 노트북](IEMOCAP_Official_Demo/results/시험결과/현장시연_실행완료.ipynb) · [평가 요약](IEMOCAP_Official_Demo/results/시험결과/summary.txt)
 
 현장 진행은 **원문·음성·영상 → 전처리 → 폴드·가중치 확인 → 모델 추론 → 전체 5겹 평가 → 독립 채점** 순서임.
-실행 코드는 `code/`, 평가 자료는 `data/`, 가중치는 `weights/`, 평가 근거는 `evidence/`, 결과는 `results/`에 있음.
+현장 노트북은 프로젝트 최상위의 `현장시연.ipynb`, Python 코드는 `code/`, 평가 자료는 `data/`, 가중치는 `weights/`, 평가 근거는 `evidence/`, 결과는 `results/`에 있음.
