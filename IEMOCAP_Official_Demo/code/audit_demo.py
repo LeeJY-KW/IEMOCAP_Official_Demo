@@ -50,10 +50,9 @@ def independent_score(task, y, p):
 
 
 # 기능: 이번 시험의 저장 예측을 원본 정답과 비교하고 보고서의 지표를 독립 채점함.
-# 입력: run_demo.py가 생성한 결과 폴더 output, 완료 안내 출력 여부 verbose.
-# 반환: 전체 검증 결과 딕셔너리.
+# 입력: run_demo.py가 생성한 결과 폴더 output. 반환: 전체 검증 결과 딕셔너리.
 # 저장된 예측을 읽어 재채점하고 결과 폴더에 independent_audit.json을 저장함.
-def audit(output, verbose=True):
+def audit(output):
     output = Path(output).resolve()
     # 정상 완료된 추론 전용 실행인지 먼저 확인함. 미완료 결과는 채점하지 않음.
     check(read(output / 'status.json')['status'] == 'complete', 'Inference did not complete')
@@ -170,8 +169,7 @@ def audit(output, verbose=True):
                   new_training=False)
     dest = output / 'independent_audit.json'
     dest.write_text(json.dumps(report, ensure_ascii=False, indent=2, allow_nan=False) + '\n', encoding='utf-8')
-    if verbose:
-        print('계산 검증 완료 | 10개 Fold | 10,039개 발화의 정답·예측·지표 및 성능 판정 확인')
+    print('계산 검증 완료 | 10개 Fold | 10,039개 발화의 정답·예측·지표 및 성능 판정 확인')
     return report
 
 
