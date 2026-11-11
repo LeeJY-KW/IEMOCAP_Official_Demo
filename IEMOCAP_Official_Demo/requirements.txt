@@ -5,14 +5,10 @@ torch==2.7.1+cpu
 numpy==1.23.5
 scikit-learn==1.6.1
 
-# PyCharm 노트북의 실행·표·그래프·결과 저장에 사용함.
+# PyCharm 노트북의 표·음성·영상 표시와 그래프에 사용함.
+# 노트북 실행 커널은 PyCharm의 설치 안내로 준비함.
 ipython==8.39.0
 matplotlib==3.10.9
-ipykernel==6.30.1
-nbformat==5.10.4
-nbclient==0.10.2
-nbconvert==7.16.6
-jupyterlab==4.6.6
 
 # 음성·텍스트·영상 전처리 관련 모듈임.
 librosa==0.11.0

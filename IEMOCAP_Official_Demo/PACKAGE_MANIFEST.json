@@ -2,8 +2,8 @@
   "schema": 1,
   "files": {
     "README.md": {
-      "bytes": 3951,
-      "sha256": "85d948ee9bd8fcd7a17e994d798ea88134010053ae9494906886b855da0c4232"
+      "bytes": 4489,
+      "sha256": "239dc9e805b35145315112640de631c64a58b8021f6f0ed554d913ede013dde1"
     },
     "code/audit_demo.py": {
       "bytes": 11343,
@@ -2254,8 +2254,8 @@
       "sha256": "dac252fe7353aa1ca78cdf0bc2d1d3a4dc83423aa05a6443e843b0956c5aa91c"
     },
     "requirements.txt": {
-      "bytes": 528,
-      "sha256": "1064b2d8e4105320d1cbfb1714e1d6eab1a4e9e9a78211b1e7620bab0363fb67"
+      "bytes": 510,
+      "sha256": "5d44b10cad48a7b78a31c505aa41617b979e97c242980fb42fefd66e54e62573"
     },
     "weights/classification/fold1/best.pt": {
       "bytes": 21199479,

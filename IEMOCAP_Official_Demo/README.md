@@ -13,7 +13,10 @@ python -m pip install --upgrade pip==25.3
 python -m pip install -r requirements.txt
 ```
 
-3. [현장시연.ipynb](현장시연.ipynb)를 열어 같은 프로젝트 인터프리터를 선택하고 위에서부터 실행함. 이전 위치에서 실행한 노트북은 커널을 재시작함.
+3. PyCharm 2026.2에서 [현장시연.ipynb](현장시연.ipynb)를 열어 같은 프로젝트 인터프리터를 선택함. 커널 설치 안내가 나오면 PyCharm에서 설치함.
+4. 노트북 상단 `Configure Jupyter Server → Managed Server`에서 `Autodetected execution mode`를 해제하고 `Execution mode`를 `IPyKernel`로 선택함. 위에서부터 실행하며, 이전 위치에서 실행한 노트북은 커널을 재시작함.
+
+`requirements.txt`에는 모델 추론·전처리·미디어 표시용 패키지 8개만 포함함. 노트북 실행 커널은 PyCharm에서 준비함. 실행 방식은 [PyCharm 2026.2 공식 안내](https://www.jetbrains.com/help/pycharm/2026.2/configuring-jupyter-notebook.html)를 따름.
 
 설치 후에는 준비된 가중치·특징·원본 주석·미디어로 오프라인 실행함. 기본 연산은 CPU 4스레드임. 결과는 프로젝트 작업 폴더와 관계없이 패키지 루트의 `results/notebook_날짜_시간`에 저장됨.
 

@@ -5,7 +5,7 @@
 
 1. 내부 `IEMOCAP_Official_Demo` 폴더를 PyCharm 프로젝트로 엶.
 2. Python 3.10 64비트 프로젝트 인터프리터에서 `requirements.txt` 하나로 설치함.
-3. [현장시연.ipynb](IEMOCAP_Official_Demo/현장시연.ipynb)를 위에서부터 실행함.
+3. PyCharm 2026.2에서 [현장시연.ipynb](IEMOCAP_Official_Demo/현장시연.ipynb)를 열고 커널 설치 안내가 나오면 PyCharm에서 설치함. 실행 방식을 `IPyKernel`로 선택한 뒤 위에서부터 실행함.
 
 [설치·시험 안내](IEMOCAP_Official_Demo/README.md) · [실행 결과 노트북](IEMOCAP_Official_Demo/results/시험결과/현장시연_실행완료.ipynb) · [평가 요약](IEMOCAP_Official_Demo/results/시험결과/summary.txt)
 
