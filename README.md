@@ -1,7 +1,7 @@
 # IEMOCAP 공인시험
 
 3번 이산 감정 인식과 4번 정서가·각성도 인식을 평가하는 비공개 시험 자료임.
-학습 완료 가중치로 각 폴드의 학습·개발에 사용하지 않은 IEMOCAP 세션을 추론하고 원본 라벨과 비교함.
+학습 완료 가중치로 각 Fold의 학습·개발에 사용하지 않은 IEMOCAP Session을 추론하고 원본 라벨과 비교함.
 
 1. 내부 `IEMOCAP_Official_Demo` 폴더를 PyCharm 프로젝트로 엶.
 2. Python 3.10 64비트 프로젝트 인터프리터에서 `requirements.txt` 하나로 설치함.
@@ -9,5 +9,5 @@
 
 [설치·시험 안내](IEMOCAP_Official_Demo/README.md) · [실행 결과 노트북](IEMOCAP_Official_Demo/results/시험결과/현장시연_실행완료.ipynb) · [평가 요약](IEMOCAP_Official_Demo/results/시험결과/summary.txt)
 
-현장 진행은 **원문·음성·영상 → 전처리 → 폴드·가중치 확인 → 모델 추론 → 전체 5겹 평가 → 독립 채점** 순서임.
+현장 진행은 **원문·음성·영상 → 전처리 → Fold·가중치 확인 → 모델 추론 → 전체 5겹 평가 → 독립 채점** 순서임.
 현장 노트북은 프로젝트 최상위의 `현장시연.ipynb`, Python 코드는 `code/`, 평가 자료는 `data/`, 가중치는 `weights/`, 평가 근거는 `evidence/`, 결과는 `results/`에 있음.
