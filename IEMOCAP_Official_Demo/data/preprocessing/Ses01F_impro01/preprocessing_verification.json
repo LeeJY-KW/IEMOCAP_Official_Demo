@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "utterances": 30,
+  "feature_comparisons": 120,
+  "image_transforms": 90,
+  "raw_wav_and_processor_input_exact": true,
+  "token_ids_and_special_masks_exact": true,
+  "all_saved_hashes_verified": true,
+  "source_reference_and_pretrained_weights_hashes_unchanged": true,
+  "cpu_repool_max_abs_difference_vs_immutable_cache": {
+    "audio": 4.76837158203125e-07,
+    "prosody": 0.0,
+    "text": 0.0,
+    "visual": 4.76837158203125e-07
+  },
+  "atol": 0.0001,
+  "rtol": 0.0001
+}

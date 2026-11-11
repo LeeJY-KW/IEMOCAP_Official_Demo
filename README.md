@@ -2,23 +2,23 @@
 
 학습이 완료된 멀티모달 감정 인식 모델을 이용한 **이산·연속 감정 5겹 교차검증 평가 시연** 자료임. 공인시험 항목 3번 이산 감정 7분류와 4번 정서가·각성도 회귀를 준비하는 비공개 저장소임.
 
-현장에서는 준비된 가중치를 불러와 추론하고, IEMOCAP 통제 환경의 원본 발화별 사람 주석(정답)과 비교함. 분류 5개와 V/A 회귀 5개, 총 10개 가중치와 필요한 특징·주석을 포함함.
+현장에서는 준비된 가중치를 불러와 추론하고, IEMOCAP 통제 환경의 원본 발화별 사람 주석(정답)과 비교함. 분류 5개와 V/A 회귀 5개, 총 10개 가중치와 필요한 특징·주석, 예시 원본 음성·영상 및 전처리 자료를 포함함.
 
 ## 먼저 볼 자료
 
-- **[설명·코드·실행 결과가 포함된 노트북](IEMOCAP_Official_Demo/results/notebook_review_20261111/현장시연_실행완료.ipynb)** — GitHub에서 셀별 설명과 실제 출력 확인
+- **[설명·코드·실행 결과가 포함된 노트북](IEMOCAP_Official_Demo/results/notebook_media_preprocessing_20261111/현장시연_실행완료.ipynb)** — GitHub에서 셀별 설명과 실제 출력 확인
 - [새로 실행할 현장 노트북](IEMOCAP_Official_Demo/현장시연.ipynb)
 - [상세 실행 안내](IEMOCAP_Official_Demo/README.md)
-- [5겹 교차검증 결과 요약](IEMOCAP_Official_Demo/results/notebook_review_20261111/summary.txt)
-- [실제 Jupyter 커널 실행 검증](IEMOCAP_Official_Demo/results/notebook_review_20261111/notebook_execution_audit.json)
-- [독립 채점 검증](IEMOCAP_Official_Demo/results/notebook_review_20261111/independent_audit.json)
+- [5겹 교차검증 결과 요약](IEMOCAP_Official_Demo/results/notebook_media_preprocessing_20261111/summary.txt)
+- [실제 Jupyter 커널 실행 검증](IEMOCAP_Official_Demo/results/notebook_media_preprocessing_20261111/notebook_execution_audit.json)
+- [독립 채점 검증](IEMOCAP_Official_Demo/results/notebook_media_preprocessing_20261111/independent_audit.json)
 
-노트북은 **목적 → 함수·인자·반환값 → 실행 코드 → 결과 확인** 순서의 46개 셀로 구성함. 실제 Jupyter 커널에서 코드 셀 22개를 모두 실행했으며, 정답 비교표와 그래프 2개를 포함함.
+노트북은 **목적 → 함수·인자·반환값 → 실행 코드 → 결과 확인** 순서의 64개 셀(실행 코드 31개)로 구성함. 원문·음성·영상, 전처리 과정, 정답 비교표와 성능 그래프를 같은 흐름에서 확인함.
 
 ## 실행 순서
 
 1. 실행 환경과 파일 무결성 확인
-2. 멀티모달 특징 및 원본 감정·V/A 정답 확인
+2. 멀티모달 특징과 원본 정답, 선택 발화의 음성·원문·영상 및 전처리 확인
 3. 학습·개발·시험 세션과 가중치 선택 기록 확인
 4. 한 대화의 가중치 로딩 → 정규화 → 실제 추론 → 정답 비교
 5. 전체 5겹 교차검증 추론 및 정확도·가중 F1·CCC 계산
@@ -53,6 +53,30 @@ python audit_demo.py results/site_run_01
 
 재실행에는 새 결과 폴더 이름을 사용해 이전 결과를 보존함. 노트북 출력·실행 번호의 자동 저장은 허용하며 코드·설명과 가중치·데이터의 무결성을 검사함. 설치를 완료한 뒤 CPU로 오프라인 추론을 수행할 수 있음.
 
+## 원본 미디어와 전처리 확인
+
+2-4절 셀을 실행하면 나타나는 입력창에 0~29 중 원하는 발화 번호를 입력함. 번호 없이 Enter를 누르면 `Ses01F_impro01`의 첫 발화인 0번을 선택함. 다시 선택할 때는 2-4절부터 이후 셀을 재실행함. 원문과 재생 음성·영상, 전처리 내용, 예측 비교에 같은 발화 ID를 사용함.
+
+| 포함 폴더 | 내용 | 용량 |
+|---|---|---:|
+| `IEMOCAP_Official_Demo/data/media/Ses01F_impro01` | 원본 WAV 30개, 동일 발화 구간의 H.264/AAC MP4 30개, 원문·시각·해시 목록 | 약 17.1 MiB |
+| `IEMOCAP_Official_Demo/data/preprocessing/Ses01F_impro01` | 중간 출력 NPZ 30개, 원본 RGB PNG 90개, 토크나이저·추출기 설정·검증 기록 | 약 64.0 MiB |
+
+현장에서는 원본 음성 읽기·모노화·16 kHz 처리, librosa 운율 계산, tokenizers 토큰화, 원본 RGB 프레임의 크기 조절·중앙 자르기·정규화, 특징 집계와 학습 통계 정규화를 실제 실행함. WavLM·RoBERTa·ResNet18 순전파의 중간 출력은 준비 단계에서 정확한 고정 가중치와 설정으로 CUDA에서 계산해 저장한 자료를 사용함. 2-12절에는 원본 `make_extractor` 전체 코드를 표시함.
+
+현장 커널은 Python 3.10·CPU 4스레드를 유지함. `requirements.txt` 하나로 현장 라이브러리를 설치하며 `librosa`, `soundfile`, `tokenizers`가 포함됨. 준비된 미디어·프레임·중간 출력·토크나이저가 함께 있어 현장에서 필요한 자료를 오프라인으로 읽을 수 있음. 미디어·전처리 확인 자료는 예시 대화 30발화로 고정되어 있으며, 전체 10,039개 발화의 감정 모델 입력은 검증된 기존 특징 캐시를 그대로 사용함.
+
+준비용 PC의 패키지 폴더에서 기본 예시 대화의 자료를 처음 생성하는 명령은 아래와 같음.
+
+```bash
+python prepare_media.py --iemocap-root <root> --ffmpeg <path>
+python prepare_preprocessing.py --iemocap-root <root> --device cuda
+```
+
+기존 재생 자료를 교체할 때는 `--overwrite`를 추가하며, 전처리 재생성 결과는 `--output <새폴더>`로 새 위치에 저장함. 다른 시험 대화는 두 명령에 같은 `--dialogue <대화ID>`를 지정해 준비함.
+
+`<root>`는 IEMOCAP 원본 루트, `<path>`는 FFmpeg 실행 파일 경로임. 전처리 재생성에는 `requirements-preprocessing.txt`에 맞춘 별도 환경과 원래 Hugging Face 로컬 캐시·ResNet18 가중치가 필요함. 현장에서는 저장소에 준비된 파일을 그대로 사용함.
+
 ## 평가 정의
 
 | 폴드 | 학습 세션 | 개발 세션 | 시험 세션 |
@@ -81,8 +105,8 @@ k번 세션은 그 세션을 학습·개발에서 제외한 k번 폴드 가중�
 | 각성도 CCC | 0.684792 ± 0.017355 |
 | 평균 CCC | 0.717703 ± 0.022541 |
 
-한 대화의 설명용 추론과 전체 평가 예측의 일치를 확인했으며, 전체 저장 예측을 별도로 재채점함. 실행 시의 검사와 근거는 `results/notebook_review_20261111`에 있음.
+한 대화의 설명용 추론과 전체 평가 예측의 일치를 확인했으며, 전체 저장 예측을 별도로 재채점함. 실행 시의 검사와 근거는 `results/notebook_media_preprocessing_20261111`에 있음.
 
 ## 결과 확인
 
-`results/notebook_review_20261111/현장시연_설명과결과.html`은 설명과 코드·출력을 함께 읽는 미리보기임. `report.html`은 전체 발화의 정답·예측을 검색하는 화면임. HTML 파일은 저장소를 내려받은 뒤 브라우저에서 열어 확인함.
+`results/notebook_media_preprocessing_20261111/현장시연_설명과결과.html`은 설명과 코드·출력을 함께 읽는 미리보기임. `report.html`은 전체 발화의 정답·예측을 검색하는 화면임. HTML 파일은 저장소를 내려받은 뒤 브라우저에서 열어 확인함.
