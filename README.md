@@ -38,7 +38,7 @@ python -m venv .venv
 Linux에서는 `source .venv/bin/activate`, Windows PowerShell에서는 `.venv\Scripts\Activate.ps1`로 환경을 활성화합니다.
 
 ```bash
-python -m pip install -r requirements-notebook.txt
+python -m pip install -r requirements.txt
 python run_demo.py verify
 ```
 

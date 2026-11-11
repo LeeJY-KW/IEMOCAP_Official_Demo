@@ -2,8 +2,8 @@
   "schema": 1,
   "files": {
     "README.md": {
-      "bytes": 10187,
-      "sha256": "8739122886bc0fa04b564a16226088833ff7a4c3f494777986ea393718d4f4fd"
+      "bytes": 10178,
+      "sha256": "d0707233d4e648b29e2b628aa57dce382c3753cbe097eee03cef167481965001"
     },
     "audit_demo.py": {
       "bytes": 8039,
@@ -1497,13 +1497,9 @@
       "bytes": 21128,
       "sha256": "a4a3933301c6b4f152e528a23555eb4d7d43b6c3a28d85ea2835967455a6c996"
     },
-    "requirements-notebook.txt": {
-      "bytes": 125,
-      "sha256": "83f385a4406c6cc35982433817fc2f8c738fdd71ce49e5aec590be8f9dbe5c06"
-    },
     "requirements.txt": {
-      "bytes": 193,
-      "sha256": "f944c52416dc32a09e5a1ba02b896f1a92312649d453f4d5b2e33cdb0105a0dd"
+      "bytes": 364,
+      "sha256": "1a72cbdf4eaad590b4e26170628842711e9fac1e8ac920b83e2fd573c0c78a93"
     },
     "run_demo.py": {
       "bytes": 25470,
@@ -1550,9 +1546,9 @@
       "sha256": "7e52100282134ab12e175dcf025d2cca9c03f98faa47254b762e9b0b1907a47d"
     },
     "현장시연.ipynb": {
-      "bytes": 40312,
-      "sha256": "a60e7d0694b67e16d2736edfd53eca27c40539caa6227fa83c9be22d8e0aca60",
-      "notebook_source_sha256": "955dd5797c47acc7570f7302a3195bbea1bb47fac9575533f140d5b6240d6c16"
+      "bytes": 40294,
+      "sha256": "a75a5fce14414abfaa1fccea050a4b01b126457b2fd83135511ade44c96c1593",
+      "notebook_source_sha256": "c1cf04c63fb5ca3353f4b14ee39632dbd1f1ac83f1d5daffed83985f06862971"
     }
   }
 }

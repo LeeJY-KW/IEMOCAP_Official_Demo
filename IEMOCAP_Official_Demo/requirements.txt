@@ -3,3 +3,11 @@
 torch==2.7.1
 numpy==1.23.5
 scikit-learn==1.6.1
+
+# Notebook execution and visualization use the same environment.
+ipython==8.39.0
+matplotlib==3.10.9
+ipykernel==6.30.1
+nbformat==5.10.4
+nbclient==0.10.2
+nbconvert==7.16.6
