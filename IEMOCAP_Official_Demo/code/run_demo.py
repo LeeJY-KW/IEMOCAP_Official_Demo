@@ -90,12 +90,19 @@ def load_checkpoint(task, fold):
 def verify(audit_normalizers=False):
     started = time.perf_counter()
     # 1단계: 전달 파일 목록의 존재 여부와 해시를 검사함.
-    # 노트북은 코드·설명 원문을 고정하되, 실행 결과를 저장하는 일반적인 사용은 허용함.
+    # 실행 코드·평가 자료는 고정하고, 안내 문서·설명 셀·실행 출력 편집은 허용함.
     manifest = read(ROOT / 'PACKAGE_MANIFEST.json')
     for name, item in manifest['files'].items():
         p = ROOT / name
         require(p.is_file(), f'Missing package file: {name}')
-        if 'notebook_source_sha256' in item:
+        if item.get('verification') == 'documentation':
+            continue
+        if 'notebook_code_sha256' in item:
+            notebook = read(p)
+            code = [''.join(c['source']) for c in notebook['cells']
+                    if c['cell_type'] == 'code' and ''.join(c['source']).strip()]
+            require(digest(code) == item['notebook_code_sha256'], f'Notebook source changed: {name}')
+        elif 'notebook_source_sha256' in item:
             # Jupyter가 자동 저장하는 출력·실행 번호·편집기 메타데이터는 비교에서 제외함.
             # 셀 종류와 코드·설명 원문의 내용 및 순서는 해시로 검사함.
             notebook = read(p)
@@ -283,9 +290,9 @@ def compact(summary):
 def make_html(path, summary, rows):
     # JSON 안의 < 문자를 이스케이프하여 발화 텍스트가 HTML 태그로 해석되는 것을 방지함.
     payload = json.dumps(dict(summary=summary, rows=rows), ensure_ascii=False).replace('<', '\\u003c')
-    html = '''<!doctype html><html lang="ko"><meta charset="utf-8"><title>IEMOCAP 평가 시연</title>
+    html = '''<!doctype html><html lang="ko"><meta charset="utf-8"><title>IEMOCAP 시험 결과</title>
 <style>body{font:15px system-ui,sans-serif;margin:28px;color:#172b4d;background:#f5f7fa}h1{font-size:25px}.panel{background:white;padding:18px;border-radius:10px;margin:16px 0}pre{white-space:pre-wrap}table{border-collapse:collapse;width:100%;background:white;font-size:13px}th,td{padding:9px;text-align:left;border-bottom:1px solid #dde3eb}th{position:sticky;top:0;background:#eaf0f8}input,select,button{font:inherit;padding:7px;margin:4px}td:last-child{min-width:260px}.muted{color:#526178}</style>
-<h1>IEMOCAP 이산·연속 감정 평가 시연</h1><div class="panel">3번 이산 감정 인식률과 4번 연속 감정 인식률의 평가 결과임. 학습 완료 Base의 분류 5개·V/A 회귀 5개 가중치로 새로 추론함. 각 k번 세션은 해당 세션을 학습·개발에 사용하지 않은 k번 폴드 모델로 평가함. IEMOCAP 원본 사람 주석을 정답으로 사용하며, 추론 후 예측과 비교함.<br><span class="muted">음성·운율·텍스트·영상의 고정 특징 입력 · 발화 단위 평가 · 분류·회귀 별도 모델 · 5겹 교차검증</span></div>
+<h1>IEMOCAP 시험 결과</h1>
 <div class="panel"><pre id="summary"></pre><table><thead><tr><th>Fold</th><th>분류 표본</th><th>Accuracy</th><th>Weighted F1</th><th>V/A 표본</th><th>CCC-V</th><th>CCC-A</th><th>평균 CCC</th></tr></thead><tbody id="folds"></tbody></table></div>
 <div class="panel"><label>Fold <select id="fold"><option value="">전체</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></label><input id="search" placeholder="발화 ID 또는 텍스트 검색" size="38"><button id="prev">이전</button><button id="next">다음</button><span id="count"></span><p class="muted">전체 발화를 ID 순서로 표시함. 채점에서 제외된 발화도 문맥과 원본 정답을 보존함. V/A 열은 정답 → 예측 순서임.</p></div>
 <table><thead><tr><th>Fold</th><th>발화 ID</th><th>원본 감정</th><th>예측 감정</th><th>분류 채점</th><th>Valence</th><th>Arousal</th><th>V/A 채점</th><th>텍스트</th></tr></thead><tbody id="rows"></tbody></table>

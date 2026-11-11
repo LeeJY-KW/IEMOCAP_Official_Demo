@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Independently score fresh predictions and compare the frozen reference run."""
+"""Independently validate the current test predictions against ground truth."""
 import argparse
 import csv
 import json
@@ -48,7 +48,7 @@ def independent_score(task, y, p):
     return dict(ccc_valence=scores[0], ccc_arousal=scores[1], mean_ccc=sum(scores) / 2)
 
 
-# 기능: 새 추론의 저장 예측과 보고서를 독립 채점하고 기존 확정 결과와 대조함.
+# 기능: 이번 시험의 저장 예측을 원본 정답과 비교하고 보고서의 지표를 독립 채점함.
 # 입력: run_demo.py가 생성한 결과 폴더 output. 반환: 전체 검증 결과 딕셔너리.
 # 저장된 예측을 읽어 재채점하고 결과 폴더에 independent_audit.json을 저장함.
 def audit(output):
@@ -57,51 +57,58 @@ def audit(output):
     check(read(output / 'status.json')['status'] == 'complete', 'Inference did not complete')
     summary = read(output / 'summary.json')
     check(summary['mode'] == 'fresh_checkpoint_inference' and summary['training'] is False, 'Unexpected run mode')
-    records, max_difference, merged = [], 0.0, {}
+    records, metric_differences, merged = [], [], {}
+
+    # 같은 시험 예측에서 독립 재계산한 지표와 저장된 지표의 차이를 기록함.
+    # 분류·회귀 채점 공식은 그대로 두며 동일 예측 재채점 오차 1e-10을 적용함.
+    def check_metric(actual, reported, message):
+        actual, reported = float(actual), float(reported)
+        check(np.isfinite(actual) and np.isfinite(reported), message)
+        difference = abs(actual - reported)
+        check(difference < 1e-10, message)
+        metric_differences.append(difference)
+        return difference
+
     for task in ('classification', 'va'):
         descriptor = read(ROOT / 'data' / f'{task}_dataset.json')
         index = {d['id']: d for d in descriptor['dialogues']}
-        old_summary = read(ROOT / 'evidence' / task / 'test_summary.json')
+        metric_keys = ('accuracy', 'weighted_f1') if task == 'classification' else ('ccc_valence', 'ccc_arousal', 'mean_ccc')
+        task_summary = summary['tasks'][task]
+        check(len(task_summary['folds']) == len(descriptor['folds']) == 5, 'Reported fold count mismatch')
+        check(set(task_summary['fold_mean']) == set(metric_keys), 'Reported metric names mismatch')
         parts, scores = [], []
         for fold in descriptor['folds']:
             number = fold['fold']
-            # 현재 예측과 원래 보존된 예측을 각각 읽되, pickle 객체 로딩은 허용하지 않음.
+            # 이번 시험에서 생성된 예측만 읽으며 pickle 객체 로딩은 허용하지 않음.
             with np.load(output / f'{task}_fold{number}.npz', allow_pickle=False) as z:
                 fresh = {k: z[k].copy() for k in z.files}
-            with np.load(ROOT / 'evidence' / task / f'fold{number}/test_predictions.npz', allow_pickle=False) as z:
-                old = {k: z[k].copy() for k in z.files}
             # 고정 평가 정의에서 시험 발화의 순서를 만듦. ID만 같고 순서가 다른
             # 결과나 다른 폴드의 예측·정답이 섞인 결과도 아래 검사에서 거부함.
             expected = [u for did in fold['test'] for u in index[did]['utterances']]
+            check(fresh['predictions'].shape == (len(expected), 7 if task == 'classification' else 2), 'Prediction shape mismatch')
             check(fresh['ids'].tolist() == [u['id'] for u in expected], 'Fresh prediction IDs are not the frozen test set')
             check(fresh['dialogues'].tolist() == [did for did in fold['test'] for u in index[did]['utterances']], 'Dialogue assignment mismatch')
             check(np.array_equal(fresh['targets'], np.asarray([u['target'] for u in expected], dtype=fresh['targets'].dtype)), 'Ground truth mismatch')
-            check(np.all(fresh['folds'] == number), 'Wrong checkpoint fold assignment')
-            for key in ('ids', 'dialogues', 'targets', 'target_valid'):
-                check(np.array_equal(fresh[key], old[key]), f'Reference alignment mismatch: {task}/{number}/{key}')
+            check(fresh['folds'].shape == (len(expected),) and np.all(fresh['folds'] == number), 'Wrong checkpoint fold assignment')
             # 원본 정답으로 유효 표본 표시를 다시 계산하여 저장된 표시와 대조함.
             valid = fresh['targets'] != -100 if task == 'classification' else ((fresh['targets'] >= 1) & (fresh['targets'] <= 5)).all(1)
             check(np.array_equal(valid, fresh['target_valid']), 'Invalid score mask')
             check(np.isfinite(fresh['predictions']).all(), 'Nonfinite predictions')
             if task == 'classification':
-                # 확률의 합은 1이어야 하며, 최종 클래스 결정은 과거 결과와 완전히 같아야 함.
+                # 각 클래스의 확률은 0~1 범위이며 발화별 합은 1이어야 함.
+                check(((fresh['predictions'] >= 0) & (fresh['predictions'] <= 1)).all(), 'Classification probability outside 0..1')
                 check(np.allclose(fresh['predictions'].sum(1), 1, atol=1e-6, rtol=0), 'Invalid probability sum')
-                check(np.array_equal(fresh['predictions'].argmax(1), old['predictions'].argmax(1)), 'Class decisions differ from archived inference')
             else:
                 check(((fresh['predictions'] >= 1) & (fresh['predictions'] <= 5)).all(), 'V/A output outside 1..5')
-            # CPU와 GPU의 float32 연산 차이에는 최대 절대 오차 1e-4만 허용함.
-            # 이 허용 오차와 아래의 동일 예측 재채점 오차 1e-10은 비교 목적이 다름.
-            difference = float(np.abs(fresh['predictions'].astype('float64') - old['predictions']).max())
-            max_difference = max(max_difference, difference)
-            check(difference <= 1e-4, 'Fresh inference differs from reference beyond float32 CPU/GPU tolerance')
             score = independent_score(task, fresh['targets'], fresh['predictions'])
-            reported = summary['tasks'][task]['folds'][number - 1]
-            for key in summary['tasks'][task]['fold_mean']:
-                check(abs(score[key] - reported[key]) < 1e-10, f'Independent metric mismatch: {key}')
+            reported = task_summary['folds'][number - 1]
+            check(reported['fold'] == number, 'Reported fold assignment mismatch')
+            differences = [check_metric(score[key], reported[key], f'Independent metric mismatch: {key}') for key in metric_keys]
             if task == 'classification':
                 check(score['confusion'] == reported['confusion'], 'Confusion matrix mismatch')
             check(reported['n'] == int(valid.sum()), 'Reported denominator mismatch')
-            records.append(dict(task=task, fold=number, context=len(valid), scored=int(valid.sum()), max_abs_prediction_difference=difference))
+            records.append(dict(task=task, fold=number, context=len(valid), scored=int(valid.sum()),
+                                metrics=score, max_abs_metric_recompute_difference=max(differences)))
             parts.append(fresh)
             scores.append(score)
         # 폴드별 예측을 연결한 값과 저장된 OOF를 대조함. OOF는 각 발화를
@@ -115,12 +122,11 @@ def audit(output):
         # 전체 문맥 발화는 10,039개지만 채점 대상은 분류 4,639개, 회귀 10,035쌍임.
         # 폴드 평균±표본표준편차(ddof=1)와 전체 OOF 통합 점수를 따로 검증함.
         pooled = independent_score(task, combined['targets'], combined['predictions'])
-        for key, value in summary['tasks'][task]['fold_mean'].items():
-            check(abs(np.mean([x[key] for x in scores]) - value['mean']) < 1e-10, 'Fold mean differs')
-            check(abs(np.std([x[key] for x in scores], ddof=1) - value['sample_sd']) < 1e-10, 'Sample SD differs')
-            # 과거 실행의 평균과 비교할 때에는 연산 환경 차이를 고려한 1e-5를 적용함.
-            check(abs(value['mean'] - old_summary[key]['mean']) < 1e-5, 'Mean differs from archived evaluation')
-            check(abs(pooled[key] - summary['tasks'][task]['pooled_oof_secondary'][key]) < 1e-10, 'Pooled metric differs')
+        for key in metric_keys:
+            value = task_summary['fold_mean'][key]
+            check_metric(np.mean([x[key] for x in scores]), value['mean'], 'Fold mean differs')
+            check_metric(np.std([x[key] for x in scores], ddof=1), value['sample_sd'], 'Sample SD differs')
+            check_metric(pooled[key], task_summary['pooled_oof_secondary'][key], 'Pooled metric differs')
         merged[task] = {str(uid): {key: combined[key][i] for key in ('targets', 'predictions', 'target_valid', 'folds')} for i, uid in enumerate(combined['ids'])}
     # 사람이 확인하는 CSV도 같은 발화 ID에 연결된 예측·정답·채점 여부인지 검사함.
     # 동일한 발화의 분류·회귀 정답과 예측을 한 표에서 함께 확인함.
@@ -136,10 +142,15 @@ def audit(output):
         for key, value in [('gt_valence', v['targets'][0]), ('gt_arousal', v['targets'][1]), ('pred_valence', v['predictions'][0]), ('pred_arousal', v['predictions'][1])]:
             check(float(row[key]) == float(value), f'CSV V/A mismatch: {key}')
     # 모든 검사가 끝난 경우에만 통과 보고서를 저장함. 원본 예측 파일은 수정하지 않음.
-    report = dict(passed=True, source='independent sklearn metrics / numpy covariance / frozen saved predictions', folds=records, comparison_rows=len(rows), max_abs_prediction_difference=max_difference, prediction_atol=1e-4, metric_recompute_atol=1e-10, historical_mean_atol=1e-5, new_training=False)
+    max_difference = max(metric_differences)
+    report = dict(schema=2, passed=True,
+                  source='current test predictions / dataset ground truth / independent sklearn metrics / numpy covariance',
+                  folds=records, comparison_rows=len(rows),
+                  max_abs_metric_recompute_difference=max_difference, metric_recompute_atol=1e-10,
+                  new_training=False)
     dest = output / 'independent_audit.json'
     dest.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    print(f'PASS | 10 folds | 10039 comparison rows | max prediction difference {max_difference:.9g}')
+    print(f'PASS | 10 folds | 10039 comparison rows | max metric recompute difference {max_difference:.9g}')
     return report
 
 

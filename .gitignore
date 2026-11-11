@@ -14,8 +14,6 @@ IEMOCAP_Official_Demo/results/*
 
 
 
-!IEMOCAP_Official_Demo/results/시험결과/
-!IEMOCAP_Official_Demo/results/시험결과/**
 .idea/
 
 # 공인시험 Word 문서는 로컬에서 관리함.

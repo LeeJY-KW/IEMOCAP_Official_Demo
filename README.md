@@ -5,9 +5,12 @@
 
 1. 내부 `IEMOCAP_Official_Demo` 폴더를 PyCharm 프로젝트로 엶.
 2. Python 3.10 64비트 프로젝트 인터프리터에서 `requirements.txt` 하나로 설치함.
-3. PyCharm 2026.2에서 [현장시연.ipynb](IEMOCAP_Official_Demo/현장시연.ipynb)를 열고 커널 설치 안내가 나오면 PyCharm에서 설치함. 실행 방식을 `IPyKernel`로 선택한 뒤 위에서부터 실행함.
+3. PyCharm 2026.2에서 [Model_verification.ipynb](IEMOCAP_Official_Demo/Model_verification.ipynb)를 열고 커널 설치 안내가 나오면 PyCharm에서 설치함. 실행 방식을 `IPyKernel`로 선택한 뒤 위에서부터 실행함.
 
-[설치·시험 안내](IEMOCAP_Official_Demo/README.md) · [실행 결과 노트북](IEMOCAP_Official_Demo/results/시험결과/현장시연_실행완료.ipynb) · [평가 요약](IEMOCAP_Official_Demo/results/시험결과/summary.txt)
+
+[설치·시험 안내](IEMOCAP_Official_Demo/README.md)
 
 현장 진행은 **원문·음성·영상 → 전처리 → Fold·가중치 확인 → 모델 추론 → 전체 5겹 평가 → 독립 채점** 순서임.
-현장 노트북은 프로젝트 최상위의 `현장시연.ipynb`, Python 코드는 `code/`, 평가 자료는 `data/`, 가중치는 `weights/`, 평가 근거는 `evidence/`, 결과는 `results/`에 있음.
+현장 노트북은 프로젝트 최상위의 `Model_verification.ipynb`, Python 코드는 `code/`, 평가 자료는 `data/`, 가중치는 `weights/`, 평가 근거는 `evidence/`, 결과는 `results/`에 있음.
+
+시험을 실행하면 해당 실행의 결과가 `results/notebook_날짜_시간`에 생성됨. 결과는 해당 폴더의 예측·Ground Truth·성능 지표와 검정 기록으로 확인함.

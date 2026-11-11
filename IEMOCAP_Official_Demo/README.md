@@ -13,7 +13,7 @@ python -m pip install --upgrade pip==25.3
 python -m pip install -r requirements.txt
 ```
 
-3. PyCharm 2026.2에서 [현장시연.ipynb](Model_verification.ipynb)를 열어 같은 프로젝트 인터프리터를 선택함. 커널 설치 안내가 나오면 PyCharm에서 설치함.
+3. PyCharm 2026.2에서 [Model_verification.ipynb](Model_verification.ipynb)를 열어 같은 프로젝트 인터프리터를 선택함. 커널 설치 안내가 나오면 PyCharm에서 설치함.
 4. 노트북 상단 `Configure Jupyter Server → Managed Server`에서 `Autodetected execution mode`를 해제하고 `Execution mode`를 `IPyKernel`로 선택함. 위에서부터 실행하며, 이전 위치에서 실행한 노트북은 커널을 재시작함.
 
 `requirements.txt`에는 모델 추론·전처리·미디어 표시용 패키지 8개만 포함함. 노트북 실행 커널은 PyCharm에서 준비함. 실행 방식은 [PyCharm 2026.2 공식 안내](https://www.jetbrains.com/help/pycharm/2026.2/configuring-jupyter-notebook.html)를 따름.
@@ -64,4 +64,5 @@ WavLM·RoBERTa·ResNet18의 고정 가중치로 미리 계산한 중간 출력�
 
 `summary.txt`, `fold_metrics.csv`, `report.html`에서 결과를 확인함. `utterance_comparison.csv`에는 전체 발화의 정답·예측을 저장하며, `independent_audit.json`에는 독립 검증 결과를 기록함.
 
-[실행 결과가 포함된 노트북](results/시험결과/현장시연_실행완료.ipynb) · [평가 요약](results/시험결과/summary.txt)
+
+시험을 실행하면 해당 실행의 결과가 `results/notebook_날짜_시간`에 생성됨. 결과는 해당 폴더의 예측·Ground Truth·성능 지표와 검정 기록으로 확인함.
