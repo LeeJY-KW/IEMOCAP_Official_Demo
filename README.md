@@ -6,12 +6,12 @@
 
 ## 먼저 볼 자료
 
-- **[설명·코드·실행 결과가 포함된 노트북](IEMOCAP_Official_Demo/results/notebook_playback_utf8_20261111/현장시연_실행완료.ipynb)** — GitHub에서 셀별 설명과 실제 출력 확인
+- **[설명·코드·실행 결과가 포함된 노트북](IEMOCAP_Official_Demo/results/notebook_windows_20261111/현장시연_실행완료.ipynb)** — GitHub에서 셀별 설명과 실제 출력 확인
 - [새로 실행할 현장 노트북](IEMOCAP_Official_Demo/현장시연.ipynb)
 - [상세 실행 안내](IEMOCAP_Official_Demo/README.md)
-- [5겹 교차검증 결과 요약](IEMOCAP_Official_Demo/results/notebook_playback_utf8_20261111/summary.txt)
-- [실제 Jupyter 커널 실행 검증](IEMOCAP_Official_Demo/results/notebook_playback_utf8_20261111/notebook_execution_audit.json)
-- [독립 채점 검증](IEMOCAP_Official_Demo/results/notebook_playback_utf8_20261111/independent_audit.json)
+- [5겹 교차검증 결과 요약](IEMOCAP_Official_Demo/results/notebook_windows_20261111/summary.txt)
+- [실제 Windows·Jupyter·Edge 검증](IEMOCAP_Official_Demo/results/notebook_windows_20261111/windows_validation.json)
+- [독립 채점 검증](IEMOCAP_Official_Demo/results/notebook_windows_20261111/independent_audit.json)
 
 노트북은 **목적 → 함수·인자·반환값 → 실행 코드 → 결과 확인** 순서의 64개 셀(실행 코드 31개)로 구성함. 원문·음성·영상, 전처리 과정, 정답 비교표와 성능 그래프를 같은 흐름에서 확인함.
 
@@ -27,6 +27,8 @@
 
 ## Windows 설치와 실행
 
+Windows Server 2022·Python 3.10.11 64비트에서 실제 검증을 완료했음. 한글·공백 경로에서 설치 파일과 실행 파일을 사용하고, Jupyter 서버·전용 커널·노트북 31개 코드 셀·전체 5겹 평가·독립 채점을 확인했음. Microsoft Edge의 재생 버튼을 클릭해 영상이 9.825초 끝까지 재생되는 것도 확인했음. [검증 실행 기록](https://github.com/LeeJY-KW/IEMOCAP_Official_Demo/actions/runs/42991204972)과 [검증 보고서](IEMOCAP_Official_Demo/results/notebook_windows_20261111/windows_validation.json)를 함께 보존함. JupyterLab 웹 화면 전체를 조작하는 검사는 포함하지 않았음.
+
 Windows 64비트와 Python 3.10 64비트를 사용함. 저장소 전체를 내려받아 압축을 푼 뒤 내부 `IEMOCAP_Official_Demo` 폴더를 엶.
 
 1. 최초 한 번 **`setup_windows.cmd`**를 실행함. 전용 가상환경, CPU PyTorch, `requirements.txt` 패키지와 Jupyter 커널을 준비함.
@@ -34,6 +36,8 @@ Windows 64비트와 Python 3.10 64비트를 사용함. 저장소 전체를 내�
 3. **IEMOCAP Windows (Python 3.10)** 커널을 확인하고 위에서부터 전체 실행함.
 
 설치는 인터넷 연결이 필요하며, 이후 현장 추론은 오프라인으로 진행함. 실행 파일이 UTF-8 모드와 프로젝트 폴더를 설정하고, Jupyter와 커널 모두 `.venv\Scripts\python.exe`를 사용함. 기존 오류로 셀 실행이 중단됐으면 최신 파일로 갱신한 뒤 전용 실행 파일로 열고 커널을 재시작하여 전체 실행함.
+
+노트북 사용 중에는 `start_windows.cmd`가 연 명령 프롬프트 창을 열어 둠.
 
 브라우저를 열기 전 검사만 할 때는 `start_windows.cmd --check-only`를 실행함. 실행 과정과 파일 구성은 [상세 안내](IEMOCAP_Official_Demo/README.md)에 있음.
 
@@ -102,8 +106,8 @@ k번 세션은 그 세션을 학습·개발에서 제외한 k번 폴드 가중�
 | 각성도 CCC | 0.684792 ± 0.017355 |
 | 평균 CCC | 0.717703 ± 0.022541 |
 
-한 대화의 설명용 추론과 전체 평가 예측의 일치를 확인했으며, 전체 저장 예측을 별도로 재채점함. 실행 시의 검사와 근거는 `results/notebook_playback_utf8_20261111`에 있음.
+한 대화의 설명용 추론과 전체 평가 예측의 일치를 확인했으며, 전체 저장 예측을 별도로 재채점함. 실행 시의 검사와 근거는 `results/notebook_windows_20261111`에 있음.
 
 ## 결과 확인
 
-`results/notebook_playback_utf8_20261111/현장시연_설명과결과.html`은 설명과 코드·출력을 함께 읽는 미리보기임. 노트북에는 정답·예측 비교표의 처음 12행, 대화 전체의 V/A 시계열 그래프, 전체 CSV의 처음 10행을 표시함. `report.html`은 전체 발화의 정답·예측을 검색하는 화면임. HTML 파일은 저장소를 내려받은 뒤 브라우저에서 열어 확인함.
+`results/notebook_windows_20261111/현장시연_설명과결과.html`은 설명과 코드·출력을 함께 읽는 미리보기임. 노트북에는 정답·예측 비교표의 처음 12행, 대화 전체의 V/A 시계열 그래프, 전체 CSV의 처음 10행을 표시함. `report.html`은 전체 발화의 정답·예측을 검색하는 화면임. HTML 파일은 저장소를 내려받은 뒤 브라우저에서 열어 확인함.
