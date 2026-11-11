@@ -1,0 +1,82 @@
+{
+  "passed": true,
+  "source": "independent sklearn metrics / numpy covariance / frozen saved predictions",
+  "folds": [
+    {
+      "task": "classification",
+      "fold": 1,
+      "context": 1819,
+      "scored": 980,
+      "max_abs_prediction_difference": 8.344650268554688e-07
+    },
+    {
+      "task": "classification",
+      "fold": 2,
+      "context": 1811,
+      "scored": 839,
+      "max_abs_prediction_difference": 8.344650268554688e-07
+    },
+    {
+      "task": "classification",
+      "fold": 3,
+      "context": 2136,
+      "scored": 1031,
+      "max_abs_prediction_difference": 6.556510925292969e-07
+    },
+    {
+      "task": "classification",
+      "fold": 4,
+      "context": 2103,
+      "scored": 819,
+      "max_abs_prediction_difference": 7.748603820800781e-07
+    },
+    {
+      "task": "classification",
+      "fold": 5,
+      "context": 2170,
+      "scored": 970,
+      "max_abs_prediction_difference": 9.5367431640625e-07
+    },
+    {
+      "task": "va",
+      "fold": 1,
+      "context": 1819,
+      "scored": 1819,
+      "max_abs_prediction_difference": 1.1920928955078125e-06
+    },
+    {
+      "task": "va",
+      "fold": 2,
+      "context": 1811,
+      "scored": 1811,
+      "max_abs_prediction_difference": 9.5367431640625e-07
+    },
+    {
+      "task": "va",
+      "fold": 3,
+      "context": 2136,
+      "scored": 2132,
+      "max_abs_prediction_difference": 1.1920928955078125e-06
+    },
+    {
+      "task": "va",
+      "fold": 4,
+      "context": 2103,
+      "scored": 2103,
+      "max_abs_prediction_difference": 9.5367431640625e-07
+    },
+    {
+      "task": "va",
+      "fold": 5,
+      "context": 2170,
+      "scored": 2170,
+      "max_abs_prediction_difference": 9.5367431640625e-07
+    }
+  ],
+  "comparison_rows": 10039,
+  "max_abs_prediction_difference": 1.1920928955078125e-06,
+  "prediction_atol": 0.0001,
+  "metric_recompute_atol": 1e-10,
+  "historical_mean_atol": 1e-05,
+  "new_training": false
+}
