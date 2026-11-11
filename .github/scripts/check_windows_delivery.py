@@ -221,7 +221,7 @@ def check_jupyter_server(package, diagnostics):
 
 # 실제 Microsoft Edge에서 재생 버튼을 누르고 시간 진행과 종료를 확인함.
 # 영상 DOM의 play() 호출 대신 브라우저의 기본 재생 컨트롤을 클릭함.
-def check_edge_playback(package, output, utterance_id):
+def check_edge_playback(package, output, utterance_id, diagnostics):
     from playwright.sync_api import sync_playwright
     from video_playback import load_video_playback
 
@@ -246,6 +246,7 @@ def check_edge_playback(package, output, utterance_id):
         with sync_playwright() as playwright:
             browser = playwright.chromium.launch(channel="msedge", headless=True)
             try:
+                diagnostics.update(passed=False, browser="Microsoft Edge", version=browser.version, headless=True)
                 page = browser.new_page(viewport={"width": 1100, "height": 900})
                 page.goto(url, wait_until="domcontentloaded", timeout=30000)
                 video = page.locator("video")
@@ -255,6 +256,7 @@ def check_edge_playback(package, output, utterance_id):
                     return v && (v.error || (v.readyState >= 2 && Number.isFinite(v.duration)));
                 }""", timeout=30000)
                 before = video.evaluate(state_script)
+                diagnostics["before"] = before
                 require(before["error"] is None, f"Edge failed to load WebM: {before}")
                 require(before["controls"] and before["direct_webm_source"], "Unexpected video player markup")
                 require((before["width"], before["height"]) == (720, 480), "Unexpected video dimensions")
@@ -267,13 +269,21 @@ def check_edge_playback(package, output, utterance_id):
                 video.scroll_into_view_if_needed()
                 bounds = video.bounding_box()
                 require(bounds is not None, "The video element is not visible")
-                # 기본 컨트롤의 왼쪽 아래 재생 버튼을 클릭함.
-                video.click(position={"x": 24, "y": bounds["height"] - 24})
-                page.wait_for_function("""() => {
-                    const v = document.querySelector('video');
-                    return v && v.currentTime > 0.05 && !v.paused && !v.error;
-                }""", timeout=10000)
+                # Windows Edge 화면에서 확인한 재생 버튼 위치임. 맨 아래 탐색 막대의 위쪽임.
+                play_position = {"x": 24, "y": bounds["height"] - 48}
+                diagnostics["native_play_control_position"] = play_position
+                video.click(position=play_position)
+                try:
+                    page.wait_for_function("""() => {
+                        const v = document.querySelector('video');
+                        return v && v.currentTime > 0.05 && !v.paused && !v.error;
+                    }""", timeout=10000)
+                except Exception:
+                    diagnostics["after_play_control"] = video.evaluate(state_script)
+                    page.screenshot(path=str(output / "edge_playback_failed.png"), full_page=True)
+                    raise
                 started = video.evaluate(state_script)
+                diagnostics["started"] = started
                 page.wait_for_function("""() => {
                     const v = document.querySelector('video');
                     return v && (v.ended || v.error);
@@ -403,7 +413,9 @@ def validate(package, output, report):
     report["example_audit"] = example
     body, _ = HTMLExporter().from_notebook_node(notebook)
     (output / "현장시연_설명과결과.html").write_text(body, encoding="utf-8", newline="\n")
-    report["edge_playback"] = check_edge_playback(package, output, preprocessing["utterance_id"])
+    report["edge_playback"] = {"passed": False}
+    report["edge_playback"].update(check_edge_playback(package, output, preprocessing["utterance_id"],
+                                                     report["edge_playback"]))
     final_inputs = snapshot_inputs(package)
     require(final_inputs == before_inputs, "Package input files changed during browser verification")
     report["input_preservation"]["after_browser_sha256"] = snapshot_digest(final_inputs)
