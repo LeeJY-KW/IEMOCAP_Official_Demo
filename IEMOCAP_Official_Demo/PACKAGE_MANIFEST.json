@@ -6,8 +6,8 @@
       "sha256": "59cc774422a3b6e9bad8efa0cfadcb405af6f777b9e01e25fbc95298feefc948"
     },
     "audit_demo.py": {
-      "bytes": 8039,
-      "sha256": "b8b7b4c3d2ac2982405a76aad9015bde465298e8378bbd8a06ef8c088010b41b"
+      "bytes": 11384,
+      "sha256": "a948f845a866568871ef1fcaacca76f6cf87c66e4b7181ad6e90266888f2bb62"
     },
     "data/annotations/Session1/Ses01F_impro01.txt": {
       "bytes": 8722,
@@ -1502,8 +1502,8 @@
       "sha256": "1a72cbdf4eaad590b4e26170628842711e9fac1e8ac920b83e2fd573c0c78a93"
     },
     "run_demo.py": {
-      "bytes": 25470,
-      "sha256": "ebb725719668bec25862f65ae4c655d4e77d224bb6db647a1092607a904bf8f1"
+      "bytes": 38134,
+      "sha256": "855d8e67c5355dafd1f0d4aeb5a1289540c12b2ae7d396afd9490f7e42345b07"
     },
     "weights/classification/fold1/best.pt": {
       "bytes": 21199479,
@@ -1546,9 +1546,9 @@
       "sha256": "7e52100282134ab12e175dcf025d2cca9c03f98faa47254b762e9b0b1907a47d"
     },
     "현장시연.ipynb": {
-      "bytes": 41714,
-      "sha256": "73464990d5dcae9a1b845a8eee7ef14dbd929c534569a27b7c5bf860717b879a",
-      "notebook_source_sha256": "85d92322189657f169b8ac59556fc381cb51f9db758253ec776bc559dc55c56e"
+      "bytes": 51678,
+      "sha256": "e7021f8dbc5054069a0bde06e37203873963be09b1a78ff54de885d2ccb946db",
+      "notebook_source_sha256": "35c856dc7f2bd1bb6a7336b932664fc394ce4580aa8b5e3e49a37721af95d5d0"
     }
   }
 }

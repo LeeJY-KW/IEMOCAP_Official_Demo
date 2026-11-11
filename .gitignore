@@ -13,3 +13,7 @@ venv/
 IEMOCAP_Official_Demo/results/*
 !IEMOCAP_Official_Demo/results/notebook_review_20261111/
 !IEMOCAP_Official_Demo/results/notebook_review_20261111/**
+
+# 공인시험 Word 문서는 로컬에서만 관리한다.
+*.docx
+*.doc
