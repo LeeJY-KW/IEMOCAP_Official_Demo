@@ -358,6 +358,16 @@ def validate(package, output, report):
     errors = [item for cell in code_cells for item in cell.get("outputs", []) if item.output_type == "error"]
     require(not errors, "Notebook execution produced error outputs")
     require([cell.execution_count for cell in code_cells] == list(range(1, 32)), "Notebook cells were not executed in order")
+    visual_records = [item.get("data", {}).get("application/json", {})
+                      for cell in code_cells for item in cell.get("outputs", [])]
+    visual_records = [item["visual_transform_audit"] for item in visual_records
+                      if isinstance(item, dict) and "visual_transform_audit" in item]
+    require(len(visual_records) == 1 and len(visual_records[0]) == 3, "Missing RGB transformation audit")
+    require(all(row["passed"] and row["max_rgb_difference"] <= 1
+                and row["max_boundary_distance"] <= 1e-4 and row["normalization_atol"] == 1e-6
+                and len(row["rounding_differences"]) == row["different_rgb_elements"]
+                for row in visual_records[0]), "RGB rounding boundary verification failed")
+    report["visual_transform_audit"] = visual_records[0]
     first_output = "".join(item.get("text", "") for item in code_cells[0].get("outputs", []) if item.output_type == "stream")
     python_lines = [line for line in first_output.splitlines() if line.startswith("Python:")]
     require(len(python_lines) == 1 and Path(python_lines[0].split(":", 1)[1].strip()).resolve() == expected_python.resolve(),
@@ -401,7 +411,8 @@ def validate(package, output, report):
                            offline_edge_video_playback=True,
                            jupyterlab_server_api=report["jupyterlab_server_api"]["passed"],
                            jupyterlab_full_browser_ui=False,
-                           new_training=False, original_numeric_tolerances_preserved=True,
+                           new_training=False, original_model_audit_tolerances_preserved=True,
+                           rgb_rounding_boundary_checks=True,
                            linux_byte_or_dtype_equality_required=False)
     require(report["jupyterlab_server_api"]["passed"],
             "JupyterLab server API validation failed; see jupyterlab_server_api diagnostics")

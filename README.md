@@ -57,6 +57,8 @@ Windows 64비트와 Python 3.10 64비트를 사용함. 저장소 전체를 내�
 | `IEMOCAP_Official_Demo/data/media/Ses01F_impro01` | 원본 WAV 30개, H.264/AAC MP4 30개, 예시 WebM·재생 HTML 및 해시 목록 | WAV·MP4 묶음 약 17.1 MiB |
 | `IEMOCAP_Official_Demo/data/preprocessing/Ses01F_impro01` | 중간 출력 NPZ 30개, 원본 RGB PNG 90개, 토크나이저·추출기 설정·검증 기록 | 약 64.0 MiB |
 
+영상 입력은 저장값과 현장 계산값의 정규화를 각각 `atol=1e-6`으로 검사함. RGB 정수 값이 1단계 다른 경우에는 반올림 전 값이 두 정수의 중간에서 `1e-4` 이내인지 별도로 검사하고, 차이 원소 수와 실제 값을 기록함. 그 밖의 RGB 차이는 검사 실패로 처리함.
+
 현장에서는 원본 음성 읽기·모노화·16 kHz 처리, librosa 운율 계산, tokenizers 토큰화, 원본 RGB 프레임의 크기 조절·중앙 자르기·정규화, 특징 집계와 학습 통계 정규화를 실제 실행함. WavLM·RoBERTa·ResNet18 순전파의 중간 출력은 준비 단계에서 정확한 고정 가중치와 설정으로 CUDA에서 계산해 저장한 자료를 사용함. 2-12절에는 원본 `make_extractor` 전체 코드를 표시함.
 
 현장 커널은 Python 3.10·CPU 4스레드를 유지함. `requirements.txt` 하나로 현장 라이브러리를 설치하며 `librosa`, `soundfile`, `tokenizers`가 포함됨. 준비된 미디어·프레임·중간 출력·토크나이저가 함께 있어 현장에서 필요한 자료를 오프라인으로 읽을 수 있음. 패키지에는 예시 대화 30발화의 자료가 준비되어 있으며, 미디어·전처리 시연에는 선택한 긴 문장 자료를 사용함. 전체 10,039개 발화의 감정 모델 입력은 검증된 기존 특징 캐시를 그대로 사용함.
