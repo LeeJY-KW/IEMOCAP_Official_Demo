@@ -2270,8 +2270,8 @@
       "sha256": "142be76f363d98872e58ed5ff50df2f8015bcc0e0fd13db11c7a89ab6ccd78a1"
     },
     "setup_windows.cmd": {
-      "bytes": 4894,
-      "sha256": "312b357b9010bd60b6164cb303a2f221fadd0faa54a3b28f93850fbae12d7f8d"
+      "bytes": 5151,
+      "sha256": "43223aa5fbfe9f25ac8e88662cc28cc7c2ea8e36229fdaef5ad582a3bd92aebf"
     },
     "start_windows.cmd": {
       "bytes": 4467,

@@ -58,9 +58,14 @@ set "IEMOCAP_STEP=checking the project Python version and architecture"
 ".venv\Scripts\python.exe" -c "import struct, sys; from pathlib import Path; ok = sys.version_info[:2] == (3, 10) and struct.calcsize('P') == 8 and Path(sys.prefix).resolve() == Path('.venv').resolve(); print('Python:', sys.executable); print('Version:', sys.version.split()[0], '| Bits:', struct.calcsize('P') * 8); sys.exit(0 if ok else 1)"
 if errorlevel 1 goto command_failed
 
+rem Python 3.10 may bundle an old pip; upgrade it before resolving wheel metadata.
+set "IEMOCAP_STEP=updating the project package installer"
+".venv\Scripts\python.exe" -m pip install --upgrade "pip==25.3"
+if errorlevel 1 goto command_failed
+
 echo Installing the CPU build of PyTorch 2.7.1...
 set "IEMOCAP_STEP=installing CPU PyTorch"
-".venv\Scripts\python.exe" -m pip install "torch==2.7.1+cpu" --index-url https://download.pytorch.org/whl/cpu
+".venv\Scripts\python.exe" -m pip install "torch==2.7.1+cpu" --no-deps --index-url https://download.pytorch.org/whl/cpu
 if errorlevel 1 goto command_failed
 
 echo Installing the package requirements...
