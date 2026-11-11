@@ -2259,8 +2259,8 @@
       "sha256": "dac252fe7353aa1ca78cdf0bc2d1d3a4dc83423aa05a6443e843b0956c5aa91c"
     },
     "requirements.txt": {
-      "bytes": 504,
-      "sha256": "602d34ea1b68598cfdba1ab1b7370ceb03cf830a6263279c7eb812495379f0e7"
+      "bytes": 528,
+      "sha256": "1064b2d8e4105320d1cbfb1714e1d6eab1a4e9e9a78211b1e7620bab0363fb67"
     },
     "weights/classification/fold1/best.pt": {
       "bytes": 21199479,
