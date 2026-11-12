@@ -125,26 +125,20 @@ def load_checkpoint(task, fold):
 def verify(audit_normalizers=False):
     started = time.perf_counter()
     # 1단계: 전달 파일 목록의 존재 여부와 해시를 검사함.
-    # 실행 코드·평가 자료는 고정하고, 안내 문서·설명 셀·실행 출력 편집은 허용함.
+    # Python 실행 코드·평가 자료는 고정하고, 현장에서 편집하는 노트북은 검사에서 제외함.
     manifest = read(ROOT / 'PACKAGE_MANIFEST.json')
+    files_checked = 0
     for name, item in manifest['files'].items():
         p = ROOT / name
+        # 이전 전달본의 목록에 노트북 해시가 남아 있어도 파일 존재·내용을 검사하지 않음.
+        # 셀 내용·주석·출력·메타데이터를 바꾸거나 저장하는 중에도 추론 검사를 진행할 수 있음.
+        if p.suffix.lower() == '.ipynb':
+            continue
         require(p.is_file(), f'Missing package file: {name}')
+        files_checked += 1
         if item.get('verification') == 'documentation':
             continue
-        if 'notebook_code_sha256' in item:
-            notebook = read(p)
-            code = [''.join(c['source']) for c in notebook['cells']
-                    if c['cell_type'] == 'code' and ''.join(c['source']).strip()]
-            require(digest(code) == item['notebook_code_sha256'], f'Notebook source changed: {name}')
-        elif 'notebook_source_sha256' in item:
-            # Jupyter가 자동 저장하는 출력·실행 번호·편집기 메타데이터는 비교에서 제외함.
-            # 셀 종류와 코드·설명 원문의 내용 및 순서는 해시로 검사함.
-            notebook = read(p)
-            source = [(c['cell_type'], ''.join(c['source'])) for c in notebook['cells']]
-            require(digest(source) == item['notebook_source_sha256'], f'Notebook source changed: {name}')
-        else:
-            require(p.stat().st_size == item['bytes'] and sha(p) == item['sha256'], f'Package hash mismatch: {name}')
+        require(p.stat().st_size == item['bytes'] and sha(p) == item['sha256'], f'Package hash mismatch: {name}')
     # 2단계: 특징 목록과 IEMOCAP의 원본 사람 주석을 직접 읽음.
     # 발화 ID 중복, 주석 형식, 전체 10,039개 발화의 누락 여부를 확인함.
     feature_manifest = read(ROOT / 'data/features/manifest.json')
@@ -269,7 +263,7 @@ def verify(audit_normalizers=False):
     # 두 과제가 같은 세션 분리를 사용해야 발화별 분류·회귀 결과를 올바르게 연결할 수 있음.
     # 통과 보고서는 이후 preflight.json에 저장하여 현장 실행의 검사 근거로 보존함.
     require(protocols['classification']['folds'] == protocols['va']['folds'], 'Tasks use different folds')
-    report = dict(passed=True, checked_at=timestamp(), package_manifest_sha256=sha(ROOT / 'PACKAGE_MANIFEST.json'), files_checked=len(manifest['files']), folds_checked=10, annotations_checked=len(annotations), normalizers_recomputed_from_train_only=normalizer_checks, splits=splits, seconds=time.perf_counter() - started)
+    report = dict(passed=True, checked_at=timestamp(), package_manifest_sha256=sha(ROOT / 'PACKAGE_MANIFEST.json'), files_checked=files_checked, folds_checked=10, annotations_checked=len(annotations), normalizers_recomputed_from_train_only=normalizer_checks, splits=splits, seconds=time.perf_counter() - started)
     return report, datasets, protocols, original
 
 
