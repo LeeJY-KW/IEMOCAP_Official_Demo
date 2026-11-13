@@ -36,9 +36,9 @@ KOREAN = ['행복', '슬픔', '분노', '공포', '놀람', '혐오', '중립']
 TASKS = ('classification', 'va')
 KEYS = dict(classification=('accuracy', 'weighted_f1'), va=('ccc_valence', 'ccc_arousal', 'mean_ccc'))
 # 성능 판정 기준은 5개 Fold 점수의 산술평균에 적용함.
-# 내부 계산과 판정에는 원래 척도를 사용하고 분류 지표만 화면에서 %로 표시함.
+# 지표 계산·판정·화면 표시 모두 원래 소수 척도를 사용함.
 PERFORMANCE_CRITERIA = {
-    'classification': dict(metric='weighted_f1', label='Weighted F1', threshold=0.70, unit='%'),
+    'classification': dict(metric='weighted_f1', label='Weighted F1', threshold=0.67, unit='score'),
     'va': dict(metric='mean_ccc', label='평균 CCC', threshold=0.60, unit='CCC'),
 }
 
@@ -83,12 +83,12 @@ def timestamp():
     return datetime.now(KST).isoformat()
 
 
-# 지표 표시용 함수임. Accuracy·Weighted F1은 %, CCC는 원래 척도로 표시함.
+# 지표 표시용 함수임. 모든 지표를 원래 척도의 소수점 이하 6자리로 표시함.
 # 반올림한 표시 문자열은 성능 판정이나 지표 계산에 사용하지 않음.
 def format_metric(metric, value):
     value = float(value)
     require(np.isfinite(value), f'Nonfinite metric: {metric}')
-    return f'{100 * value:.4f}%' if metric in ('accuracy', 'weighted_f1') else f'{value:.6f}'
+    return f'{value:.6f}'
 
 
 # 입력: 현재 시험 summary. 반환: 지표별 측정값·기준·판정과 두 기준의 종합 판정임.
@@ -105,7 +105,7 @@ def evaluate_performance(summary):
         criteria.append(dict(task=task, metric=rule['metric'], label=rule['label'],
                              measured=measured, threshold=threshold, operator='>=', unit=rule['unit'],
                              measured_display=format_metric(rule['metric'], measured),
-                             threshold_display=f'{100 * threshold:g}%' if rule['unit'] == '%' else f'{threshold:.2f}',
+                             threshold_display=f'{threshold:.2f}',
                              passed=passed, status='PASS' if passed else 'FAIL'))
     overall_passed = all(row['passed'] for row in criteria)
     return dict(schema=1, aggregation='five_fold_arithmetic_mean', criteria=criteria,
@@ -309,7 +309,7 @@ def compact(summary):
     for task in TASKS:
         for key in KEYS[task]:
             v = summary['tasks'][task]['fold_mean'][key]
-            deviation = f'{100 * v["sample_sd"]:.4f}%p' if key in ('accuracy', 'weighted_f1') else f'{v["sample_sd"]:.6f}'
+            deviation = f'{v["sample_sd"]:.6f}'
             lines.append(f'{key:16s} {format_metric(key, v["mean"])} +/- {deviation}')
     performance = evaluate_performance(summary)
     lines.extend(['', '성능 판정 | 5-fold 평균 | 반올림 전 원값으로 판정함'])
@@ -335,10 +335,10 @@ def make_html(path, summary, rows):
 <table><thead><tr><th>Fold</th><th>발화 ID</th><th>원본 감정</th><th>예측 감정</th><th>분류 채점</th><th>Valence</th><th>Arousal</th><th>V/A 채점</th><th>텍스트</th></tr></thead><tbody id="rows"></tbody></table>
 <script id="payload" type="application/json">PAYLOAD</script><script>
 const data=JSON.parse(document.getElementById('payload').textContent);let page=0;const size=40;
-const f=x=>Number(x).toFixed(6);const percent=x=>(100*Number(x)).toFixed(4)+'%';const metric=(k,x)=>['accuracy','weighted_f1'].includes(k)?percent(x):f(x);const deviation=(k,x)=>['accuracy','weighted_f1'].includes(k)?(100*Number(x)).toFixed(4)+'%p':f(x);const s=data.summary;document.getElementById('summary').textContent='실행: '+s.completed_at+' | 장치: '+s.device+' | 추론: '+s.inference_seconds.toFixed(2)+'초\\n'+Object.entries(s.tasks).flatMap(([task,v])=>Object.entries(v.fold_mean).map(([k,m])=>k+': '+metric(k,m.mean)+' ± '+deviation(k,m.sample_sd))).join('\\n');
+const f=x=>Number(x).toFixed(6);const s=data.summary;document.getElementById('summary').textContent='실행: '+s.completed_at+' | 장치: '+s.device+' | 추론: '+s.inference_seconds.toFixed(2)+'초\\n'+Object.entries(s.tasks).flatMap(([task,v])=>Object.entries(v.fold_mean).map(([k,m])=>k+': '+f(m.mean)+' ± '+f(m.sample_sd))).join('\\n');
 function row(parent, values){const tr=document.createElement('tr');values.forEach(v=>{const td=document.createElement('td');td.textContent=v;tr.append(td)});parent.append(tr)}
 const decision=document.getElementById('performance-status');decision.textContent='종합 성능 판정: '+s.performance.overall_status;decision.classList.add(s.performance.overall_passed?'pass':'fail');s.performance.criteria.forEach(c=>row(document.getElementById('performance'),[c.label,c.measured_display,c.operator+' '+c.threshold_display,c.status]));
-s.tasks.classification.folds.forEach((c,i)=>{const v=s.tasks.va.folds[i];row(document.getElementById('folds'),[i+1,c.n,percent(c.accuracy),percent(c.weighted_f1),v.n,f(v.ccc_valence),f(v.ccc_arousal),f(v.mean_ccc)])});
+s.tasks.classification.folds.forEach((c,i)=>{const v=s.tasks.va.folds[i];row(document.getElementById('folds'),[i+1,c.n,f(c.accuracy),f(c.weighted_f1),v.n,f(v.ccc_valence),f(v.ccc_arousal),f(v.mean_ccc)])});
 function render(){const query=document.getElementById('search').value.toLowerCase(),fold=document.getElementById('fold').value;const filtered=data.rows.filter(r=>(!fold||r.fold==fold)&&(!query||(r.utterance_id+' '+r.text).toLowerCase().includes(query)));page=Math.max(0,Math.min(page,Math.ceil(filtered.length/size)-1));const el=document.getElementById('rows');el.replaceChildren();filtered.slice(page*size,(page+1)*size).forEach(r=>row(el,[r.fold,r.utterance_id,r.original_emotion,r.predicted_emotion_ko,r.classification_valid?'포함':'제외: '+r.classification_exclusion,f(r.gt_valence)+' → '+f(r.pred_valence),f(r.gt_arousal)+' → '+f(r.pred_arousal),r.va_valid?'포함':'제외: 범위 밖',r.text]));document.getElementById('count').textContent=filtered.length+'개 / '+(page+1)+' 페이지'}
 document.getElementById('search').oninput=()=>{page=0;render()};document.getElementById('fold').onchange=()=>{page=0;render()};document.getElementById('prev').onclick=()=>{page--;render()};document.getElementById('next').onclick=()=>{page++;render()};render();</script></html>'''
     Path(path).write_text(html.replace('PAYLOAD', payload), encoding='utf-8')
